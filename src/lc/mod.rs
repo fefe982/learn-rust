@@ -1,6 +1,7 @@
 pub mod lc_1;
 pub mod lc_1110;
 pub mod lc_1582;
+pub mod lc_1643;
 pub mod lc_1663;
 pub mod lc_1758;
 pub mod lc_2155;
