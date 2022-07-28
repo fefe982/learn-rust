@@ -1,5 +1,6 @@
 pub mod binary_tree;
 pub mod lc_1;
+pub mod lc_111;
 pub mod lc_1110;
 pub mod lc_1187;
 pub mod lc_1389;
@@ -22,4 +23,4 @@ pub mod lc_829;
 pub mod lc_879;
 pub mod lc_954;
 pub mod lc_989;
-pub mod lc_111;
+pub mod lc_994;
