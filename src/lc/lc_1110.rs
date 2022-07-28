@@ -1,25 +1,8 @@
 // https://leetcode.com/problems/delete-nodes-and-return-forest/
 // 1110. Delete Nodes And Return Forest
+use super::binary_tree::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
-// Definition for a binary tree node.
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
-}
 pub struct Solution;
 impl Solution {
     fn del_node_helper(
@@ -56,28 +39,19 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    fn from_array(vec: &Vec<i32>, i: usize) -> Option<Rc<RefCell<TreeNode>>> {
-        if i >= vec.len() || vec[i] < 0 {
-            return None;
-        }
-        let mut node = TreeNode::new(vec[i]);
-        node.left = from_array(vec, i * 2 + 1);
-        node.right = from_array(vec, i * 2 + 2);
-        Some(Rc::new(RefCell::new(node)))
-    }
     #[test]
     fn del_nodes() {
         assert_eq!(
-            Solution::del_nodes(from_array(&vec![1, 2, 3, 4, 5, 6, 7], 0), vec![3, 5]),
+            Solution::del_nodes(TreeNode::from_array(&vec![1, 2, 3, 4, 5, 6, 7]), vec![3, 5]),
             vec![
-                from_array(&vec![1, 2, -1, 4], 0),
-                from_array(&vec![6], 0),
-                from_array(&vec![7], 0)
+                TreeNode::from_array(&vec![1, 2, -1, 4]),
+                TreeNode::from_array(&vec![6]),
+                TreeNode::from_array(&vec![7])
             ]
         );
         assert_eq!(
-            Solution::del_nodes(from_array(&vec![1, 2, 4, -1, 3], 0), vec![3]),
-            vec![from_array(&vec![1, 2, 4], 0)]
+            Solution::del_nodes(TreeNode::from_array(&vec![1, 2, 4, -1, 3]), vec![3]),
+            vec![TreeNode::from_array(&vec![1, 2, 4])]
         );
     }
 }
