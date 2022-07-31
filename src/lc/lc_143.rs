@@ -1,19 +1,6 @@
 // https://leetcode.com/problems/reorder-list/
 // 143. Reorder List
-
-// Definition for singly-linked list.
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
-
-impl ListNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
+use super::linked_list::ListNode;
 pub struct Solution;
 impl Solution {
     pub fn reorder_list(head: &mut Option<Box<ListNode>>) {
@@ -42,22 +29,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    fn make_list(vec: Vec<i32>) -> Option<Box<ListNode>> {
-        let mut head = ListNode::new(0);
-        let mut node = &mut head;
-        for i in vec {
-            node.next = Some(Box::new(ListNode::new(i)));
-            node = node.next.as_mut().unwrap().as_mut();
-        }
-        head.next
-    }
     #[test]
     fn total_strength() {
-        let mut l = make_list(vec![1, 2, 3, 4]);
+        let mut l = ListNode::from_vec(&vec![1, 2, 3, 4]);
         Solution::reorder_list(&mut l);
-        assert_eq!(l, make_list(vec![1, 4, 2, 3]));
-        let mut l = make_list(vec![1, 2, 3, 4, 5]);
+        assert_eq!(l, ListNode::from_vec(&vec![1, 4, 2, 3]));
+        let mut l = ListNode::from_vec(&vec![1, 2, 3, 4, 5]);
         Solution::reorder_list(&mut l);
-        assert_eq!(l, make_list(vec![1, 5, 2, 4, 3]));
+        assert_eq!(l, ListNode::from_vec(&vec![1, 5, 2, 4, 3]));
     }
 }

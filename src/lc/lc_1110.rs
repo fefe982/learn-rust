@@ -42,16 +42,16 @@ mod tests {
     #[test]
     fn del_nodes() {
         assert_eq!(
-            Solution::del_nodes(TreeNode::from_array(&vec![1, 2, 3, 4, 5, 6, 7]), vec![3, 5]),
+            Solution::del_nodes(TreeNode::from_vec(&vec![1, 2, 3, 4, 5, 6, 7]), vec![3, 5]),
             vec![
-                TreeNode::from_array(&vec![1, 2, -1, 4]),
-                TreeNode::from_array(&vec![6]),
-                TreeNode::from_array(&vec![7])
+                TreeNode::from_vec(&vec![1, 2, -1, 4]),
+                TreeNode::from_vec(&vec![6]),
+                TreeNode::from_vec(&vec![7])
             ]
         );
         assert_eq!(
-            Solution::del_nodes(TreeNode::from_array(&vec![1, 2, 4, -1, 3]), vec![3]),
-            vec![TreeNode::from_array(&vec![1, 2, 4])]
+            Solution::del_nodes(TreeNode::from_vec(&vec![1, 2, 4, -1, 3]), vec![3]),
+            vec![TreeNode::from_vec(&vec![1, 2, 4])]
         );
     }
 }

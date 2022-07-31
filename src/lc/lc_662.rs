@@ -48,17 +48,17 @@ mod tests {
     #[test]
     fn del_nodes() {
         assert_eq!(
-            Solution::width_of_binary_tree(TreeNode::from_array(&vec![1, 3, 2, 5, 3, -1, 9])),
+            Solution::width_of_binary_tree(TreeNode::from_vec(&vec![1, 3, 2, 5, 3, -1, 9])),
             4
         );
         assert_eq!(
-            Solution::width_of_binary_tree(TreeNode::from_array(&vec![
+            Solution::width_of_binary_tree(TreeNode::from_vec(&vec![
                 1, 3, 2, 5, -1, -1, 9, 6, -1, 7
             ])),
             7
         );
         assert_eq!(
-            Solution::width_of_binary_tree(TreeNode::from_array(&vec![1, 3, 2, 5])),
+            Solution::width_of_binary_tree(TreeNode::from_vec(&vec![1, 3, 2, 5])),
             2
         );
     }

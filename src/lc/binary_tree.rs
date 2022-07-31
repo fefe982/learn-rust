@@ -18,7 +18,7 @@ impl TreeNode {
             right: None,
         }
     }
-    pub fn from_array(vec: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn from_vec(vec: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         let root = Some(Rc::new(RefCell::new(TreeNode::new(vec[0]))));
         let mut que = VecDeque::new();
         que.push_back(root.clone());
@@ -44,9 +44,9 @@ impl TreeNode {
 mod tests {
     use super::*;
     #[test]
-    fn from_array() {
+    fn from_vec() {
         assert_eq!(
-            TreeNode::from_array(&vec![2, -1, 3, -1, 4]),
+            TreeNode::from_vec(&vec![2, -1, 3, -1, 4]),
             Some(Rc::new(RefCell::new(TreeNode {
                 val: 2,
                 left: None,

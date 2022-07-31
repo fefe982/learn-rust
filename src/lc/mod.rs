@@ -30,3 +30,4 @@ pub mod lc_946;
 pub mod lc_954;
 pub mod lc_989;
 pub mod lc_994;
+pub mod linked_list;
