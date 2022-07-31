@@ -7,6 +7,7 @@ pub mod lc_1389;
 pub mod lc_140;
 pub mod lc_143;
 pub mod lc_1472;
+pub mod lc_1529;
 pub mod lc_1582;
 pub mod lc_1610;
 pub mod lc_1643;
