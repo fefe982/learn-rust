@@ -92,7 +92,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn ship_within_days() {
+    fn find_maximized_capital() {
         assert_eq!(
             Solution::find_maximized_capital(2, 0, vec![1, 2, 3], vec![0, 1, 1]),
             4
