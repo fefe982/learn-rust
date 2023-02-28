@@ -46,7 +46,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn del_nodes() {
+    fn width_of_binary_tree() {
         assert_eq!(
             Solution::width_of_binary_tree(TreeNode::from_vec(&vec![1, 3, 2, 5, 3, -1, 9])),
             4
