@@ -32,3 +32,14 @@ impl Solution {
  * let obj = Solution::new(head);
  * let ret_1: i32 = obj.get_random();
  */
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn get_random() {
+        let obj = Solution::new(ListNode::from_vec(&vec![1, 2, 3, 4]));
+        let i = obj.get_random();
+        println!("{}", i);
+    }
+}
