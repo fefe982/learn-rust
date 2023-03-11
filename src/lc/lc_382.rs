@@ -12,7 +12,7 @@ pub struct Solution {
  */
 use rand;
 impl Solution {
-    fn new(head: Option<Box<ListNode>>) -> Self {
+    pub fn new(head: Option<Box<ListNode>>) -> Self {
         let mut arr: Vec<i32> = Vec::new();
         let mut head = head;
         while let Some(node) = head {
@@ -22,7 +22,7 @@ impl Solution {
         Self { arr }
     }
 
-    fn get_random(&self) -> i32 {
+    pub fn get_random(&self) -> i32 {
         self.arr[rand::random::<i64>() as usize % self.arr.len()]
     }
 }
@@ -40,6 +40,6 @@ mod tests {
     fn get_random() {
         let obj = Solution::new(ListNode::from_vec(&vec![1, 2, 3, 4]));
         let i = obj.get_random();
-        println!("{}", i);
+        assert_ne!(i, 0)
     }
 }

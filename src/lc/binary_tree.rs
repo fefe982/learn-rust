@@ -19,6 +19,9 @@ impl TreeNode {
         }
     }
     pub fn from_vec(vec: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+        if vec.len() == 0 {
+            return None;
+        }
         let root = Some(Rc::new(RefCell::new(TreeNode::new(vec[0]))));
         let mut que = VecDeque::new();
         que.push_back(root.clone());
