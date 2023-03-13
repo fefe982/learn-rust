@@ -1,6 +1,7 @@
 pub mod binary_tree;
 pub mod lc_1;
 pub mod lc_10;
+pub mod lc_101;
 pub mod lc_1011;
 pub mod lc_109;
 pub mod lc_1096;
