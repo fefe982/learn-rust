@@ -50,6 +50,7 @@ pub mod lc_2576;
 pub mod lc_2579;
 pub mod lc_28;
 pub mod lc_287;
+pub mod lc_30;
 pub mod lc_319;
 pub mod lc_382;
 pub mod lc_4;
