@@ -23,7 +23,7 @@ impl TrieNode {
     }
 }
 
-struct StreamChecker {
+pub struct StreamChecker {
     root: Rc<RefCell<TrieNode>>,
     last: Vec<Rc<RefCell<TrieNode>>>,
 }
@@ -33,7 +33,7 @@ struct StreamChecker {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl StreamChecker {
-    fn new(words: Vec<String>) -> Self {
+    pub fn new(words: Vec<String>) -> Self {
         let sc = StreamChecker {
             root: Rc::new(RefCell::new(TrieNode::default())),
             last: vec![],
@@ -44,7 +44,7 @@ impl StreamChecker {
         sc
     }
 
-    fn query(&mut self, letter: char) -> bool {
+    pub fn query(&mut self, letter: char) -> bool {
         let mut result = false;
         let mut new_last = vec![];
         self.last.push(self.root.clone());
@@ -60,7 +60,7 @@ impl StreamChecker {
         result
     }
 
-    fn insert(&self, word: String) {
+    pub fn insert(&self, word: String) {
         let mut node = self.root.clone();
         for c in word.as_bytes().iter() {
             let c_node = node.clone();
