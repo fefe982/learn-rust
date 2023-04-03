@@ -53,10 +53,10 @@ mod tests {
     use super::*;
     #[test]
     fn count_pairs() {
-        // assert_eq!(
-        //     Solution::count_pairs(3, vec![vec![0, 1], vec![0, 2], vec![2, 3]]),
-        //     0
-        // );
+        assert_eq!(
+            Solution::count_pairs(3, vec![vec![0, 1], vec![0, 2], vec![2, 3]]),
+            0
+        );
         assert_eq!(
             Solution::count_pairs(
                 7,
