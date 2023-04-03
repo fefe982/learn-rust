@@ -6,6 +6,7 @@ pub mod lc_1011;
 pub mod lc_1012;
 pub mod lc_1032;
 pub mod lc_1039;
+pub mod lc_1053;
 pub mod lc_106;
 pub mod lc_109;
 pub mod lc_1092;

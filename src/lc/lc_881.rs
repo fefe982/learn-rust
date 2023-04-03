@@ -4,7 +4,7 @@ use std::collections::BTreeMap;
 pub struct Solution;
 impl Solution {
     pub fn num_rescue_boats(people: Vec<i32>, limit: i32) -> i32 {
-        let mut low = 40000;
+        let mut low = i32::MAX;
         let mut high = 0;
         let mut cnt = BTreeMap::<i32, i32>::new();
         for p in people {
