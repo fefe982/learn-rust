@@ -19,6 +19,7 @@ impl Solution {
         String::from_utf8(repr.into_iter().rev().collect()).unwrap()
     }
 }
+#[cfg(test)]
 mod tests {
     use super::*;
     #[test]
