@@ -65,6 +65,7 @@ pub mod lc_1653;
 pub mod lc_1657;
 pub mod lc_1663;
 pub mod lc_1758;
+pub mod lc_1768;
 pub mod lc_1857;
 pub mod lc_20;
 pub mod lc_2042;
