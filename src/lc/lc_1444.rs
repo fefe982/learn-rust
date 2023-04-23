@@ -41,7 +41,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn min_reorder() {
+    fn ways() {
         assert_eq!(
             Solution::ways(
                 vec![

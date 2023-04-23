@@ -14,7 +14,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn min_reorder() {
+    fn kids_with_candies() {
         assert_eq!(
             Solution::kids_with_candies(vec![2, 3, 5, 1, 3], 3),
             vec![true, true, true, false, true]
