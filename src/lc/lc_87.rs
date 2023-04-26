@@ -46,7 +46,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn is_symmetric() {
+    fn is_scramble() {
         assert_eq!(
             Solution::is_scramble(String::from("great"), String::from("rgeat")),
             true
