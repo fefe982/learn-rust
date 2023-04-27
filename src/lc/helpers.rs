@@ -23,3 +23,17 @@ macro_rules! vec_vec_str {
     );
     ($($x:expr,)*) => (vec![$($x),*])
 }
+#[macro_export]
+macro_rules! vec_chr {
+    ($($x:expr),*) => (
+        [$($x.chars().nth(0).unwrap()),*].to_vec()
+    );
+    ($($x:expr,)*) => (vec![$($x),*])
+}
+#[macro_export]
+macro_rules! vec_vec_chr {
+    ($($x:tt),*) => (
+        [$(vec_chr!$x),*].to_vec()
+    );
+    ($($x:expr,)*) => (vec![$($x),*])
+}
