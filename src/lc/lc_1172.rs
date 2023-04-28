@@ -12,7 +12,7 @@ impl Ord for Sz {
         other.0.cmp(&self.0)
     }
 }
-struct DinnerPlates {
+pub struct DinnerPlates {
     heap: std::collections::binary_heap::BinaryHeap<Sz>,
     content: Vec<Vec<i32>>,
     cap: usize,
@@ -24,7 +24,7 @@ struct DinnerPlates {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl DinnerPlates {
-    fn new(capacity: i32) -> Self {
+    pub fn new(capacity: i32) -> Self {
         Self {
             heap: std::collections::binary_heap::BinaryHeap::new(),
             content: vec![],
@@ -33,7 +33,7 @@ impl DinnerPlates {
         }
     }
 
-    fn push(&mut self, val: i32) {
+    pub fn push(&mut self, val: i32) {
         if let Some(&idx) = self.heap.peek() {
             let idx = idx.0;
             self.content[idx].push(val);
@@ -52,7 +52,7 @@ impl DinnerPlates {
         }
     }
 
-    fn pop(&mut self) -> i32 {
+    pub fn pop(&mut self) -> i32 {
         if self.last >= self.content.len() || self.content[self.last].len() == 0 {
             -1
         } else {
@@ -67,7 +67,7 @@ impl DinnerPlates {
         }
     }
 
-    fn pop_at_stack(&mut self, index: i32) -> i32 {
+    pub fn pop_at_stack(&mut self, index: i32) -> i32 {
         let idx = index as usize;
         if idx >= self.content.len() || self.content[idx].len() == 0 {
             -1
