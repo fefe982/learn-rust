@@ -8,7 +8,7 @@ pub struct TreeNode {
     pub left: Option<Rc<RefCell<TreeNode>>>,
     pub right: Option<Rc<RefCell<TreeNode>>>,
 }
-
+pub const NULL: i32 = i32::MIN;
 impl TreeNode {
     #[inline]
     pub fn new(val: i32) -> Self {
@@ -28,12 +28,12 @@ impl TreeNode {
         let mut idx = 1;
         while let Some(parent) = que.pop_front() {
             let parent_node = parent.clone().unwrap();
-            if idx < vec.len() && vec[idx] >= 0 {
+            if idx < vec.len() && vec[idx] != NULL {
                 let new_node = Some(Rc::new(RefCell::new(TreeNode::new(vec[idx]))));
                 que.push_back(new_node.clone());
                 parent_node.as_ref().borrow_mut().left = new_node.clone();
             }
-            if idx + 1 < vec.len() && vec[idx + 1] >= 0 {
+            if idx + 1 < vec.len() && vec[idx + 1] != NULL {
                 let new_node = Some(Rc::new(RefCell::new(TreeNode::new(vec[idx + 1]))));
                 que.push_back(new_node.clone());
                 parent_node.as_ref().borrow_mut().right = new_node.clone();
@@ -49,7 +49,7 @@ mod tests {
     #[test]
     fn from_vec() {
         assert_eq!(
-            TreeNode::from_vec(&vec![2, -1, 3, -1, 4]),
+            TreeNode::from_vec(&vec![2, NULL, 3, NULL, 4]),
             Some(Rc::new(RefCell::new(TreeNode {
                 val: 2,
                 left: None,
