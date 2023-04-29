@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/smallest-number-in-infinite-set/
 // 2336. Smallest Number in Infinite Set
-struct SmallestInfiniteSet {
+pub struct SmallestInfiniteSet {
     set: std::collections::BTreeSet<i32>,
     bound: i32,
 }
@@ -10,14 +10,14 @@ struct SmallestInfiniteSet {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl SmallestInfiniteSet {
-    fn new() -> Self {
+    pub fn new() -> Self {
         SmallestInfiniteSet {
             set: std::collections::BTreeSet::new(),
             bound: 1,
         }
     }
 
-    fn pop_smallest(&mut self) -> i32 {
+    pub fn pop_smallest(&mut self) -> i32 {
         if let Some(&v) = self.set.iter().next() {
             self.set.remove(&v);
             v
@@ -27,7 +27,7 @@ impl SmallestInfiniteSet {
         }
     }
 
-    fn add_back(&mut self, num: i32) {
+    pub fn add_back(&mut self, num: i32) {
         if num == self.bound - 1 {
             self.bound -= 1;
             while self.set.contains(&(self.bound - 1)) {
