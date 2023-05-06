@@ -2,10 +2,10 @@
 // 1416. Restore The Array
 pub struct Solution;
 #[derive(Copy, Clone)]
-struct IMode {
+struct IMod {
     i: i64,
 }
-impl IMode {
+impl IMod {
     fn new(i: i64) -> Self {
         Self { i: i as i64 }
     }
@@ -13,24 +13,24 @@ impl IMode {
         self.i as i32
     }
 }
-impl std::ops::Add<IMode> for IMode {
-    type Output = IMode;
-    fn add(self, rhs: IMode) -> IMode {
-        return IMode::new((self.i + rhs.i) % 1000000007);
+impl std::ops::Add<IMod> for IMod {
+    type Output = IMod;
+    fn add(self, rhs: IMod) -> IMod {
+        return IMod::new((self.i + rhs.i) % 1000000007);
     }
 }
 impl Solution {
-    fn num_arr(s: &[u8], k: i64, cache: &mut std::collections::HashMap<usize, IMode>) -> IMode {
+    fn num_arr(s: &[u8], k: i64, cache: &mut std::collections::HashMap<usize, IMod>) -> IMod {
         if s.len() == 0 {
-            return IMode::new(1);
+            return IMod::new(1);
         }
         if s[0] == b'0' {
-            return IMode::new(0);
+            return IMod::new(0);
         }
         if let Some(cnt) = cache.get(&s.len()) {
             return *cnt;
         }
-        let mut cnt = IMode::new(0);
+        let mut cnt = IMod::new(0);
         let mut val = 0;
         for i in 0..s.len() {
             val = val * 10 + ((s[i] - b'0') as i64);
