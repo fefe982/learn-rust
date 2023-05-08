@@ -103,6 +103,7 @@ pub mod lc_1758;
 pub mod lc_1768;
 pub mod lc_1822;
 pub mod lc_1857;
+pub mod lc_188;
 pub mod lc_1964;
 pub mod lc_20;
 pub mod lc_2042;
