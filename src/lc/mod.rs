@@ -207,3 +207,4 @@ pub mod lc_983;
 pub mod lc_989;
 pub mod lc_994;
 pub mod linked_list;
+pub mod lc_2437;
