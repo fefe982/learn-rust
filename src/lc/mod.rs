@@ -170,6 +170,7 @@ pub mod lc_502;
 pub mod lc_51;
 pub mod lc_516;
 pub mod lc_52;
+pub mod lc_54;
 pub mod lc_587;
 pub mod lc_60;
 pub mod lc_600;
