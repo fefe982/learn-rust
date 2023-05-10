@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/longest-string-chain/
+// https://leetcode.com/problems/longest-string-chain/
 // 1048. Longest String Chain
 pub struct Solution;
 impl Solution {

@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/powerful-integers/
+// https://leetcode.com/problems/powerful-integers/
 // 970. Powerful Integers
 pub struct Solution;
 impl Solution {
