@@ -38,7 +38,7 @@ mod tests {
     use super::*;
     #[test]
     fn get_random() {
-        let obj = Solution::new(ListNode::from_vec(&vec![1, 2, 3, 4]));
+        let obj = Solution::new(ListNode::from_vec(vec![1, 2, 3, 4]));
         let i = obj.get_random();
         assert_ne!(i, 0)
     }

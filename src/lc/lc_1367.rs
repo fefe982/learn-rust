@@ -41,7 +41,7 @@ mod tests {
     fn is_sub_path() {
         assert_eq!(
             Solution::is_sub_path(
-                ListNode::from_vec(&vec![4, 2, 8]),
+                ListNode::from_vec(vec![4, 2, 8]),
                 TreeNode::from_vec(&vec![
                     1, 4, 4, -1, 2, 2, -1, 1, -1, 6, 8, -1, -1, -1, -1, 1, 3
                 ])
@@ -50,7 +50,7 @@ mod tests {
         );
         assert_eq!(
             Solution::is_sub_path(
-                ListNode::from_vec(&vec![1, 4, 2, 6]),
+                ListNode::from_vec(vec![1, 4, 2, 6]),
                 TreeNode::from_vec(&vec![
                     1, 4, 4, -1, 2, 2, -1, 1, -1, 6, 8, -1, -1, -1, -1, 1, 3
                 ])
@@ -59,7 +59,7 @@ mod tests {
         );
         assert_eq!(
             Solution::is_sub_path(
-                ListNode::from_vec(&vec![1, 4, 2, 6, 8]),
+                ListNode::from_vec(vec![1, 4, 2, 6, 8]),
                 TreeNode::from_vec(&vec![
                     1, 4, 4, -1, 2, 2, -1, 1, -1, 6, 8, -1, -1, -1, -1, 1, 3
                 ])

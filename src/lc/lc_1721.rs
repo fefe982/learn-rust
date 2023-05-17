@@ -28,12 +28,12 @@ mod tests {
     #[test]
     fn swap_nodes() {
         assert_eq!(
-            Solution::swap_nodes(ListNode::from_vec(&vec![1, 2, 3, 4, 5]), 2),
-            ListNode::from_vec(&vec![1, 4, 3, 2, 5])
+            Solution::swap_nodes(ListNode::from_vec(vec![1, 2, 3, 4, 5]), 2),
+            ListNode::from_vec(vec![1, 4, 3, 2, 5])
         );
         assert_eq!(
-            Solution::swap_nodes(ListNode::from_vec(&vec![7, 9, 6, 6, 7, 8, 3, 0, 9, 5]), 5),
-            ListNode::from_vec(&vec![7, 9, 6, 6, 8, 7, 3, 0, 9, 5])
+            Solution::swap_nodes(ListNode::from_vec(vec![7, 9, 6, 6, 7, 8, 3, 0, 9, 5]), 5),
+            ListNode::from_vec(vec![7, 9, 6, 6, 8, 7, 3, 0, 9, 5])
         );
     }
 }

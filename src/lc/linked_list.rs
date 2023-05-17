@@ -10,10 +10,10 @@ impl ListNode {
     pub fn new(val: i32) -> Self {
         ListNode { next: None, val }
     }
-    pub fn from_vec(vec: &Vec<i32>) -> Option<Box<ListNode>> {
+    pub fn from_vec(vec: Vec<i32>) -> Option<Box<ListNode>> {
         let mut head = ListNode::new(0);
         let mut node = &mut head;
-        for &i in vec {
+        for i in vec {
             node.next = Some(Box::new(ListNode::new(i)));
             node = node.next.as_mut().unwrap().as_mut();
         }
@@ -27,7 +27,7 @@ mod tests {
     #[test]
     fn from_vec() {
         assert_eq!(
-            ListNode::from_vec(&vec![1, 2, 3, 4]),
+            ListNode::from_vec(vec![1, 2, 3, 4]),
             Some(Box::new(ListNode {
                 val: 1,
                 next: Some(Box::new(ListNode {

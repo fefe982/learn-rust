@@ -55,16 +55,16 @@ mod tests {
     fn merge_k_lists() {
         assert_eq!(
             Solution::merge_k_lists(vec![
-                ListNode::from_vec(&vec![1, 4, 5]),
-                ListNode::from_vec(&vec![1, 3, 4]),
-                ListNode::from_vec(&vec![2, 6])
+                ListNode::from_vec(vec![1, 4, 5]),
+                ListNode::from_vec(vec![1, 3, 4]),
+                ListNode::from_vec(vec![2, 6])
             ]),
-            ListNode::from_vec(&vec![1, 1, 2, 3, 4, 4, 5, 6])
+            ListNode::from_vec(vec![1, 1, 2, 3, 4, 4, 5, 6])
         );
-        assert_eq!(Solution::merge_k_lists(vec![]), ListNode::from_vec(&vec![]));
+        assert_eq!(Solution::merge_k_lists(vec![]), ListNode::from_vec(vec![]));
         assert_eq!(
-            Solution::merge_k_lists(vec![ListNode::from_vec(&vec![])]),
-            ListNode::from_vec(&vec![])
+            Solution::merge_k_lists(vec![ListNode::from_vec(vec![])]),
+            ListNode::from_vec(vec![])
         );
     }
 }

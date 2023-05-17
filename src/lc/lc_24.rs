@@ -39,16 +39,16 @@ mod tests {
     #[test]
     fn swap_pairs() {
         assert_eq!(
-            Solution::swap_pairs(ListNode::from_vec(&vec![1, 2, 3, 4])),
-            ListNode::from_vec(&vec![2, 1, 4, 3])
+            Solution::swap_pairs(ListNode::from_vec(vec![1, 2, 3, 4])),
+            ListNode::from_vec(vec![2, 1, 4, 3])
         );
         assert_eq!(
-            Solution::swap_pairs(ListNode::from_vec(&vec![])),
-            ListNode::from_vec(&vec![])
+            Solution::swap_pairs(ListNode::from_vec(vec![])),
+            ListNode::from_vec(vec![])
         );
         assert_eq!(
-            Solution::swap_pairs(ListNode::from_vec(&vec![1])),
-            ListNode::from_vec(&vec![1])
+            Solution::swap_pairs(ListNode::from_vec(vec![1])),
+            ListNode::from_vec(vec![1])
         );
     }
 }

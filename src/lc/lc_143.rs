@@ -31,11 +31,11 @@ mod tests {
     use super::*;
     #[test]
     fn total_strength() {
-        let mut l = ListNode::from_vec(&vec![1, 2, 3, 4]);
+        let mut l = ListNode::from_vec(vec![1, 2, 3, 4]);
         Solution::reorder_list(&mut l);
-        assert_eq!(l, ListNode::from_vec(&vec![1, 4, 2, 3]));
-        let mut l = ListNode::from_vec(&vec![1, 2, 3, 4, 5]);
+        assert_eq!(l, ListNode::from_vec(vec![1, 4, 2, 3]));
+        let mut l = ListNode::from_vec(vec![1, 2, 3, 4, 5]);
         Solution::reorder_list(&mut l);
-        assert_eq!(l, ListNode::from_vec(&vec![1, 5, 2, 4, 3]));
+        assert_eq!(l, ListNode::from_vec(vec![1, 5, 2, 4, 3]));
     }
 }

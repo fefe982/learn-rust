@@ -31,12 +31,12 @@ mod tests {
     #[test]
     fn max_score_indices() {
         assert_eq!(
-            Solution::merge_nodes(ListNode::from_vec(&vec![0, 3, 1, 0, 4, 5, 2, 0])),
-            ListNode::from_vec(&vec![4, 11])
+            Solution::merge_nodes(ListNode::from_vec(vec![0, 3, 1, 0, 4, 5, 2, 0])),
+            ListNode::from_vec(vec![4, 11])
         );
         assert_eq!(
-            Solution::merge_nodes(ListNode::from_vec(&vec![0, 1, 0, 3, 0, 2, 2, 0])),
-            ListNode::from_vec(&vec![1, 3, 4])
+            Solution::merge_nodes(ListNode::from_vec(vec![0, 1, 0, 3, 0, 2, 2, 0])),
+            ListNode::from_vec(vec![1, 3, 4])
         )
     }
 }

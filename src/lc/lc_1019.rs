@@ -31,11 +31,11 @@ mod tests {
     #[test]
     fn next_larger_nodes() {
         assert_eq!(
-            Solution::next_larger_nodes(ListNode::from_vec(&vec![2, 1, 5])),
+            Solution::next_larger_nodes(ListNode::from_vec(vec![2, 1, 5])),
             vec![5, 5, 0]
         );
         assert_eq!(
-            Solution::next_larger_nodes(ListNode::from_vec(&vec![2, 7, 4, 3, 5])),
+            Solution::next_larger_nodes(ListNode::from_vec(vec![2, 7, 4, 3, 5])),
             vec![7, 0, 5, 5, 0]
         );
     }
