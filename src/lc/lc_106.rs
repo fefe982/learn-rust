@@ -32,16 +32,17 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn sorted_list_to_bst() {
         assert_eq!(
             Solution::build_tree(vec![9, 3, 15, 20, 7], vec![9, 15, 7, 20, 3]),
-            TreeNode::from_vec(&vec![3, 9, 20, -1, -1, 15, 7])
+            TreeNode::from_vec(vec![3, 9, 20, NULL, NULL, 15, 7])
         );
         assert_eq!(
             Solution::build_tree(vec![1], vec![1]),
-            TreeNode::from_vec(&vec![1])
+            TreeNode::from_vec(vec![1])
         );
     }
 }

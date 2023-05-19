@@ -18,7 +18,7 @@ impl TreeNode {
             right: None,
         }
     }
-    pub fn from_vec(vec: &Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn from_vec(vec: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         if vec.len() == 0 {
             return None;
         }
@@ -45,11 +45,12 @@ impl TreeNode {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn from_vec() {
         assert_eq!(
-            TreeNode::from_vec(&vec![2, NULL, 3, NULL, 4]),
+            TreeNode::from_vec(vec![2, NULL, 3, NULL, 4]),
             Some(Rc::new(RefCell::new(TreeNode {
                 val: 2,
                 left: None,

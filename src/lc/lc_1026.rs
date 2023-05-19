@@ -34,17 +34,18 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn max_ancestor_diff() {
         assert_eq!(
-            Solution::max_ancestor_diff(TreeNode::from_vec(&vec![
-                8, 3, 10, 1, 6, -1, 14, -1, -1, 4, 7, 13
+            Solution::max_ancestor_diff(TreeNode::from_vec(vec![
+                8, 3, 10, 1, 6, NULL, 14, NULL, NULL, 4, 7, 13
             ])),
             7
         );
         assert_eq!(
-            Solution::max_ancestor_diff(TreeNode::from_vec(&vec![1, -1, 2, -1, 0, 3])),
+            Solution::max_ancestor_diff(TreeNode::from_vec(vec![1, NULL, 2, NULL, 0, 3])),
             3
         );
     }

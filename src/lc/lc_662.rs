@@ -44,21 +44,22 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn width_of_binary_tree() {
         assert_eq!(
-            Solution::width_of_binary_tree(TreeNode::from_vec(&vec![1, 3, 2, 5, 3, -1, 9])),
+            Solution::width_of_binary_tree(TreeNode::from_vec(vec![1, 3, 2, 5, 3, NULL, 9])),
             4
         );
         assert_eq!(
-            Solution::width_of_binary_tree(TreeNode::from_vec(&vec![
-                1, 3, 2, 5, -1, -1, 9, 6, -1, 7
+            Solution::width_of_binary_tree(TreeNode::from_vec(vec![
+                1, 3, 2, 5, NULL, NULL, 9, 6, NULL, 7
             ])),
             7
         );
         assert_eq!(
-            Solution::width_of_binary_tree(TreeNode::from_vec(&vec![1, 3, 2, 5])),
+            Solution::width_of_binary_tree(TreeNode::from_vec(vec![1, 3, 2, 5])),
             2
         );
     }

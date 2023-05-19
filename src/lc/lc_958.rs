@@ -41,15 +41,16 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn is_complete_tree() {
         assert_eq!(
-            Solution::is_complete_tree(TreeNode::from_vec(&vec![1, 2, 3, 4, 5, 6])),
+            Solution::is_complete_tree(TreeNode::from_vec(vec![1, 2, 3, 4, 5, 6])),
             true
         );
         assert_eq!(
-            Solution::is_complete_tree(TreeNode::from_vec(&vec![1, 2, 3, 4, 5, -1, 7])),
+            Solution::is_complete_tree(TreeNode::from_vec(vec![1, 2, 3, 4, 5, NULL, 7])),
             false
         );
     }

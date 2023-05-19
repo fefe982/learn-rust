@@ -52,27 +52,28 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn find_duplicate_subtrees() {
         assert_eq!(
-            Solution::find_duplicate_subtrees(TreeNode::from_vec(&vec![
-                1, 2, 3, 4, -1, 2, 4, -1, -1, 4
+            Solution::find_duplicate_subtrees(TreeNode::from_vec(vec![
+                1, 2, 3, 4, NULL, 2, 4, NULL, NULL, 4
             ])),
             vec![
-                TreeNode::from_vec(&vec![4]),
-                TreeNode::from_vec(&vec![2, 4, -1])
+                TreeNode::from_vec(vec![4]),
+                TreeNode::from_vec(vec![2, 4, NULL])
             ]
         );
         assert_eq!(
-            Solution::find_duplicate_subtrees(TreeNode::from_vec(&vec![2, 1, 1])),
-            vec![TreeNode::from_vec(&vec![1])]
+            Solution::find_duplicate_subtrees(TreeNode::from_vec(vec![2, 1, 1])),
+            vec![TreeNode::from_vec(vec![1])]
         );
         assert_eq!(
-            Solution::find_duplicate_subtrees(TreeNode::from_vec(&vec![2, 2, 2, 3, -1, 3, -1])),
+            Solution::find_duplicate_subtrees(TreeNode::from_vec(vec![2, 2, 2, 3, NULL, 3, NULL])),
             vec![
-                TreeNode::from_vec(&vec![3]),
-                TreeNode::from_vec(&vec![2, 3, -1])
+                TreeNode::from_vec(vec![3]),
+                TreeNode::from_vec(vec![2, 3, NULL])
             ]
         );
     }

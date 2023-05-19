@@ -41,15 +41,16 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn is_symmetric() {
         assert_eq!(
-            Solution::is_symmetric(TreeNode::from_vec(&vec![1, 2, 2, 3, 4, 4, 3])),
+            Solution::is_symmetric(TreeNode::from_vec(vec![1, 2, 2, 3, 4, 4, 3])),
             true
         );
         assert_eq!(
-            Solution::is_symmetric(TreeNode::from_vec(&vec![1, 2, 2, -1, 3, -1, 3])),
+            Solution::is_symmetric(TreeNode::from_vec(vec![1, 2, 2, NULL, 3, NULL, 3])),
             false
         );
     }

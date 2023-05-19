@@ -38,15 +38,18 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn min_depth() {
         assert_eq!(
-            Solution::min_depth(TreeNode::from_vec(&vec![3, 9, 20, -1, -1, 15, 7])),
+            Solution::min_depth(TreeNode::from_vec(vec![3, 9, 20, NULL, NULL, 15, 7])),
             2
         );
         assert_eq!(
-            Solution::min_depth(TreeNode::from_vec(&vec![2, -1, 3, -1, 4, -1, 5, -1, 6])),
+            Solution::min_depth(TreeNode::from_vec(vec![
+                2, NULL, 3, NULL, 4, NULL, 5, NULL, 6
+            ])),
             5
         );
     }

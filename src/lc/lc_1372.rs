@@ -23,18 +23,19 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn longest_zig_zag() {
         assert_eq!(
-            Solution::longest_zig_zag(TreeNode::from_vec(&vec![
-                1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1
+            Solution::longest_zig_zag(TreeNode::from_vec(vec![
+                1, NULL, 1, 1, 1, NULL, NULL, 1, 1, NULL, 1, NULL, NULL, NULL, 1, NULL, 1
             ])),
             3
         );
         assert_eq!(
-            Solution::longest_zig_zag(TreeNode::from_vec(&vec![
-                1, 1, 1, -1, 1, -1, -1, 1, 1, -1, 1
+            Solution::longest_zig_zag(TreeNode::from_vec(vec![
+                1, 1, 1, NULL, 1, NULL, NULL, 1, 1, NULL, 1
             ])),
             4
         );

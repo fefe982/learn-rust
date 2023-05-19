@@ -33,15 +33,16 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn binary_tree_paths() {
         assert_eq!(
-            Solution::binary_tree_paths(TreeNode::from_vec(&vec![1, 2, 3, -1, 5])),
+            Solution::binary_tree_paths(TreeNode::from_vec(vec![1, 2, 3, NULL, 5])),
             vec!["1->2->5".to_owned(), "1->3".to_owned()]
         );
         assert_eq!(
-            Solution::binary_tree_paths(TreeNode::from_vec(&vec![1])),
+            Solution::binary_tree_paths(TreeNode::from_vec(vec![1])),
             vec!["1".to_owned()]
         );
     }

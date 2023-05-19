@@ -42,16 +42,17 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
+    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn range_sum_bst() {
         assert_eq!(
-            Solution::range_sum_bst(TreeNode::from_vec(&vec![10, 5, 15, 3, 7, -1, 18]), 7, 15),
+            Solution::range_sum_bst(TreeNode::from_vec(vec![10, 5, 15, 3, 7, NULL, 18]), 7, 15),
             32
         );
         assert_eq!(
             Solution::range_sum_bst(
-                TreeNode::from_vec(&vec![10, 5, 15, 3, 7, 13, 18, 1, -1, 6]),
+                TreeNode::from_vec(vec![10, 5, 15, 3, 7, 13, 18, 1, NULL, 6]),
                 6,
                 10
             ),

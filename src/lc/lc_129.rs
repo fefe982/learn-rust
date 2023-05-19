@@ -30,12 +30,9 @@ mod tests {
     use super::*;
     #[test]
     fn sum_numbers() {
+        assert_eq!(Solution::sum_numbers(TreeNode::from_vec(vec![1, 2, 3])), 25);
         assert_eq!(
-            Solution::sum_numbers(TreeNode::from_vec(&vec![1, 2, 3])),
-            25
-        );
-        assert_eq!(
-            Solution::sum_numbers(TreeNode::from_vec(&vec![4, 9, 0, 5, 1])),
+            Solution::sum_numbers(TreeNode::from_vec(vec![4, 9, 0, 5, 1])),
             1026
         );
     }

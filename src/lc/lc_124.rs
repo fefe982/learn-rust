@@ -28,12 +28,9 @@ mod tests {
     use super::*;
     #[test]
     fn max_path_sum() {
+        assert_eq!(Solution::max_path_sum(TreeNode::from_vec(vec![2, 1, 3])), 6);
         assert_eq!(
-            Solution::max_path_sum(TreeNode::from_vec(&vec![2, 1, 3])),
-            6
-        );
-        assert_eq!(
-            Solution::max_path_sum(TreeNode::from_vec(&vec![-10, 9, 20, NULL, NULL, 15, 7])),
+            Solution::max_path_sum(TreeNode::from_vec(vec![-10, 9, 20, NULL, NULL, 15, 7])),
             42
         );
     }
