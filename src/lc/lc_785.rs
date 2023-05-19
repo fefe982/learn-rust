@@ -36,14 +36,15 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::*;
     #[test]
     fn is_bipartite() {
         assert_eq!(
-            Solution::is_bipartite(vec![vec![1, 2, 3], vec![0, 2], vec![0, 1, 3], vec![0, 2]]),
+            Solution::is_bipartite(vec_vec![[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]),
             false
         );
         assert_eq!(
-            Solution::is_bipartite(vec![vec![1, 3], vec![0, 2], vec![1, 3], vec![0, 2]]),
+            Solution::is_bipartite(vec_vec![[1, 3], [0, 2], [1, 3], [0, 2]]),
             true
         )
     }
