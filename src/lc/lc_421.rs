@@ -80,7 +80,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn compress() {
+    fn find_maximum_xor() {
         assert_eq!(Solution::find_maximum_xor(vec![3, 10, 5, 25, 2, 8]), 28);
         assert_eq!(
             Solution::find_maximum_xor(vec![14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70]),

@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/
+// https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/
 // 1373. Maximum Sum BST in Binary Tree
 use super::binary_tree::TreeNode;
 pub struct Solution;
