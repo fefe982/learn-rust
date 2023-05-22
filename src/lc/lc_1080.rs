@@ -6,40 +6,35 @@ use std::cell::RefCell;
 use std::rc::Rc;
 impl Solution {
     fn sufficient_subset_helper(
-        root: &Option<Rc<RefCell<TreeNode>>>,
+        root: &mut Option<Rc<RefCell<TreeNode>>>,
         limit: i32,
         sum: i32,
-    ) -> (Option<Rc<RefCell<TreeNode>>>, bool) {
-        if let Some(n) = root {
-            let n = n.borrow();
-            let nsum = sum + n.val;
-            let left = Self::sufficient_subset_helper(&n.left, limit, nsum);
-            let right = Self::sufficient_subset_helper(&n.right, limit, nsum);
-            match (left, right) {
-                ((None, true), (None, true)) => {
-                    if nsum >= limit {
-                        (Some(Rc::new(RefCell::new(TreeNode::new(n.val)))), false)
-                    } else {
-                        (None, false)
-                    }
+    ) -> bool {
+        if let Some(n) = root.take() {
+            let nsum = sum + n.borrow().val;
+            let ln = Self::sufficient_subset_helper(&mut n.borrow_mut().left, limit, nsum);
+            let rn = Self::sufficient_subset_helper(&mut n.borrow_mut().right, limit, nsum);
+            if ln && rn {
+                if nsum >= limit {
+                    *root = Some(n);
                 }
-                ((None, _), (None, _)) => (None, false),
-                ((l, _), (r, _)) => {
-                    let mut nroot = TreeNode::new(n.val);
-                    nroot.left = l;
-                    nroot.right = r;
-                    (Some(Rc::new(RefCell::new(nroot))), false)
+            } else {
+                match (&n.borrow().left, &n.borrow().right) {
+                    (&None, &None) => (),
+                    _ => *root = Some(n.clone()),
                 }
             }
+            false
         } else {
-            (None, true)
+            true
         }
     }
     pub fn sufficient_subset(
-        root: Option<Rc<RefCell<TreeNode>>>,
+        mut root: Option<Rc<RefCell<TreeNode>>>,
         limit: i32,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        Self::sufficient_subset_helper(&root, limit, 0).0
+        Self::sufficient_subset_helper(&mut root, limit, 0);
+        root
     }
 }
 #[cfg(test)]
