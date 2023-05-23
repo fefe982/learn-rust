@@ -185,6 +185,7 @@ pub mod lc_273;
 pub mod lc_28;
 pub mod lc_282;
 pub mod lc_287;
+pub mod lc_295;
 pub mod lc_30;
 pub mod lc_319;
 pub mod lc_32;
