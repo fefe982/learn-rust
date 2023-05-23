@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/insufficient-nodes-in-root-to-leaf-paths/
+// https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/
 // 1080. Insufficient Nodes in Root to Leaf Paths
 use super::binary_tree::TreeNode;
 pub struct Solution;
