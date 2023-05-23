@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/find-median-from-data-stream/
 // 295. Find Median from Data Stream
-struct MedianFinder {
+pub struct MedianFinder {
     high: std::collections::BinaryHeap<i32>,
     low: std::collections::BinaryHeap<i32>,
 }
@@ -10,14 +10,14 @@ struct MedianFinder {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MedianFinder {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             high: std::collections::BinaryHeap::new(),
             low: std::collections::BinaryHeap::new(),
         }
     }
 
-    fn add_num(&mut self, num: i32) {
+    pub fn add_num(&mut self, num: i32) {
         if self.high.len() == 0 {
             self.high.push(-num);
             return;
@@ -39,7 +39,7 @@ impl MedianFinder {
         }
     }
 
-    fn find_median(&self) -> f64 {
+    pub fn find_median(&self) -> f64 {
         if self.high.len() > self.low.len() {
             -*self.high.peek().unwrap() as f64
         } else if self.low.len() > self.high.len() {
