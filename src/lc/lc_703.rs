@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/kth-largest-element-in-a-stream/
 // 703. Kth Largest Element in a Stream
 pub struct Solution;
-struct KthLargest {
+pub struct KthLargest {
     q: std::collections::BinaryHeap<i32>,
     k: usize,
 }
@@ -11,7 +11,7 @@ struct KthLargest {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl KthLargest {
-    fn new(k: i32, nums: Vec<i32>) -> Self {
+    pub fn new(k: i32, nums: Vec<i32>) -> Self {
         let mut q = std::collections::BinaryHeap::new();
         let k = k as usize;
         for i in 0..k {
@@ -26,7 +26,7 @@ impl KthLargest {
         s
     }
 
-    fn add(&mut self, val: i32) -> i32 {
+    pub fn add(&mut self, val: i32) -> i32 {
         if self.q.len() == self.k && -val < *self.q.peek().unwrap() {
             self.q.pop();
         }
