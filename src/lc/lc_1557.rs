@@ -18,7 +18,7 @@ mod tests {
     use super::*;
     use crate::*;
     #[test]
-    fn diagonal_sum() {
+    fn find_smallest_set_of_vertices() {
         assert_eq!(
             Solution::find_smallest_set_of_vertices(
                 6,
