@@ -80,6 +80,7 @@ pub mod lc_1416;
 pub mod lc_1419;
 pub mod lc_143;
 pub mod lc_1431;
+pub mod lc_1439;
 pub mod lc_1444;
 pub mod lc_1456;
 pub mod lc_1466;
