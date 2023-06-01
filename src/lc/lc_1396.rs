@@ -19,7 +19,7 @@ impl TimeCnt {
         self.time / self.cnt as f64
     }
 }
-struct UndergroundSystem {
+pub struct UndergroundSystem {
     stations: std::collections::HashMap<String, i32>,
     new_station_id: i32,
     sum_time: std::collections::HashMap<(i32, i32), TimeCnt>,
@@ -31,7 +31,7 @@ struct UndergroundSystem {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl UndergroundSystem {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             stations: std::collections::HashMap::new(),
             new_station_id: 0,
@@ -39,7 +39,7 @@ impl UndergroundSystem {
             check_ins: std::collections::HashMap::new(),
         }
     }
-    fn get_station_id(&mut self, station_name: String) -> i32 {
+    pub fn get_station_id(&mut self, station_name: String) -> i32 {
         if let Some(&id) = self.stations.get(&station_name) {
             id
         } else {
@@ -49,12 +49,12 @@ impl UndergroundSystem {
             id
         }
     }
-    fn check_in(&mut self, id: i32, station_name: String, t: i32) {
+    pub fn check_in(&mut self, id: i32, station_name: String, t: i32) {
         let station_id = self.get_station_id(station_name);
         self.check_ins.insert(id, (station_id, t));
     }
 
-    fn check_out(&mut self, id: i32, station_name: String, t: i32) {
+    pub fn check_out(&mut self, id: i32, station_name: String, t: i32) {
         let station_id_out = self.get_station_id(station_name);
         let (station_id_in, time_in) = self.check_ins.remove(&id).unwrap();
         self.sum_time
@@ -63,7 +63,7 @@ impl UndergroundSystem {
             .add_time(t - time_in);
     }
 
-    fn get_average_time(&mut self, start_station: String, end_station: String) -> f64 {
+    pub fn get_average_time(&mut self, start_station: String, end_station: String) -> f64 {
         let station_id_in = self.get_station_id(start_station);
         let station_id_out = self.get_station_id(end_station);
         self.sum_time
