@@ -133,6 +133,7 @@ pub mod lc_1964;
 pub mod lc_20;
 pub mod lc_2042;
 pub mod lc_208;
+pub mod lc_2101;
 pub mod lc_2106;
 pub mod lc_211;
 pub mod lc_212;
