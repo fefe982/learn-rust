@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/design-hashset/
 // 705. Design HashSet
 const BUCKET: i32 = 997;
-struct MyHashSet {
+pub struct MyHashSet {
     buckets: Vec<Vec<i32>>,
 }
 
@@ -10,27 +10,27 @@ struct MyHashSet {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyHashSet {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             buckets: vec![Vec::new(); BUCKET as usize],
         }
     }
 
-    fn add(&mut self, key: i32) {
+    pub fn add(&mut self, key: i32) {
         let nbucket = (key % BUCKET) as usize;
         if let Err(pos) = self.buckets[nbucket].binary_search(&key) {
             self.buckets[nbucket].insert(pos, key);
         }
     }
 
-    fn remove(&mut self, key: i32) {
+    pub fn remove(&mut self, key: i32) {
         let nbucket = (key % BUCKET) as usize;
         if let Ok(pos) = self.buckets[nbucket].binary_search(&key) {
             self.buckets[nbucket].remove(pos);
         }
     }
 
-    fn contains(&self, key: i32) -> bool {
+    pub fn contains(&self, key: i32) -> bool {
         let nbucket = (key % BUCKET) as usize;
         match self.buckets[nbucket].binary_search(&key) {
             Ok(_) => true,

@@ -3,18 +3,18 @@
 use super::binary_tree::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
-struct Codec {}
+pub struct Codec {}
 
 /**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Codec {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {}
     }
 
-    fn serialize(&self, root: Option<Rc<RefCell<TreeNode>>>) -> String {
+    pub fn serialize(&self, root: Option<Rc<RefCell<TreeNode>>>) -> String {
         let mut builder = String::from("");
         let mut q = std::collections::VecDeque::<Option<Rc<RefCell<TreeNode>>>>::new();
         q.push_back(root);
@@ -31,7 +31,7 @@ impl Codec {
         builder
     }
 
-    fn deserialize(&self, data: String) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn deserialize(&self, data: String) -> Option<Rc<RefCell<TreeNode>>> {
         let data: &str = &data;
         let pos = data.find(';').unwrap();
         if &data[0..1] == "n" {

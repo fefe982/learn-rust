@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-parking-system/
 // 1603. Design Parking System
-struct ParkingSystem {
+pub struct ParkingSystem {
     slot: Vec<i32>,
 }
 
@@ -9,13 +9,13 @@ struct ParkingSystem {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl ParkingSystem {
-    fn new(big: i32, medium: i32, small: i32) -> Self {
+    pub fn new(big: i32, medium: i32, small: i32) -> Self {
         Self {
             slot: vec![big, medium, small],
         }
     }
 
-    fn add_car(&mut self, car_type: i32) -> bool {
+    pub fn add_car(&mut self, car_type: i32) -> bool {
         if car_type < 1 || car_type > 3 {
             false
         } else if self.slot[car_type as usize - 1] > 0 {
