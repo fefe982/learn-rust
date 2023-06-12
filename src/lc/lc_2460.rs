@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/apply-operations-to-an-array/
+// https://leetcode.com/problems/apply-operations-to-an-array/
 // 2460. Apply Operations to an Array
 pub struct Solution;
 impl Solution {
