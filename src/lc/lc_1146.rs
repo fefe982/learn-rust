@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/snapshot-array/
 // 1146. Snapshot Array
-struct SnapshotArray {
+pub struct SnapshotArray {
     arr: Vec<Vec<(i32, i32)>>,
     snap_id: i32,
 }
@@ -10,14 +10,14 @@ struct SnapshotArray {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl SnapshotArray {
-    fn new(length: i32) -> Self {
+    pub fn new(length: i32) -> Self {
         Self {
             arr: vec![Vec::new(); length as usize],
             snap_id: 0,
         }
     }
 
-    fn set(&mut self, index: i32, val: i32) {
+    pub fn set(&mut self, index: i32, val: i32) {
         let arr = &mut self.arr[index as usize];
         match arr.last_mut() {
             Some((i, v)) if *i == self.snap_id => *v = val,
@@ -25,13 +25,13 @@ impl SnapshotArray {
         }
     }
 
-    fn snap(&mut self) -> i32 {
+    pub fn snap(&mut self) -> i32 {
         let id = self.snap_id;
         self.snap_id += 1;
         id
     }
 
-    fn get(&self, index: i32, snap_id: i32) -> i32 {
+    pub fn get(&self, index: i32, snap_id: i32) -> i32 {
         let ref arr = self.arr[index as usize];
         let mut low;
         let mut low_val;
