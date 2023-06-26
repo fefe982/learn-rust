@@ -217,6 +217,7 @@ pub mod lc_2466;
 pub mod lc_2469;
 pub mod lc_2475;
 pub mod lc_2481;
+pub mod lc_2485;
 pub mod lc_2488;
 pub mod lc_2492;
 pub mod lc_2496;
