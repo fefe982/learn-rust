@@ -106,7 +106,7 @@ impl std::ops::Sub<u32> for BaseN {
         self
     }
 }
-fn calc_special(last_digit: u8, base: u8) -> String {
+pub fn calc_special(last_digit: u8, base: u8) -> String {
     let mut bn = BaseN::new(base, 1);
     let db1 = last_digit as u32 * base as u32 - 1;
     let d2 = last_digit as u32 * last_digit as u32;
