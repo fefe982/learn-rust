@@ -31,7 +31,7 @@ fn eval(list: &[u64], max: u64) -> u64 {
     nums.push(max);
     nums[eval(&list[1..], nums.len() as u64 - 1) as usize]
 }
-pub fn last_digit_base(list: &[u64], base: u64) -> u64 {
+fn last_digit_base(list: &[u64], base: u64) -> u64 {
     if list.len() == 0 {
         return 1;
     }
@@ -75,7 +75,7 @@ pub fn last_digit_base(list: &[u64], base: u64) -> u64 {
     }
     return nums[last_digit_base(&list[1..], nums.len() as u64) as usize];
 }
-fn last_digit(list: &[u64]) -> u64 {
+pub fn last_digit(list: &[u64]) -> u64 {
     last_digit_base(list, 10)
 }
 #[cfg(test)]
