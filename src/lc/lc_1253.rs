@@ -3,10 +3,14 @@
 pub struct Solution;
 impl Solution {
     pub fn reconstruct_matrix(mut upper: i32, mut lower: i32, colsum: Vec<i32>) -> Vec<Vec<i32>> {
-        let (sum, mut dup) = colsum
-            .iter()
-            .fold((0, 0), |(s, f), &c| (s + c, f + if c == 2 { 1 } else { 0 }));
-        if sum != upper + lower {
+        let (sum, cnt, mut dup) = colsum.iter().fold((0, 0, 0), |(s, cn, f), &c| {
+            (
+                s + c,
+                cn + if c != 0 { 1 } else { 0 },
+                f + if c == 2 { 1 } else { 0 },
+            )
+        });
+        if sum != upper + lower || cnt < upper || cnt < lower {
             return vec![];
         }
         let mut res = vec![vec![0; colsum.len()]; 2];
@@ -36,6 +40,10 @@ mod tests {
     use crate::*;
     #[test]
     fn reconstruct_matrix() {
+        assert_eq!(
+            Solution::reconstruct_matrix(9, 2, vec![0, 1, 2, 0, 0, 0, 0, 0, 2, 1, 2, 1, 2]),
+            Vec::<Vec<i32>>::new()
+        );
         assert_eq!(
             Solution::reconstruct_matrix(2, 1, vec![1, 1, 1]),
             vec_vec![[1, 1, 0], [0, 0, 1]]
