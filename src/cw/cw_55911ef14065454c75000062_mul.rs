@@ -1,6 +1,6 @@
 // https://www.codewars.com/kata/55911ef14065454c75000062
 // Multiplying numbers as strings
-fn multiply(a: &str, b: &str) -> String {
+pub fn multiply(a: &str, b: &str) -> String {
     let a = a.as_bytes();
     let la = a.len();
     let b = b.as_bytes();

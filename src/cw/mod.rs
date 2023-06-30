@@ -1,5 +1,6 @@
 pub mod cw_526d84b98f428f14a60008da_hamming_num;
 pub mod cw_5296bc77afba8baa690002d7_sudoku;
+pub mod cw_52ec24228a515e620b0005ef_explosiv_sum;
 pub mod cw_53e57dada0cb0400ba000688_alphabetic_anagrams;
 pub mod cw_5518a860a73e708c0a000027_last_digit;
 pub mod cw_55911ef14065454c75000062_mul;
