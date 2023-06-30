@@ -1,6 +1,6 @@
 // https://www.codewars.com/kata/5b98dfa088d44a8b000001c1
 // Fluid Volume of a Heightmap
-fn volume(heightmap: &Vec<Vec<i32>>) -> i32 {
+pub fn volume(heightmap: &Vec<Vec<i32>>) -> i32 {
     let mut heightmap = heightmap.clone();
     let h = heightmap.len();
     let w = heightmap[0].len();
