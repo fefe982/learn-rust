@@ -63,7 +63,18 @@ mod tests {
     use crate::*;
     #[test]
     fn max_points() {
-        assert_eq!(Solution::max_points(vec_vec![[0,1],[0,0],[0,4],[0,-2],[0,-1],[0,3],[0,-4]]), 7);
+        assert_eq!(
+            Solution::max_points(vec_vec![
+                [0, 1],
+                [0, 0],
+                [0, 4],
+                [0, -2],
+                [0, -1],
+                [0, 3],
+                [0, -4]
+            ]),
+            7
+        );
         assert_eq!(Solution::max_points(vec_vec![[1, 1], [2, 2], [3, 3]]), 3);
         assert_eq!(
             Solution::max_points(vec_vec![[1, 1], [3, 2], [5, 3], [4, 1], [2, 3], [1, 4]]),
