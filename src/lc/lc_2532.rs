@@ -2,7 +2,7 @@
 // 2532. Time to Cross a Bridge
 pub struct Solution;
 impl Solution {
-    pub fn find_crossing_time(mut n: i32, k: i32, mut time: Vec<Vec<i32>>) -> i32 {
+    pub fn find_crossing_time(mut n: i32, _k: i32, mut time: Vec<Vec<i32>>) -> i32 {
         time.sort_by_key(|x| x[0] + x[2]);
         let mut t = 0;
         let mut left_heap = std::collections::BinaryHeap::new();
