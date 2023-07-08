@@ -44,7 +44,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn merge_k_lists() {
+    fn is_valid() {
         assert_eq!(Solution::is_valid(String::from("()")), true);
         assert_eq!(Solution::is_valid(String::from("()[]{}")), true);
         assert_eq!(Solution::is_valid(String::from("(]")), false);
