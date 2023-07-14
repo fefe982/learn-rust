@@ -357,3 +357,4 @@ pub mod lc_cn_int_16_19;
 pub mod lc_cn_lcp_33;
 pub mod lc_cn_lcp_41;
 pub mod linked_list;
+pub mod lc_18;
