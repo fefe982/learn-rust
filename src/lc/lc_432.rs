@@ -6,7 +6,7 @@ struct Cnt {
     next: usize,
     words: std::collections::HashSet<String>,
 }
-struct AllOne {
+pub struct AllOne {
     cnts: Vec<Cnt>,
     str_map: std::collections::HashMap<String, i32>,
     cnt_map: std::collections::HashMap<i32, usize>,
@@ -18,7 +18,7 @@ struct AllOne {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl AllOne {
-    fn new() -> Self {
+    pub fn new() -> Self {
         let mut w = std::collections::HashSet::new();
         w.insert(String::from(""));
         Self {
@@ -87,7 +87,7 @@ impl AllOne {
         self.cnts[*cnt_idx].words.insert(key.clone());
     }
 
-    fn inc(&mut self, key: String) {
+    pub fn inc(&mut self, key: String) {
         let ocnt = self.str_map.get(&key);
         if let Some(&cnt) = ocnt {
             let (prev, cur, next) = self.remove(&key, cnt);
@@ -99,7 +99,7 @@ impl AllOne {
         }
     }
 
-    fn dec(&mut self, key: String) {
+    pub fn dec(&mut self, key: String) {
         let &cnt = self.str_map.get(&key).unwrap();
         let (prev, cur, next) = self.remove(&key, cnt);
         if cnt == 1 {
@@ -110,7 +110,7 @@ impl AllOne {
         }
     }
 
-    fn get_max_key(&self) -> String {
+    pub fn get_max_key(&self) -> String {
         self.cnts[self.cnts[1].prev]
             .words
             .iter()
@@ -119,7 +119,7 @@ impl AllOne {
             .clone()
     }
 
-    fn get_min_key(&self) -> String {
+    pub fn get_min_key(&self) -> String {
         self.cnts[self.cnts[0].next]
             .words
             .iter()
