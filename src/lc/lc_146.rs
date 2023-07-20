@@ -7,7 +7,7 @@ struct Node {
     prev: usize,
     next: usize,
 }
-struct LRUCache {
+pub struct LRUCache {
     nodes: Vec<Node>,
     sz: usize,
     map: std::collections::BTreeMap<i32, usize>,
@@ -18,7 +18,7 @@ struct LRUCache {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl LRUCache {
-    fn new(capacity: i32) -> Self {
+    pub fn new(capacity: i32) -> Self {
         let mut s = Self {
             nodes: vec![
                 Node {
@@ -51,7 +51,7 @@ impl LRUCache {
         self.nodes[idx].next = 1;
     }
 
-    fn get(&mut self, key: i32) -> i32 {
+    pub fn get(&mut self, key: i32) -> i32 {
         if let Some(&idx) = self.map.get(&key) {
             if idx != self.nodes[1].prev {
                 self.remove(idx);
@@ -63,7 +63,7 @@ impl LRUCache {
         }
     }
 
-    fn put(&mut self, key: i32, value: i32) {
+    pub fn put(&mut self, key: i32, value: i32) {
         if let Some(&idx) = self.map.get(&key) {
             if idx != self.nodes[1].prev {
                 self.remove(idx);
