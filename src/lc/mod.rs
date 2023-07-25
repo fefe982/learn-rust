@@ -353,6 +353,7 @@ pub mod lc_837;
 pub mod lc_839;
 pub mod lc_84;
 pub mod lc_85;
+pub mod lc_852;
 pub mod lc_859;
 pub mod lc_860;
 pub mod lc_863;
