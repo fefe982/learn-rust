@@ -349,6 +349,7 @@ pub mod lc_518;
 pub mod lc_52;
 pub mod lc_530;
 pub mod lc_54;
+pub mod lc_542;
 pub mod lc_546;
 pub mod lc_547;
 pub mod lc_552;
