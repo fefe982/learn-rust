@@ -9,7 +9,7 @@ impl Solution {
         let mut total = 0;
         for course in courses {
             let duration = course[0];
-            if total < course[0] && total + duration <= course[1] {
+            if total + duration <= course[1] {
                 total += duration;
                 heap.push(duration);
             } else if let Some(&dtop) = heap.peek() {
@@ -29,6 +29,10 @@ mod tests {
     use crate::*;
     #[test]
     fn schedule_course() {
+        assert_eq!(
+            Solution::schedule_course(vec_vec![[5, 5], [4, 6], [2, 6]]),
+            2
+        );
         assert_eq!(
             Solution::schedule_course(vec_vec![
                 [100, 200],
