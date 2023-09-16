@@ -12,7 +12,6 @@ impl Solution {
             if h < 0 {
                 continue;
             }
-            println!("{}, {}, {}, {:?}, {}", x, y, h, m.0, max);
             heights[x][y] = -h;
             max = max.max(m.0);
             if x == heights.len() - 1 && y == heights[0].len() - 1 {
