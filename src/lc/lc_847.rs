@@ -13,6 +13,7 @@ impl Solution {
             while let Some((mask, node, len)) = queue.pop_front() {
                 if mask == m {
                     min = min.min(len);
+                    println!("{}, {:?}", i, min);
                     break;
                 }
                 if visited.contains(&(mask, node)) {
@@ -20,7 +21,7 @@ impl Solution {
                 }
                 visited.insert((mask, node));
                 for &next in &graph[node] {
-                    let nmask = mask + (1 << next);
+                    let nmask = mask | (1 << next);
                     if visited.contains(&(nmask, next as usize)) {
                         continue;
                     }
@@ -35,9 +36,12 @@ impl Solution {
 mod tests {
     use super::*;
     use crate::*;
-
     #[test]
     fn test_shortest_path_length() {
+        assert_eq!(
+            Solution::shortest_path_length(vec_vec![[1], [0, 2, 4], [1, 3], [2], [1, 5], [4]]),
+            6
+        );
         assert_eq!(
             Solution::shortest_path_length(vec_vec![[1, 2, 3], [0], [0], [0]]),
             4
