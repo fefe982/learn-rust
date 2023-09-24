@@ -437,6 +437,7 @@ pub mod lc_767;
 pub mod lc_77;
 pub mod lc_771;
 pub mod lc_785;
+pub mod lc_799;
 pub mod lc_804;
 pub mod lc_808;
 pub mod lc_81;

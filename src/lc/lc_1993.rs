@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/operations-on-tree/
 // 1993. Operations on Tree
-struct LockingTree {
+pub struct LockingTree {
     p: Vec<i32>,
     d: Vec<Vec<i32>>,
     l: Vec<i32>,
@@ -11,7 +11,7 @@ struct LockingTree {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl LockingTree {
-    fn new(parent: Vec<i32>) -> Self {
+    pub fn new(parent: Vec<i32>) -> Self {
         let mut d = vec![vec![]; parent.len()];
         for (i, &p) in parent.iter().enumerate() {
             if p != -1 {
@@ -22,7 +22,7 @@ impl LockingTree {
         Self { p: parent, d, l }
     }
 
-    fn lock(&mut self, num: i32, user: i32) -> bool {
+    pub fn lock(&mut self, num: i32, user: i32) -> bool {
         if self.l[num as usize] == 0 {
             self.l[num as usize] = user;
             true
@@ -31,7 +31,7 @@ impl LockingTree {
         }
     }
 
-    fn unlock(&mut self, num: i32, user: i32) -> bool {
+    pub fn unlock(&mut self, num: i32, user: i32) -> bool {
         if self.l[num as usize] == user {
             self.l[num as usize] = 0;
             true
@@ -40,7 +40,7 @@ impl LockingTree {
         }
     }
 
-    fn upgrade(&mut self, num: i32, user: i32) -> bool {
+    pub fn upgrade(&mut self, num: i32, user: i32) -> bool {
         if self.l[num as usize] != 0 {
             return false;
         }
