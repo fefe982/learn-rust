@@ -204,6 +204,7 @@ pub mod lc_1993;
 pub mod lc_2;
 pub mod lc_20;
 pub mod lc_2024;
+pub mod lc_2038;
 pub mod lc_2042;
 pub mod lc_2050;
 pub mod lc_207;
