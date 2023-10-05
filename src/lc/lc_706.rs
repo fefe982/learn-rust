@@ -1,10 +1,8 @@
 // https://leetcode.com/problems/design-hashmap/
 // 706. Design HashMap
-#[allow(dead_code)]
 const BUCKET: i32 = 997;
 
-#[allow(dead_code)]
-struct MyHashMap {
+pub struct MyHashMap {
     buckets: Vec<Vec<i32>>,
     vals: Vec<Vec<i32>>,
 }
@@ -14,14 +12,14 @@ struct MyHashMap {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyHashMap {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             buckets: vec![Vec::new(); BUCKET as usize],
             vals: vec![Vec::new(); BUCKET as usize],
         }
     }
 
-    fn put(&mut self, key: i32, value: i32) {
+    pub fn put(&mut self, key: i32, value: i32) {
         let nbucket = (key % BUCKET) as usize;
         match self.buckets[nbucket].binary_search(&key) {
             Err(pos) => {
@@ -34,7 +32,7 @@ impl MyHashMap {
         }
     }
 
-    fn get(&self, key: i32) -> i32 {
+    pub fn get(&self, key: i32) -> i32 {
         let nbucket = (key % BUCKET) as usize;
         match self.buckets[nbucket].binary_search(&key) {
             Ok(pos) => self.vals[nbucket][pos],
@@ -42,7 +40,7 @@ impl MyHashMap {
         }
     }
 
-    fn remove(&mut self, key: i32) {
+    pub fn remove(&mut self, key: i32) {
         let nbucket = (key % BUCKET) as usize;
         if let Ok(pos) = self.buckets[nbucket].binary_search(&key) {
             self.buckets[nbucket].remove(pos);
