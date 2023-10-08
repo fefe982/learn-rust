@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/stock-price-fluctuation/
 // 2034. Stock Price Fluctuation
-struct StockPrice {
+pub struct StockPrice {
     timestamp: i32,
     price: i32,
     prices: std::collections::HashMap<i32, i32>,
@@ -13,7 +13,7 @@ struct StockPrice {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl StockPrice {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             timestamp: 0,
             price: 0,
@@ -23,7 +23,7 @@ impl StockPrice {
         }
     }
 
-    fn update(&mut self, timestamp: i32, price: i32) {
+    pub fn update(&mut self, timestamp: i32, price: i32) {
         if timestamp >= self.timestamp {
             self.timestamp = timestamp;
             self.price = price;
@@ -33,11 +33,11 @@ impl StockPrice {
         self.minh.push((std::cmp::Reverse(price), timestamp));
     }
 
-    fn current(&self) -> i32 {
+    pub fn current(&self) -> i32 {
         self.price
     }
 
-    fn maximum(&mut self) -> i32 {
+    pub fn maximum(&mut self) -> i32 {
         while let Some(&(p, t)) = self.maxh.peek() {
             if *self.prices.get(&t).unwrap() == p {
                 return p;
@@ -47,7 +47,7 @@ impl StockPrice {
         -1
     }
 
-    fn minimum(&mut self) -> i32 {
+    pub fn minimum(&mut self) -> i32 {
         while let Some(&(p, t)) = self.minh.peek() {
             if *self.prices.get(&t).unwrap() == p.0 {
                 return p.0;
