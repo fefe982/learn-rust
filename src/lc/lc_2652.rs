@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/sum-multiples/
+// https://leetcode.com/problems/sum-multiples/
 // 2652. Sum Multiples
 pub struct Solution;
 impl Solution {
