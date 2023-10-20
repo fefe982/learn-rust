@@ -6,7 +6,7 @@ pub enum NestedInteger {
     Int(i32),
     List(Vec<NestedInteger>),
 }
-struct NestedIterator {
+pub struct NestedIterator {
     vec: Vec<i32>,
     index: usize,
 }
@@ -17,26 +17,26 @@ struct NestedIterator {
  */
 impl NestedIterator {
     fn flatten(nested_list: &Vec<NestedInteger>, vec: &mut Vec<i32>) {
-        for nestedInteger in nested_list {
-            match nestedInteger {
+        for nested_integer in nested_list {
+            match nested_integer {
                 NestedInteger::Int(i) => vec.push(*i),
                 NestedInteger::List(list) => Self::flatten(list, vec),
             }
         }
     }
-    fn new(nestedList: Vec<NestedInteger>) -> Self {
+    pub fn new(nested_list: Vec<NestedInteger>) -> Self {
         let mut vec = Vec::new();
-        Self::flatten(&nestedList, &mut vec);
+        Self::flatten(&nested_list, &mut vec);
         Self { vec, index: 0 }
     }
 
-    fn next(&mut self) -> i32 {
+    pub fn next(&mut self) -> i32 {
         let r = self.vec[self.index];
         self.index += 1;
         r
     }
 
-    fn has_next(&self) -> bool {
+    pub fn has_next(&self) -> bool {
         self.index < self.vec.len()
     }
 }
