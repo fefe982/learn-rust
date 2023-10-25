@@ -3,13 +3,7 @@
 pub struct Solution;
 impl Solution {
     pub fn kth_grammar(n: i32, k: i32) -> i32 {
-        let mut res = 0;
-        let mut k = k - 1;
-        while k != 0 {
-            res = 1 - res;
-            k = k & (k - 1);
-        }
-        res
+        ((k - 1).count_ones() % 2) as i32
     }
 }
 #[cfg(test)]
