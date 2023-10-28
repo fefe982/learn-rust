@@ -28,7 +28,6 @@ impl SummaryRanges {
                 (-2, -2, -2, -2)
             }
         };
-        println!("{value}, {s1}, {e1}, {s0}, {e0}");
         if s1 == value + 1 {
             if e0 == value - 1 {
                 self.map_se.insert(s0, e1);
