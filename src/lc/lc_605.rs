@@ -2,21 +2,17 @@
 // 605. Can Place Flowers
 pub struct Solution;
 impl Solution {
-    pub fn can_place_flowers(flowerbed: Vec<i32>, n: i32) -> bool {
-        let mut flower = 0;
-        let mut last_flower = 0usize;
-        for (idx, f) in [1, 0]
-            .iter()
-            .chain(flowerbed.iter())
-            .chain([0, 1].iter())
-            .enumerate()
-        {
-            if *f == 1 {
-                flower += ((std::cmp::max(idx - last_flower, 1usize) - 1) / 2) as i32;
-                last_flower = idx + 1;
+    pub fn can_place_flowers(mut flowerbed: Vec<i32>, mut n: i32) -> bool {
+        for i in 0..flowerbed.len() {
+            if flowerbed[i] == 0
+                && (i == 0 || flowerbed[i - 1] == 0)
+                && (i == flowerbed.len() - 1 || flowerbed[i + 1] == 0)
+            {
+                flowerbed[i] = 1;
+                n -= 1;
             }
         }
-        flower >= n
+        n <= 0
     }
 }
 #[cfg(test)]
