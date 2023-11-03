@@ -123,6 +123,7 @@ pub mod lc_143;
 pub mod lc_1431;
 pub mod lc_14325;
 pub mod lc_1439;
+pub mod lc_1441;
 pub mod lc_1444;
 pub mod lc_1448;
 pub mod lc_1456;
