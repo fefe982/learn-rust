@@ -3,18 +3,19 @@
 pub struct Solution;
 impl Solution {
     pub fn eliminate_maximum(dist: Vec<i32>, speed: Vec<i32>) -> i32 {
-        let mut t = Vec::with_capacity(dist.len());
-        for (d, s) in dist.into_iter().zip(speed.into_iter()) {
-            t.push((d + s - 1) / s);
-        }
+        let mut t = dist
+            .into_iter()
+            .zip(speed.into_iter())
+            .map(|(d, s)| (d + s - 1) / s)
+            .collect::<Vec<_>>();
         t.sort_unstable();
         let l = t.len();
-        for (j, tt) in t.into_iter().enumerate() {
+        for (j, tt) in t.into_iter().chain(vec![0].into_iter()).enumerate() {
             if tt as usize <= j {
                 return j as i32;
             }
         }
-        l as i32
+        0
     }
 }
 #[cfg(test)]
