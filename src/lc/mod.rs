@@ -270,6 +270,7 @@ pub mod lc_2279;
 pub mod lc_228;
 pub mod lc_2281;
 pub mod lc_2283;
+pub mod lc_2286;
 pub mod lc_229;
 pub mod lc_23;
 pub mod lc_2300;

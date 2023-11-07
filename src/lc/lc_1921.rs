@@ -9,7 +9,6 @@ impl Solution {
             .map(|(d, s)| (d + s - 1) / s)
             .collect::<Vec<_>>();
         t.sort_unstable();
-        let l = t.len();
         for (j, tt) in t.into_iter().chain(vec![0].into_iter()).enumerate() {
             if tt as usize <= j {
                 return j as i32;
