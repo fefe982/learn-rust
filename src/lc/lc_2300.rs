@@ -2,34 +2,18 @@
 // 2300. Successful Pairs of Spells and Potions
 pub struct Solution;
 impl Solution {
-    pub fn successful_pairs(spells: Vec<i32>, mut potions: Vec<i32>, success: i64) -> Vec<i32> {
-        let mut res = Vec::with_capacity(spells.len());
-        potions.sort();
-        let l = potions.len();
-        for s in spells {
-            let s = s as i64;
-            if s * (potions[0] as i64) >= success {
-                res.push(l as i32);
-                continue;
+    pub fn successful_pairs(spells: Vec<i32>, potions: Vec<i32>, success: i64) -> Vec<i32> {
+        let mut potions = potions;
+        potions.sort_unstable();
+        let mut spells = spells.into_iter().enumerate().map(|(i, s)| (s, i)).collect::<Vec<_>>();
+        spells.sort();
+        let mut pos = potions.len();
+        let mut res = vec![0; spells.len()];
+        for (s, i) in spells {
+            while pos > 0 && s as i64 * potions[pos - 1] as i64 >= success {
+                pos -= 1;
             }
-            if s * (potions[l - 1] as i64) < success {
-                res.push(0);
-                continue;
-            }
-            let mut low = 0;
-            let mut high = l - 1;
-            while low < high {
-                if low + 1 == high {
-                    res.push((l - high) as i32);
-                    break;
-                }
-                let mid = (low + high) / 2;
-                if s * (potions[mid] as i64) >= success {
-                    high = mid;
-                } else {
-                    low = mid;
-                }
-            }
+            res[i] = (potions.len() - pos) as i32;
         }
         res
     }
