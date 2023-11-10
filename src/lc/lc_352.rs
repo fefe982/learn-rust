@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/data-stream-as-disjoint-intervals/description/
 // 352. Data Stream as Disjoint Intervals
-struct SummaryRanges {
+pub struct SummaryRanges {
     map_se: std::collections::BTreeMap<i32, i32>,
 }
 
@@ -9,13 +9,13 @@ struct SummaryRanges {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl SummaryRanges {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             map_se: std::collections::BTreeMap::new(),
         }
     }
 
-    fn add_num(&mut self, value: i32) {
+    pub fn add_num(&mut self, value: i32) {
         let (s1, e1, s0, e0) = {
             let mut es_iter = self.map_se.range(..=value + 1).rev();
             if let Some((&s1, &e1)) = es_iter.next() {
@@ -47,7 +47,7 @@ impl SummaryRanges {
         }
     }
 
-    fn get_intervals(&self) -> Vec<Vec<i32>> {
+    pub fn get_intervals(&self) -> Vec<Vec<i32>> {
         self.map_se.iter().map(|(&s, &e)| vec![s, e]).collect()
     }
 }
@@ -92,10 +92,7 @@ mod test {
         obj.add_num(4);
         assert_eq!(obj.get_intervals(), vec_vec![[0, 0], [4, 4], [6, 6]]);
         obj.add_num(8);
-        assert_eq!(
-            obj.get_intervals(),
-            vec_vec![[0, 0], [4, 4], [6, 6], [8, 8]]
-        );
+        assert_eq!(obj.get_intervals(), vec_vec![[0, 0], [4, 4], [6, 6], [8, 8]]);
         obj.add_num(7);
         assert_eq!(obj.get_intervals(), vec_vec![[0, 0], [4, 4], [6, 8]]);
         obj.add_num(6);
