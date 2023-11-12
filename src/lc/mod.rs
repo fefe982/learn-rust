@@ -500,6 +500,7 @@ pub mod lc_706;
 pub mod lc_71;
 pub mod lc_712;
 pub mod lc_714;
+pub mod lc_715;
 pub mod lc_72;
 pub mod lc_722;
 pub mod lc_725;
