@@ -30,11 +30,9 @@ impl Solution {
                 mincnt = mincnt.min(nc + 1)
             }
         }
-        if mincnt == i32::MAX {
-            -1
-        } else {
-            mincnt
-        }
+        let res = if mincnt == i32::MAX { -1 } else { mincnt };
+        dp.insert(tcnt, res);
+        res
     }
     pub fn min_stickers(stickers: Vec<String>, target: String) -> i32 {
         let mut scnt = vec![vec![0; 26]; stickers.len()];
@@ -69,6 +67,64 @@ mod tests {
     use crate::*;
     #[test]
     fn test_min_stickers() {
+        assert_eq!(
+            Solution::min_stickers(
+                vec_str![
+                    "heavy",
+                    "claim",
+                    "seven",
+                    "set",
+                    "had",
+                    "it",
+                    "dead",
+                    "jump",
+                    "design",
+                    "question",
+                    "sugar",
+                    "dress",
+                    "any",
+                    "special",
+                    "ground",
+                    "huge",
+                    "use",
+                    "busy",
+                    "prove",
+                    "there",
+                    "lone",
+                    "window",
+                    "trip",
+                    "also",
+                    "hot",
+                    "choose",
+                    "tie",
+                    "several",
+                    "be",
+                    "that",
+                    "corn",
+                    "after",
+                    "excite",
+                    "insect",
+                    "cat",
+                    "cook",
+                    "glad",
+                    "like",
+                    "wont",
+                    "gray",
+                    "especially",
+                    "level",
+                    "when",
+                    "cover",
+                    "ocean",
+                    "try",
+                    "clean",
+                    "property",
+                    "root",
+                    "wing"
+                ],
+                "travelbell".to_string()
+            ),
+            4
+        );
         assert_eq!(
             Solution::min_stickers(vec_str!["with", "example", "science"], "thehat".to_string()),
             3
