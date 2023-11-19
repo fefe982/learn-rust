@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/random-pick-with-blacklist/
 // 710. Random Pick with Blacklist
 use rand::{self, Rng};
-struct Solution {
+pub struct Solution {
     n: i32,
     blacklist: Vec<i32>,
     rng: rand::rngs::ThreadRng,
@@ -12,7 +12,7 @@ struct Solution {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Solution {
-    fn new(n: i32, blacklist: Vec<i32>) -> Self {
+    pub fn new(n: i32, blacklist: Vec<i32>) -> Self {
         let mut blacklist = blacklist;
         blacklist.sort();
         blacklist = blacklist
@@ -27,7 +27,7 @@ impl Solution {
         }
     }
 
-    fn pick(&mut self) -> i32 {
+    pub fn pick(&mut self) -> i32 {
         let r = self.rng.gen_range(0..(self.n - self.blacklist.len() as i32));
         r + self.blacklist.partition_point(|&x| x < r) as i32
     }
