@@ -531,6 +531,7 @@ pub mod lc_722;
 pub mod lc_725;
 pub mod lc_726;
 pub mod lc_730;
+pub mod lc_732;
 pub mod lc_735;
 pub mod lc_74;
 pub mod lc_741;
