@@ -41,7 +41,7 @@ mod tests {
     use super::*;
     #[test]
     fn test_word_filter() {
-        let mut obj = WordFilter::new(vec!["apple".to_string()]);
+        let obj = WordFilter::new(vec!["apple".to_string()]);
         assert_eq!(obj.f("a".to_string(), "e".to_string()), 0);
     }
 }
