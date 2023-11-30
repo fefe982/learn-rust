@@ -1,42 +1,32 @@
-// https://leetcode.com/problems/minimize-deviation-in-array/
-// 1675. Minimize Deviation in Array
-use std::cmp;
-use std::collections::BinaryHeap;
+// https://leetcode.com/problems/determine-if-two-strings-are-close/
+// 1657. Determine if Two Strings Are Close
 pub struct Solution;
 impl Solution {
-    pub fn minimum_deviation(nums: Vec<i32>) -> i32 {
-        let mut min_dev = i32::MAX;
-        let mut min_n = i32::MAX;
-        let mut heap = BinaryHeap::with_capacity(nums.len());
-        for n in nums.iter() {
-            let mut num = *n;
-            if num % 2 == 1 {
-                num *= 2;
-            }
-            if num < min_n {
-                min_n = num;
-            }
-            heap.push(num);
+    fn get_hist(word: &str) -> (Vec<i32>, Vec<i32>) {
+        let mut exist = vec![0; 26];
+        let mut hash = vec![0; 26];
+        for &c in word.as_bytes() {
+            hash[(c - b'a') as usize] += 1;
+            exist[(c - b'a') as usize] = 1;
         }
-        while let Some(max_n) = heap.pop() {
-            min_dev = cmp::min(max_n - min_n, min_dev);
-            if max_n % 2 == 1 {
-                break;
-            }
-            min_n = cmp::min(min_n, max_n / 2);
-            heap.push(max_n / 2);
-        }
-        min_dev
+        hash.sort_unstable();
+        (hash, exist)
+    }
+    pub fn close_strings(word1: String, word2: String) -> bool {
+        word1.len() == word2.len() && Solution::get_hist(&word1) == Solution::get_hist(&word2)
     }
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
-    fn minimum_deviation() {
-        assert_eq!(Solution::minimum_deviation(vec![1, 2, 3, 4]), 1);
-        assert_eq!(Solution::minimum_deviation(vec![4, 1, 5, 20, 3]), 3);
-        assert_eq!(Solution::minimum_deviation(vec![2, 10, 8]), 3);
+    fn test_close_strings() {
+        assert_eq!(Solution::close_strings("uau".to_string(), "ssx".to_string()), false);
+        assert_eq!(Solution::close_strings("abc".to_string(), "bca".to_string()), true);
+        assert_eq!(Solution::close_strings("a".to_string(), "aa".to_string()), false);
+        assert_eq!(
+            Solution::close_strings("cabbba".to_string(), "abbccc".to_string()),
+            true
+        );
     }
 }
