@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/find-the-closest-palindrome/description/
+// https://leetcode.com/problems/find-the-closest-palindrome/
 // 564. Find the Closest Palindrome
 pub struct Solution;
 impl Solution {
@@ -55,13 +55,7 @@ mod tests {
     use super::*;
     #[test]
     fn nearest_palindromic() {
-        assert_eq!(
-            Solution::nearest_palindromic("123".to_string()),
-            "121".to_string()
-        );
-        assert_eq!(
-            Solution::nearest_palindromic("1".to_string()),
-            "0".to_string()
-        );
+        assert_eq!(Solution::nearest_palindromic("123".to_string()), "121".to_string());
+        assert_eq!(Solution::nearest_palindromic("1".to_string()), "0".to_string());
     }
 }

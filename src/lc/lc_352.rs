@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/data-stream-as-disjoint-intervals/description/
+// https://leetcode.com/problems/data-stream-as-disjoint-intervals/
 // 352. Data Stream as Disjoint Intervals
 pub struct SummaryRanges {
     map_se: std::collections::BTreeMap<i32, i32>,

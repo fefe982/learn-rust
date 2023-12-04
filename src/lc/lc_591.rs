@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/tag-validator/description/
+// https://leetcode.com/problems/tag-validator/
 // 591. Tag Validator
 pub struct Solution;
 impl Solution {
@@ -82,10 +82,7 @@ mod tests {
     #[test]
     fn is_valid() {
         assert_eq!(Solution::is_valid("<A><!A></A>".to_string()), false);
-        assert_eq!(
-            Solution::is_valid("<A><![CDATA[</A>]]123></A>".to_string()),
-            false
-        );
+        assert_eq!(Solution::is_valid("<A><![CDATA[</A>]]123></A>".to_string()), false);
         assert_eq!(Solution::is_valid("<A></A><B></B>".to_string()), false);
         assert_eq!(
             Solution::is_valid("<![CDATA[wahaha]]]><![CDATA[]> wahaha]]>".to_string()),
@@ -99,9 +96,6 @@ mod tests {
             Solution::is_valid("<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>".to_string()),
             true
         );
-        assert_eq!(
-            Solution::is_valid("<A>  <B> </A>   </B>".to_string()),
-            false
-        );
+        assert_eq!(Solution::is_valid("<A>  <B> </A>   </B>".to_string()), false);
     }
 }

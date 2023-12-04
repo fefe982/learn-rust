@@ -1,14 +1,11 @@
-// https://leetcode.cn/problems/minimum-interval-to-include-each-query/description/
+// https://leetcode.cn/problems/minimum-interval-to-include-each-query/
 // 1851. Minimum Interval to Include Each Query
 pub struct Solution;
 impl Solution {
     pub fn min_interval(mut intervals: Vec<Vec<i32>>, queries: Vec<i32>) -> Vec<i32> {
         let mut res = vec![-1; queries.len()];
         intervals.sort_unstable();
-        let mut qi = queries
-            .into_iter()
-            .zip(0usize..)
-            .collect::<Vec<(i32, usize)>>();
+        let mut qi = queries.into_iter().zip(0usize..).collect::<Vec<(i32, usize)>>();
         qi.sort_unstable();
         let mut i = 0;
         let mut que = std::collections::BinaryHeap::new();
@@ -43,10 +40,7 @@ mod tests {
             vec![3, 3, 1, 4]
         );
         assert_eq!(
-            Solution::min_interval(
-                vec_vec![[2, 3], [2, 5], [1, 8], [20, 25]],
-                vec![2, 19, 5, 22]
-            ),
+            Solution::min_interval(vec_vec![[2, 3], [2, 5], [1, 8], [20, 25]], vec![2, 19, 5, 22]),
             vec![2, -1, 4, 6]
         );
     }

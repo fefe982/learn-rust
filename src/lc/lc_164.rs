@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/maximum-gap/description/
+// https://leetcode.com/problems/maximum-gap/
 // 164. Maximum Gap
 pub struct Solution;
 impl Solution {

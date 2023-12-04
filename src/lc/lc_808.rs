@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/soup-servings/description/
+// https://leetcode.com/problems/soup-servings/
 // 808. Soup Servings
 pub struct Solution;
 impl Solution {
@@ -12,11 +12,9 @@ impl Solution {
         } else if let Some(&p) = m.get(&(a, b)) {
             p
         } else {
-            let p = (Self::f(a - 4, b, m)
-                + Self::f(a - 3, b - 1, m)
-                + Self::f(a - 2, b - 2, m)
-                + Self::f(a - 1, b - 3, m))
-                * 0.25;
+            let p =
+                (Self::f(a - 4, b, m) + Self::f(a - 3, b - 1, m) + Self::f(a - 2, b - 2, m) + Self::f(a - 1, b - 3, m))
+                    * 0.25;
             m.insert((a, b), p);
             p
         }

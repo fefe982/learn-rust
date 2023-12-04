@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/zuma-game/description/
+// https://leetcode.com/problems/zuma-game/
 // 488. Zuma Game
 pub struct Solution;
 impl Solution {
@@ -37,11 +37,7 @@ impl Solution {
         b.extend_from_slice(&board[r..]);
         return b;
     }
-    fn fd_min_step(
-        board: Vec<u8>,
-        hand: &mut Vec<u8>,
-        cache: &mut std::collections::HashMap<Vec<u8>, i32>,
-    ) -> i32 {
+    fn fd_min_step(board: Vec<u8>, hand: &mut Vec<u8>, cache: &mut std::collections::HashMap<Vec<u8>, i32>) -> i32 {
         if board.is_empty() {
             return 0;
         }
@@ -107,21 +103,9 @@ mod tests {
             Solution::find_min_step("BGBBYRYYRBRWYBRR".to_owned(), "YWYRB".to_owned()),
             -1
         );
-        assert_eq!(
-            Solution::find_min_step("RRWWRRBBRR".to_owned(), "WB".to_owned()),
-            2
-        );
-        assert_eq!(
-            Solution::find_min_step("WRRBBW".to_owned(), "RB".to_owned()),
-            -1
-        );
-        assert_eq!(
-            Solution::find_min_step("WWRRBBWW".to_owned(), "WRBRW".to_owned()),
-            2
-        );
-        assert_eq!(
-            Solution::find_min_step("G".to_owned(), "GGGGGG".to_owned()),
-            2
-        )
+        assert_eq!(Solution::find_min_step("RRWWRRBBRR".to_owned(), "WB".to_owned()), 2);
+        assert_eq!(Solution::find_min_step("WRRBBW".to_owned(), "RB".to_owned()), -1);
+        assert_eq!(Solution::find_min_step("WWRRBBWW".to_owned(), "WRBRW".to_owned()), 2);
+        assert_eq!(Solution::find_min_step("G".to_owned(), "GGGGGG".to_owned()), 2)
     }
 }

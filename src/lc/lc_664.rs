@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/strange-printer/description/
+// https://leetcode.com/problems/strange-printer/
 // 664. Strange Printer
 pub struct Solution;
 impl Solution {

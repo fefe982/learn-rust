@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/smallest-good-base/description/
+// https://leetcode.com/problems/smallest-good-base/
 // 483. Smallest Good Base
 pub struct Solution;
 impl Solution {

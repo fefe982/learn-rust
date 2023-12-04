@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/tuple-with-same-product/description/
+// https://leetcode.com/problems/tuple-with-same-product/
 // 1726. Tuple with Same Product
 pub struct Solution;
 impl Solution {

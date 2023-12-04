@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/knight-probability-in-chessboard/description/
+// https://leetcode.com/problems/knight-probability-in-chessboard/
 // 688. Knight Probability in Chessboard
 pub struct Solution;
 impl Solution {
@@ -7,16 +7,7 @@ impl Solution {
         let n = n as usize;
         let mut prob = vec![vec![0.0; n]; n];
         prob[row as usize][column as usize] = 1.0;
-        let dir = [
-            (1, 2),
-            (2, 1),
-            (2, -1),
-            (1, -2),
-            (-1, -2),
-            (-2, -1),
-            (-2, 1),
-            (-1, 2),
-        ];
+        let dir = [(1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1), (-2, 1), (-1, 2)];
         for _ in 0..k {
             let mut nprob = vec![vec![0.0; n]; n];
             for i in 0..n {

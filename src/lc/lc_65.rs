@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/valid-number/description/
+// https://leetcode.com/problems/valid-number/
 // 65. Valid Number
 pub struct Solution;
 enum State {

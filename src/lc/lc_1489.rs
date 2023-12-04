@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/description/
+// https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/
 // 1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree
 pub struct Solution;
 impl Solution {
@@ -87,10 +87,7 @@ mod tests {
             vec_vec![[0, 1], [3, 2, 4, 5]]
         );
         assert_eq!(
-            Solution::find_critical_and_pseudo_critical_edges(
-                4,
-                vec_vec![[0, 1, 1], [1, 2, 1], [2, 3, 1], [0, 3, 1]]
-            ),
+            Solution::find_critical_and_pseudo_critical_edges(4, vec_vec![[0, 1, 1], [1, 2, 1], [2, 3, 1], [0, 3, 1]]),
             vec_vec![[], [0, 3, 1, 2]]
         );
     }

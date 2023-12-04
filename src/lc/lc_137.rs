@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/single-number-ii/description/
+// https://leetcode.com/problems/single-number-ii/
 // 137. Single Number II
 pub struct Solution;
 impl Solution {

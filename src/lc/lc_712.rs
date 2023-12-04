@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/description/
+// https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
 // 712. Minimum ASCII Delete Sum for Two Strings
 pub struct Solution;
 impl Solution {
@@ -15,8 +15,7 @@ impl Solution {
                 if s1[i1] == s2[i2] {
                     dp[i1 + 1][i2 + 1] = dp[i1][i2];
                 } else {
-                    dp[i1 + 1][i2 + 1] =
-                        (dp[i1][i2 + 1] + s1[i1] as i32).min(dp[i1 + 1][i2] + s2[i2] as i32);
+                    dp[i1 + 1][i2 + 1] = (dp[i1][i2 + 1] + s1[i1] as i32).min(dp[i1 + 1][i2] + s2[i2] as i32);
                 }
             }
         }

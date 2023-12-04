@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/description/
+// https://leetcode.com/problems/maximum-value-of-k-coins-from-piles/
 // 2218. Maximum Value of K Coins From Piles
 pub struct Solution;
 impl Solution {
@@ -41,27 +41,13 @@ mod tests {
     #[test]
     fn max_value_of_coins() {
         assert_eq!(
-            Solution::max_value_of_coins(
-                vec_vec![[37, 88], [51, 64, 65, 20, 95, 30, 26], [9, 62, 20], [44]],
-                9
-            ),
+            Solution::max_value_of_coins(vec_vec![[37, 88], [51, 64, 65, 20, 95, 30, 26], [9, 62, 20], [44]], 9),
             494
         );
-        assert_eq!(
-            Solution::max_value_of_coins(vec_vec![[1, 100, 3], [7, 8, 9]], 2),
-            101
-        );
+        assert_eq!(Solution::max_value_of_coins(vec_vec![[1, 100, 3], [7, 8, 9]], 2), 101);
         assert_eq!(
             Solution::max_value_of_coins(
-                vec_vec![
-                    [100],
-                    [100],
-                    [100],
-                    [100],
-                    [100],
-                    [100],
-                    [1, 1, 1, 1, 1, 1, 700]
-                ],
+                vec_vec![[100], [100], [100], [100], [100], [100], [1, 1, 1, 1, 1, 1, 700]],
                 7
             ),
             706

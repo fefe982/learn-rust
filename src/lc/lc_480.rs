@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/sliding-window-median/description/
+// https://leetcode.com/problems/sliding-window-median/
 // 480. Sliding Window Median
 pub struct Solution;
 impl Solution {

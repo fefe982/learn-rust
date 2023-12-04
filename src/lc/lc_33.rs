@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+// https://leetcode.com/problems/search-in-rotated-sorted-array/
 // 33. Search in Rotated Sorted Array
 pub struct Solution;
 impl Solution {

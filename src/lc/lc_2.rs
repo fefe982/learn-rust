@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/add-two-numbers/description/
+// https://leetcode.cn/problems/add-two-numbers/
 // 2. Add Two Numbers
 use super::linked_list::ListNode;
 pub struct Solution;
@@ -10,10 +10,7 @@ impl Solution {
             (0, None)
         }
     }
-    pub fn add_two_numbers(
-        mut l1: Option<Box<ListNode>>,
-        mut l2: Option<Box<ListNode>>,
-    ) -> Option<Box<ListNode>> {
+    pub fn add_two_numbers(mut l1: Option<Box<ListNode>>, mut l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut r = vec![];
         let mut c = 0;
         loop {
@@ -43,10 +40,7 @@ mod tests {
     #[test]
     fn add_two_numbers() {
         assert_eq!(
-            Solution::add_two_numbers(
-                ListNode::from_vec(vec![2, 4, 3]),
-                ListNode::from_vec(vec![5, 6, 4])
-            ),
+            Solution::add_two_numbers(ListNode::from_vec(vec![2, 4, 3]), ListNode::from_vec(vec![5, 6, 4])),
             ListNode::from_vec(vec![7, 0, 8])
         );
         assert_eq!(

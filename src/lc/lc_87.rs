@@ -1,13 +1,9 @@
-// https://leetcode.com/problems/scramble-string/description/
+// https://leetcode.com/problems/scramble-string/
 // 87. Scramble String
 pub struct Solution;
 use std::collections::HashMap;
 impl Solution {
-    pub fn is_scramble_slice<'a>(
-        s1: &'a [u8],
-        s2: &'a [u8],
-        cache: &mut HashMap<(&'a [u8], &'a [u8]), bool>,
-    ) -> bool {
+    pub fn is_scramble_slice<'a>(s1: &'a [u8], s2: &'a [u8], cache: &mut HashMap<(&'a [u8], &'a [u8]), bool>) -> bool {
         if s1 == s2 {
             return true;
         }
@@ -55,9 +51,6 @@ mod tests {
             Solution::is_scramble(String::from("abcde"), String::from("caebd")),
             false
         );
-        assert_eq!(
-            Solution::is_scramble(String::from("a"), String::from("a")),
-            true
-        );
+        assert_eq!(Solution::is_scramble(String::from("a"), String::from("a")), true);
     }
 }

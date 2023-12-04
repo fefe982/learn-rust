@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/check-distances-between-same-letters/description/
+// https://leetcode.com/problems/check-distances-between-same-letters/
 // 2399. Check Distances Between Same Letters
 pub struct Solution;
 impl Solution {

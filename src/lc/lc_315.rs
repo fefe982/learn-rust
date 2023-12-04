@@ -1,13 +1,8 @@
-// https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/
+// https://leetcode.com/problems/count-of-smaller-numbers-after-self/
 // 315. Count of Smaller Numbers After Self
 pub struct Solution;
 impl Solution {
-    fn msort(
-        nums: &Vec<i32>,
-        from1: &[(usize, i32)],
-        from2: &[(usize, i32)],
-        to: &mut [(usize, i32)],
-    ) {
+    fn msort(nums: &Vec<i32>, from1: &[(usize, i32)], from2: &[(usize, i32)], to: &mut [(usize, i32)]) {
         let mut idx = 0;
         let mut idx1 = 0;
         let mut idx2 = 0;
@@ -68,10 +63,7 @@ mod tests {
     use super::*;
     #[test]
     fn count_smaller() {
-        assert_eq!(
-            Solution::count_smaller(vec![1, 2, 7, 8, 5]),
-            vec![0, 0, 1, 1, 0]
-        );
+        assert_eq!(Solution::count_smaller(vec![1, 2, 7, 8, 5]), vec![0, 0, 1, 1, 0]);
         assert_eq!(Solution::count_smaller(vec![5, 2, 6, 1]), vec![2, 1, 1, 0]);
         assert_eq!(Solution::count_smaller(vec![-1]), vec![0]);
         assert_eq!(Solution::count_smaller(vec![-1, -1]), vec![0, 0]);

@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/
+// https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/
 // 381. Insert Delete GetRandom O(1) - Duplicates allowed
 use rand::{self, Rng};
 pub struct RandomizedCollection {

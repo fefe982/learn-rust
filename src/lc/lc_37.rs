@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/sudoku-solver/description/
+// https://leetcode.com/problems/sudoku-solver/
 // 37. Sudoku Solver
 pub struct Solution;
 impl Solution {

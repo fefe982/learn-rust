@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/remove-invalid-parentheses/description/
+// https://leetcode.com/problems/remove-invalid-parentheses/
 // 301. Remove Invalid Parentheses
 pub struct Solution;
 impl Solution {
@@ -79,9 +79,6 @@ mod tests {
             Solution::remove_invalid_parentheses(String::from("(a)())()")),
             ["(a())()", "(a)()()"]
         );
-        assert_eq!(
-            Solution::remove_invalid_parentheses(String::from(")(")),
-            [""]
-        );
+        assert_eq!(Solution::remove_invalid_parentheses(String::from(")(")), [""]);
     }
 }

@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/
+// https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
 // 109. Convert Sorted List to Binary Search Tree
 pub struct Solution;
 use super::binary_tree::TreeNode;

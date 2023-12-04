@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/sum-in-a-matrix/description/
+// https://leetcode.com/problems/sum-in-a-matrix/
 // 2679. Sum in a Matrix
 pub struct Solution;
 impl Solution {

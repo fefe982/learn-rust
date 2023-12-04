@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/check-knight-tour-configuration/description/
+// https://leetcode.com/problems/check-knight-tour-configuration/
 // 2596. Check Knight Tour Configuration
 pub struct Solution;
 impl Solution {

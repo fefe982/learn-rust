@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/palindrome-pairs/description/
+// https://leetcode.com/problems/palindrome-pairs/
 // 336. Palindrome Pairs
 pub struct Solution;
 pub struct Trie {
@@ -63,9 +63,8 @@ impl Solution {
                 if words[i].as_bytes().len() == words[il].as_bytes().len() && il <= i {
                     continue;
                 }
-                if Self::check_palindrome(
-                    &word.as_bytes()[0..(words[i].as_bytes().len() - words[il].as_bytes().len())],
-                ) {
+                if Self::check_palindrome(&word.as_bytes()[0..(words[i].as_bytes().len() - words[il].as_bytes().len())])
+                {
                     res.push(vec![il as i32, i as i32]);
                 }
             }
@@ -96,9 +95,6 @@ mod tests {
             Solution::palindrome_pairs(vec_str!["bat", "tab", "cat"]),
             vec_vec![[1, 0], [0, 1]]
         );
-        assert_eq!(
-            Solution::palindrome_pairs(vec_str!["a", ""]),
-            vec_vec![[1, 0], [0, 1]]
-        );
+        assert_eq!(Solution::palindrome_pairs(vec_str!["a", ""]), vec_vec![[1, 0], [0, 1]]);
     }
 }

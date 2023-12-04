@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/burst-balloons/description/
+// https://leetcode.com/problems/burst-balloons/
 // 312. Burst Balloons
 pub struct Solution;
 impl Solution {

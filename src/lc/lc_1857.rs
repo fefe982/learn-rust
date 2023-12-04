@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/largest-color-value-in-a-directed-graph/description/
+// https://leetcode.com/problems/largest-color-value-in-a-directed-graph/
 // 1857. Largest Color Value in a Directed Graph
 pub struct Solution;
 impl Solution {
@@ -60,9 +60,6 @@ mod tests {
             ),
             3
         );
-        assert_eq!(
-            Solution::largest_path_value(String::from("a"), vec![vec![0, 0]]),
-            -1
-        )
+        assert_eq!(Solution::largest_path_value(String::from("a"), vec![vec![0, 0]]), -1)
     }
 }

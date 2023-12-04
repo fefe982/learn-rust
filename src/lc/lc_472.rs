@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/concatenated-words/description/
+// https://leetcode.com/problems/concatenated-words/
 // 472. Concatenated Words
 pub struct Solution;
 pub struct Trie {
@@ -16,12 +16,7 @@ impl Trie {
     pub fn search(&self, s: &[u8]) -> i32 {
         self.search_helper(self, s, &mut std::collections::HashSet::new())
     }
-    fn search_helper(
-        &self,
-        root: &Trie,
-        s: &[u8],
-        failed_pos: &mut std::collections::HashSet<usize>,
-    ) -> i32 {
+    fn search_helper(&self, root: &Trie, s: &[u8], failed_pos: &mut std::collections::HashSet<usize>) -> i32 {
         if s.is_empty() {
             if self.leaf {
                 1

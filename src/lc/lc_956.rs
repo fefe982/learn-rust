@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/tallest-billboard/description/
+// https://leetcode.com/problems/tallest-billboard/
 // 956. Tallest Billboard
 pub struct Solution;
 impl Solution {
@@ -8,9 +8,7 @@ impl Solution {
         for r in rods {
             let cur = diff.clone();
             for (d, l) in cur {
-                diff.entry(d + r)
-                    .and_modify(|e| *e = l.max(*e))
-                    .or_insert(l);
+                diff.entry(d + r).and_modify(|e| *e = l.max(*e)).or_insert(l);
                 diff.entry((d - r).abs())
                     .and_modify(|e| *e = (l + d.min(r)).max(*e))
                     .or_insert(l + d.min(r));

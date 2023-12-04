@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/minimum-path-sum/description/
+// https://leetcode.com/problems/minimum-path-sum/
 // 64. Minimum Path Sum
 pub struct Solution;
 impl Solution {
@@ -25,9 +25,6 @@ mod tests {
             Solution::min_path_sum(vec![vec![1, 3, 1], vec![1, 5, 1], vec![4, 2, 1]]),
             7
         );
-        assert_eq!(
-            Solution::min_path_sum(vec![vec![1, 2, 3], vec![4, 5, 6]]),
-            12
-        );
+        assert_eq!(Solution::min_path_sum(vec![vec![1, 2, 3], vec![4, 5, 6]]), 12);
     }
 }

@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/substring-with-largest-variance/description/
+// https://leetcode.com/problems/substring-with-largest-variance/
 // 2272. Substring With Largest Variance
 pub struct Solution;
 impl Solution {

@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 // 123. Best Time to Buy and Sell Stock III
 pub struct Solution;
 impl Solution {

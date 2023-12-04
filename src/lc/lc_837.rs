@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/new-21-game/description/
+// https://leetcode.com/problems/new-21-game/
 // 837. New 21 Game
 pub struct Solution;
 impl Solution {
@@ -24,8 +24,7 @@ impl Solution {
             }
         }
         for i in max_pts as usize + 2..=k as usize {
-            p[i - 1] = p[i - 2] * (1.0 + 1.0 / max_pts as f64)
-                - p[i - 2 - max_pts as usize] / max_pts as f64;
+            p[i - 1] = p[i - 2] * (1.0 + 1.0 / max_pts as f64) - p[i - 2 - max_pts as usize] / max_pts as f64;
         }
         p[k as usize - 1]
     }
