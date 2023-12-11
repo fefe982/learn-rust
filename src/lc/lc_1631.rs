@@ -6,7 +6,6 @@ impl Solution {
         let mut max = 0;
         let mut q = std::collections::BinaryHeap::new();
         q.push((std::cmp::Reverse(0), 0, 0));
-        heights[0][0] = heights[0][0];
         while let Some((m, x, y)) = q.pop() {
             let h = heights[x][y];
             if h < 0 {
