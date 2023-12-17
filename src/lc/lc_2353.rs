@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-a-food-rating-system/
 // 2353. Design a Food Rating System
-struct FoodRatings {
+pub struct FoodRatings {
     rating: std::collections::HashMap<String, (i32, String)>,
     high: std::collections::HashMap<
         String,
@@ -13,7 +13,7 @@ struct FoodRatings {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl FoodRatings {
-    fn new(foods: Vec<String>, cuisines: Vec<String>, ratings: Vec<i32>) -> Self {
+    pub fn new(foods: Vec<String>, cuisines: Vec<String>, ratings: Vec<i32>) -> Self {
         let mut rating = std::collections::HashMap::new();
         let mut high = std::collections::HashMap::new();
         for (food, (cusine, rate)) in foods.into_iter().zip(cuisines.into_iter().zip(ratings.into_iter())) {
@@ -28,7 +28,7 @@ impl FoodRatings {
         Self { rating, high }
     }
 
-    fn change_rating(&mut self, food: String, new_rating: i32) {
+    pub fn change_rating(&mut self, food: String, new_rating: i32) {
         let (rating, cusine) = self.rating.get_mut(&food).unwrap();
         let old_rating = *rating;
         *rating = new_rating;
@@ -50,7 +50,7 @@ impl FoodRatings {
         high.push((new_rating, std::cmp::Reverse(food)));
     }
 
-    fn highest_rated(&self, cuisine: String) -> String {
+    pub fn highest_rated(&self, cuisine: String) -> String {
         self.high
             .get(&cuisine)
             .unwrap()
