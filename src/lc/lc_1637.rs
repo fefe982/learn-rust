@@ -18,12 +18,7 @@ mod tests {
     #[test]
     fn max_width_of_vertical_area() {
         assert_eq!(
-            Solution::max_width_of_vertical_area(vec![
-                vec![8, 7],
-                vec![9, 9],
-                vec![7, 4],
-                vec![9, 7]
-            ]),
+            Solution::max_width_of_vertical_area(vec![vec![8, 7], vec![9, 9], vec![7, 4], vec![9, 7]]),
             1
         );
         assert_eq!(
