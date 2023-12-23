@@ -256,6 +256,7 @@ pub mod lc_1911;
 pub mod lc_1913;
 pub mod lc_1921;
 pub mod lc_1930;
+pub mod lc_1962;
 pub mod lc_1964;
 pub mod lc_1970;
 pub mod lc_198;
