@@ -662,6 +662,7 @@ pub mod lc_88;
 pub mod lc_880;
 pub mod lc_881;
 pub mod lc_882;
+pub mod lc_887;
 pub mod lc_894;
 pub mod lc_896;
 pub mod lc_901;
