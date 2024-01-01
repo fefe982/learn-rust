@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/maximum-frequency-stack/
 // 895. Maximum Frequency Stack
-struct FreqStack {
+pub struct FreqStack {
     freq: std::collections::HashMap<i32, i32>,
     cnt: std::collections::HashMap<i32, Vec<i32>>,
     max_freq: i32,
@@ -11,7 +11,7 @@ struct FreqStack {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl FreqStack {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             freq: std::collections::HashMap::new(),
             cnt: std::collections::HashMap::new(),
@@ -19,14 +19,14 @@ impl FreqStack {
         }
     }
 
-    fn push(&mut self, val: i32) {
+    pub fn push(&mut self, val: i32) {
         let freq = self.freq.entry(val).or_default();
         *freq += 1;
         self.max_freq = self.max_freq.max(*freq);
         self.cnt.entry(*freq).or_default().push(val);
     }
 
-    fn pop(&mut self) -> i32 {
+    pub fn pop(&mut self) -> i32 {
         let freq = self.max_freq;
         let val = self.cnt.get_mut(&freq).unwrap().pop().unwrap();
         if self.cnt.get(&freq).unwrap().is_empty() {
