@@ -264,6 +264,7 @@ pub mod lc_1911;
 pub mod lc_1913;
 pub mod lc_1921;
 pub mod lc_1930;
+pub mod lc_1944;
 pub mod lc_1954;
 pub mod lc_1962;
 pub mod lc_1964;
