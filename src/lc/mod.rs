@@ -497,6 +497,7 @@ pub mod lc_37;
 pub mod lc_373;
 pub mod lc_381;
 pub mod lc_382;
+pub mod lc_383;
 pub mod lc_389;
 pub mod lc_391;
 pub mod lc_392;
