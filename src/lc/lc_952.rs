@@ -2,14 +2,12 @@
 // 952. Largest Component Size by Common Factor
 pub struct Solution;
 impl Solution {
-    fn seive(n: i32) -> std::collections::BTreeMap<i32, usize> {
+    fn seive(n: i32) -> Vec<i32> {
         let mut v = vec![false; n as usize + 1];
         let mut i = 2;
-        let mut res = std::collections::BTreeMap::<i32, usize>::new();
-        let mut idx = 0usize;
+        let mut res = vec![];
         while i * i <= n {
-            res.insert(i, idx);
-            idx += 1;
+            res.push(i);
             for j in 2.. {
                 if i * j > n {
                     break;
@@ -17,15 +15,14 @@ impl Solution {
                 v[(i * j) as usize] = true;
             }
             i += 1;
-            while i < n && v[i as usize] {
+            while i <= n && v[i as usize] {
                 i += 1;
             }
         }
-        while i < n {
-            res.insert(i, idx);
-            idx += 1;
+        while i <= n {
+            res.push(i);
             i += 1;
-            while i < n && v[i as usize] {
+            while i <= n && v[i as usize] {
                 i += 1;
             }
         }
@@ -39,8 +36,8 @@ impl Solution {
         p[x].0
     }
     pub fn largest_component_size(nums: Vec<i32>) -> i32 {
-        let primes = Self::seive(50000);
-        let mut parr = (0..primes.len()).map(|i| (i, 0)).collect::<Vec<_>>();
+        let primes = Self::seive(317);
+        let mut parr = (0..50000).map(|i| (i, 0)).collect::<Vec<_>>();
         let mut ans = 1;
         for i in 0..nums.len() {
             let mut n = nums[i];
@@ -49,7 +46,7 @@ impl Solution {
             }
             let mut p = usize::MAX;
             let mut sum = 0;
-            for &f in primes.keys() {
+            for &f in &primes {
                 let factor = if n % f == 0 {
                     f
                 } else if f * f > n {
@@ -65,7 +62,7 @@ impl Solution {
                     while n % factor == 0 {
                         n /= factor;
                     }
-                    let &pi = primes.get(&factor).unwrap();
+                    let pi = factor as usize;
                     let pp = Self::getp(&mut parr, pi);
                     if p == usize::MAX {
                         p = pp;
