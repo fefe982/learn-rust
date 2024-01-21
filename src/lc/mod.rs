@@ -735,6 +735,7 @@ pub mod lc_964;
 pub mod lc_968;
 pub mod lc_97;
 pub mod lc_970;
+pub mod lc_972;
 pub mod lc_979;
 pub mod lc_980;
 pub mod lc_982;
