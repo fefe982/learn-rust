@@ -514,6 +514,7 @@ pub mod lc_344;
 pub mod lc_347;
 pub mod lc_352;
 pub mod lc_363;
+pub mod lc_365;
 pub mod lc_37;
 pub mod lc_373;
 pub mod lc_380;
