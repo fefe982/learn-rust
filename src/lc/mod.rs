@@ -755,6 +755,7 @@ pub mod lc_987;
 pub mod lc_989;
 pub mod lc_992;
 pub mod lc_994;
+pub mod lc_995;
 pub mod lc_cn_int_16_19;
 pub mod lc_cn_lcp_33;
 pub mod lc_cn_lcp_41;
