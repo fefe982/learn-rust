@@ -1,19 +1,7 @@
 // https://leetcode.com/problems/dinner-plate-stacks/
 // 1172. Dinner Plate Stacks
-#[derive(PartialEq, Eq, Copy, Clone)]
-struct Sz(usize);
-impl PartialOrd for Sz {
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        other.0.partial_cmp(&self.0)
-    }
-}
-impl Ord for Sz {
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        other.0.cmp(&self.0)
-    }
-}
 pub struct DinnerPlates {
-    heap: std::collections::binary_heap::BinaryHeap<Sz>,
+    heap: std::collections::binary_heap::BinaryHeap<std::cmp::Reverse<usize>>,
     content: Vec<Vec<i32>>,
     cap: usize,
     last: usize,
@@ -47,7 +35,7 @@ impl DinnerPlates {
             self.content.push(vec![val]);
             self.last = self.content.len() - 1;
             if self.cap > 1 {
-                self.heap.push(Sz(self.last));
+                self.heap.push(std::cmp::Reverse(self.last));
             }
         }
     }
@@ -57,7 +45,7 @@ impl DinnerPlates {
             -1
         } else {
             if self.content[self.last].len() == self.cap {
-                self.heap.push(Sz(self.last));
+                self.heap.push(std::cmp::Reverse(self.last));
             }
             let val = self.content[self.last].pop().unwrap();
             while self.last > 0 && self.content[self.last].len() == 0 {
@@ -73,7 +61,7 @@ impl DinnerPlates {
             -1
         } else {
             if self.content[idx].len() == self.cap {
-                self.heap.push(Sz(idx));
+                self.heap.push(std::cmp::Reverse(idx));
             }
             let val = self.content[idx].pop().unwrap();
             while self.last > 0 && self.content[self.last].len() == 0 {
