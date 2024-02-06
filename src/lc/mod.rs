@@ -779,6 +779,7 @@ pub mod lc_995;
 pub mod lc_996;
 pub mod lc_cn_int_16_19;
 pub mod lc_cn_lcp_24;
+pub mod lc_cn_lcp_30;
 pub mod lc_cn_lcp_33;
 pub mod lc_cn_lcp_41;
 pub mod lc_cn_lcp_50;
