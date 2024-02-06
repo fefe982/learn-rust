@@ -573,6 +573,7 @@ pub mod lc_480;
 pub mod lc_483;
 pub mod lc_486;
 pub mod lc_488;
+pub mod lc_49;
 pub mod lc_493;
 pub mod lc_5;
 pub mod lc_50;
