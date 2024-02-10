@@ -2,14 +2,9 @@
 // 1223. Dice Roll Simulation
 pub struct Solution;
 const MOD: i64 = 1_0000_0000_7;
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Default)]
 struct IMod {
     v: i64,
-}
-impl Default for IMod {
-    fn default() -> Self {
-        Self { v: 0 }
-    }
 }
 impl IMod {
     fn from_i32(v: i32) -> Self {
