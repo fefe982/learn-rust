@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/max-value-of-equation/
+// https://leetcode.com/problems/max-value-of-equation/
 // 1499. Max Value of Equation
 pub struct Solution;
 impl Solution {

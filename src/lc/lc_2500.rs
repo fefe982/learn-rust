@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/delete-greatest-value-in-each-row/
+// https://leetcode.com/problems/delete-greatest-value-in-each-row/
 // 2500. Delete Greatest Value in Each Row
 pub struct Solution;
 impl Solution {
@@ -21,10 +21,7 @@ mod tests {
     use crate::*;
     #[test]
     fn delete_greatest_value() {
-        assert_eq!(
-            Solution::delete_greatest_value(vec_vec![[1, 2, 4], [3, 3, 1]]),
-            8
-        );
+        assert_eq!(Solution::delete_greatest_value(vec_vec![[1, 2, 4], [3, 3, 1]]), 8);
         assert_eq!(Solution::delete_greatest_value(vec_vec![[10]]), 10);
     }
 }

@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/add-two-numbers/
+// https://leetcode.com/problems/add-two-numbers/
 // 2. Add Two Numbers
 use super::linked_list::ListNode;
 pub struct Solution;

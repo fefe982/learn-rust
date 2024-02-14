@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/minimum-interval-to-include-each-query/
+// https://leetcode.com/problems/minimum-interval-to-include-each-query/
 // 1851. Minimum Interval to Include Each Query
 pub struct Solution;
 impl Solution {

@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/maximum-sum-circular-subarray/
+// https://leetcode.com/problems/maximum-sum-circular-subarray/
 // 918. Maximum Sum Circular Subarray
 pub struct Solution;
 impl Solution {

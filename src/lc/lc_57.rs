@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/insert-interval/
+// https://leetcode.com/problems/insert-interval/
 // 57. Insert Interval
 pub struct Solution;
 impl Solution {
@@ -38,10 +38,7 @@ mod tests {
             vec_vec![[1, 5], [6, 9]]
         );
         assert_eq!(
-            Solution::insert(
-                vec_vec![[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],
-                vec![4, 8]
-            ),
+            Solution::insert(vec_vec![[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], vec![4, 8]),
             vec_vec![[1, 2], [3, 10], [12, 16]]
         );
     }

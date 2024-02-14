@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/minimum-operations-to-halve-array-sum/
+// https://leetcode.com/problems/minimum-operations-to-halve-array-sum/
 // 2208. Minimum Operations to Halve Array Sum
 pub struct Solution;
 #[derive(Debug, Copy, Default, Hash)]

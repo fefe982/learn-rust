@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/maximum-alternating-subsequence-sum/
+// https://leetcode.com/problems/maximum-alternating-subsequence-sum/
 // 1911. Maximum Alternating Subsequence Sum
 pub struct Solution;
 impl Solution {

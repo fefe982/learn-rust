@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/queens-that-can-attack-the-king/
+// https://leetcode.com/problems/queens-that-can-attack-the-king/
 // 1222. Queens That Can Attack the King
 pub struct Solution;
 impl Solution {
@@ -36,13 +36,7 @@ impl Solution {
             }
         }
         res.into_iter()
-            .filter_map(|(d, q0, q1)| {
-                if d == i32::MAX {
-                    None
-                } else {
-                    Some(vec![q0, q1])
-                }
-            })
+            .filter_map(|(d, q0, q1)| if d == i32::MAX { None } else { Some(vec![q0, q1]) })
             .collect()
     }
 }
@@ -54,10 +48,7 @@ mod tests {
     #[test]
     fn test_queens_attackthe_king() {
         assert_eq!(
-            Solution::queens_attackthe_king(
-                vec_vec![[0, 1], [1, 0], [4, 0], [0, 4], [3, 3], [2, 4]],
-                vec![0, 0]
-            ),
+            Solution::queens_attackthe_king(vec_vec![[0, 1], [1, 0], [4, 0], [0, 4], [3, 3], [2, 4]], vec![0, 0]),
             vec_vec![[3, 3], [1, 0], [0, 1]]
         );
         assert_eq!(
