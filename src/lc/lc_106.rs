@@ -5,29 +5,28 @@ use super::binary_tree::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
 impl Solution {
-    fn build_tree_slice(inorder: &[i32], postorder: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
-        if postorder.len() == 0 {
-            return None;
-        }
-        let l = postorder.len();
-        let val = postorder[l - 1];
-        let mut root = TreeNode::new(val);
-        let mut in_val_idx = 0;
-        for (idx, v) in inorder.iter().enumerate() {
-            if *v == val {
-                in_val_idx = idx;
-                break;
+    fn build_tree_slice(inorder: &[i32], postorder: &[i32], root: i32) -> (usize, Option<Rc<RefCell<TreeNode>>>) {
+        let mut sz = 0;
+        let mut tree = None;
+        if inorder.len() > 0 && postorder[0] != root {
+            if inorder[0] == postorder[0] {
+                tree = Some(Rc::new(RefCell::new(TreeNode::new(postorder[0]))));
+                sz = 1;
+            }
+            while inorder.len() >= sz + 1 && postorder[sz] != root {
+                let (rsz, right) = Self::build_tree_slice(&inorder[sz + 1..], &postorder[sz..], inorder[sz]);
+                tree = Some(Rc::new(RefCell::new(TreeNode {
+                    val: inorder[sz],
+                    left: tree,
+                    right,
+                })));
+                sz += rsz + 1;
             }
         }
-        root.left = Self::build_tree_slice(&inorder[0..in_val_idx], &postorder[0..in_val_idx]);
-        root.right = Self::build_tree_slice(
-            &inorder[(in_val_idx + 1)..l],
-            &postorder[in_val_idx..(l - 1)],
-        );
-        Some(Rc::new(RefCell::new(root)))
+        (sz, tree)
     }
     pub fn build_tree(inorder: Vec<i32>, postorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
-        Self::build_tree_slice(&inorder[..], &postorder[..])
+        Self::build_tree_slice(&inorder[..], &postorder[..], i32::MIN).1
     }
 }
 #[cfg(test)]
@@ -36,13 +35,19 @@ mod tests {
     use super::*;
     #[test]
     fn sorted_list_to_bst() {
+        let null = NULL;
+        assert_eq!(
+            Solution::build_tree(vec![1, 2], vec![2, 1]),
+            TreeNode::from_vec(vec![1, null, 2])
+        );
+        assert_eq!(
+            Solution::build_tree(vec![2, 1], vec![2, 1]),
+            TreeNode::from_vec(vec![1, 2])
+        );
         assert_eq!(
             Solution::build_tree(vec![9, 3, 15, 20, 7], vec![9, 15, 7, 20, 3]),
-            TreeNode::from_vec(vec![3, 9, 20, NULL, NULL, 15, 7])
+            TreeNode::from_vec(vec![3, 9, 20, null, null, 15, 7])
         );
-        assert_eq!(
-            Solution::build_tree(vec![1], vec![1]),
-            TreeNode::from_vec(vec![1])
-        );
+        assert_eq!(Solution::build_tree(vec![1], vec![1]), TreeNode::from_vec(vec![1]));
     }
 }
