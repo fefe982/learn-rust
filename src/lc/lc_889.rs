@@ -27,7 +27,6 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
-    use super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn test_construct_from_pre_post() {
