@@ -5,7 +5,7 @@ impl Solution {
     pub fn max_value_after_reverse(nums: Vec<i32>) -> i32 {
         let mut sum = 0;
         let mut bound = 0;
-        let mut mx = 0;
+        let mut mx = i32::MIN;
         let mut mn = i32::MAX;
         for i in 1..nums.len() {
             let d = (nums[i - 1] - nums[i]).abs();
@@ -28,10 +28,8 @@ mod tests {
     use super::*;
     #[test]
     fn max_value_after_reverse() {
+        assert_eq!(Solution::max_value_after_reverse(vec![-1, -2]), 1);
         assert_eq!(Solution::max_value_after_reverse(vec![2, 3, 1, 5, 4]), 10);
-        assert_eq!(
-            Solution::max_value_after_reverse(vec![2, 4, 9, 24, 2, 1, 10]),
-            68
-        );
+        assert_eq!(Solution::max_value_after_reverse(vec![2, 4, 9, 24, 2, 1, 10]), 68);
     }
 }
