@@ -5,18 +5,16 @@ use super::binary_tree::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
 impl Solution {
-    fn collect_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    fn collect_tree(root: Option<Rc<RefCell<TreeNode>>>, v: &mut Vec<i32>) {
         if let Some(node) = root {
-            let mut v = Self::collect_tree(node.borrow_mut().left.take());
+            Self::collect_tree(node.borrow_mut().left.take(), v);
             v.push(node.borrow().val);
-            v.extend(Self::collect_tree(node.borrow_mut().right.take()));
-            v
-        } else {
-            vec![]
+            Self::collect_tree(node.borrow_mut().right.take(), v);
         }
     }
     pub fn closest_nodes(root: Option<Rc<RefCell<TreeNode>>>, queries: Vec<i32>) -> Vec<Vec<i32>> {
-        let tree = Self::collect_tree(root);
+        let mut tree = vec![];
+        Self::collect_tree(root, &mut tree);
         queries
             .into_iter()
             .map(|query| {
