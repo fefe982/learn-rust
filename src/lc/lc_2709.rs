@@ -27,34 +27,40 @@ impl Solution {
         ];
         let mut primes_set = std::collections::HashSet::<i32>::new();
         let mut least = i32::MAX;
-        for mut n in nums {
+        for n in nums {
             if n == 1 {
                 return false;
             }
+            if primes_set.contains(&(n as i32)) || Self::p(&mut p, n as usize) != n as usize {
+                continue;
+            }
+            let mut m = n;
             let mut last_pr = 1;
             for &pr in &primes {
-                if n % pr == 0 {
+                if m % pr == 0 {
                     primes_set.insert(pr);
                     if last_pr == 1 {
                         least = least.min(pr);
+                        Self::union(&mut p, n as usize, pr as usize);
                     } else {
                         Self::union(&mut p, last_pr as usize, pr as usize);
                     }
-                    while n % pr == 0 {
-                        n /= pr;
+                    while m % pr == 0 {
+                        m /= pr;
                     }
                     last_pr = pr;
                 }
-                if n == 1 {
+                if m == 1 {
                     break;
                 }
             }
-            if n != 1 {
-                primes_set.insert(n);
+            if m != 1 {
+                primes_set.insert(m);
                 if last_pr == 1 {
-                    least = least.min(n);
+                    Self::union(&mut p, n as usize, m as usize);
+                    least = least.min(m);
                 } else {
-                    Self::union(&mut p, last_pr as usize, n as usize);
+                    Self::union(&mut p, last_pr as usize, m as usize);
                 }
             }
         }
