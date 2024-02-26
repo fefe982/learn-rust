@@ -50,7 +50,7 @@ impl Solution {
                     }
                     last_pr = pr;
                 }
-                if m == 1 {
+                if pr * pr > m {
                     break;
                 }
             }
