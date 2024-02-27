@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/count-valid-paths-in-a-tree/
+// https://leetcode.com/problems/count-valid-paths-in-a-tree/
 // 2867. Count Valid Paths in a Tree
 pub struct Solution;
 impl Solution {
