@@ -2,7 +2,7 @@
 // 2673. Make Costs of Paths Equal in a Binary Tree
 pub struct Solution;
 impl Solution {
-    pub fn min_increments(n: i32, cost: Vec<i32>) -> i32 {
+    pub fn min_increments(_n: i32, cost: Vec<i32>) -> i32 {
         let mut cost = cost;
         let mut res = 0;
         for i in (1..=cost.len() / 2).rev() {
