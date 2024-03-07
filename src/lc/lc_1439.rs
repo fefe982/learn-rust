@@ -3,7 +3,7 @@
 pub struct Solution;
 impl Solution {
     pub fn kth_smallest(mat: Vec<Vec<i32>>, k: i32) -> i32 {
-        let mut minh = std::collections::BinaryHeap::<(i32, Vec<usize>)>::new();
+        let mut minh = std::collections::BinaryHeap::<(std::cmp::Reverse<i32>, Vec<usize>)>::new();
         let mut maxh = std::collections::BinaryHeap::<i32>::new();
         let mut used = std::collections::HashSet::<Vec<usize>>::new();
         let m = mat.len();
@@ -12,11 +12,11 @@ impl Solution {
         for v in &mat {
             sum += v[0];
         }
-        minh.push((-sum, vec![0; m]));
+        minh.push((std::cmp::Reverse(sum), vec![0; m]));
         maxh.push(sum);
         let k = k as usize;
         while let Some((cmin, min_pos)) = minh.pop() {
-            if maxh.len() == k && -cmin >= *maxh.peek().unwrap() {
+            if maxh.len() == k && cmin.0 >= *maxh.peek().unwrap() {
                 continue;
             }
             for i in 0..m {
@@ -26,16 +26,16 @@ impl Solution {
                     if used.contains(&npos) {
                         continue;
                     }
-                    let nmin = cmin - mat[i][min_pos[i] + 1] + mat[i][min_pos[i]];
-                    if maxh.len() == k && -nmin < *maxh.peek().unwrap() {
+                    let nmin = cmin.0 + mat[i][min_pos[i] + 1] - mat[i][min_pos[i]];
+                    if maxh.len() == k && nmin < *maxh.peek().unwrap() {
                         maxh.pop();
                     }
                     if maxh.len() < k {
                         used.insert(npos.clone());
-                        maxh.push(-nmin);
+                        maxh.push(nmin);
                     }
                     if maxh.len() < k || -nmin < *maxh.peek().unwrap() {
-                        minh.push((nmin, npos));
+                        minh.push((std::cmp::Reverse(nmin), npos));
                     }
                 }
             }
@@ -49,14 +49,8 @@ mod tests {
     use crate::*;
     #[test]
     fn kth_smallest() {
-        // assert_eq!(
-        //     Solution::kth_smallest(vec_vec![[1, 3, 11], [2, 4, 6]], 5),
-        //     7
-        // );
-        assert_eq!(
-            Solution::kth_smallest(vec_vec![[1, 3, 11], [2, 4, 6]], 9),
-            17
-        );
+        assert_eq!(Solution::kth_smallest(vec_vec![[1, 3, 11], [2, 4, 6]], 5), 7);
+        assert_eq!(Solution::kth_smallest(vec_vec![[1, 3, 11], [2, 4, 6]], 9), 17);
         assert_eq!(
             Solution::kth_smallest(vec_vec![[1, 10, 10], [1, 4, 5], [2, 3, 6]], 7),
             9
