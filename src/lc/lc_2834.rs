@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/find-the-minimum-possible-sum-of-a-beautiful-array/
+// https://leetcode.com/problems/find-the-minimum-possible-sum-of-a-beautiful-array/
 // 2834. Find the Minimum Possible Sum of a Beautiful Array
 pub struct Solution;
 impl Solution {
