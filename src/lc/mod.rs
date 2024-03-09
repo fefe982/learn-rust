@@ -480,6 +480,7 @@ pub mod lc_2520;
 pub mod lc_2525;
 pub mod lc_2530;
 pub mod lc_2532;
+pub mod lc_2540;
 pub mod lc_2542;
 pub mod lc_2544;
 pub mod lc_2551;
