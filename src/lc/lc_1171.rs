@@ -17,8 +17,8 @@ impl Solution {
                 for i in idx..sum_list.len() {
                     sum.remove(&sum_list[i]);
                 }
-                list.resize_with(idx, || panic!(""));
-                sum_list.resize(idx, 0);
+                list.truncate(idx);
+                sum_list.truncate(idx);
             } else {
                 list.push(n);
                 sum_list.push(s);

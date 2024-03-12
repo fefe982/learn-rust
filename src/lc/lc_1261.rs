@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/find-elements-in-a-contaminated-binary-tree/
+// https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/
 // 1261. Find Elements in a Contaminated Binary Tree
 use super::binary_tree::TreeNode;
 use std::cell::RefCell;
