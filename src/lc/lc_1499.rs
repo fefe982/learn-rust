@@ -4,21 +4,17 @@ pub struct Solution;
 impl Solution {
     pub fn find_max_value_of_equation(points: Vec<Vec<i32>>, k: i32) -> i32 {
         let mut m = i32::MIN;
-        let mut pn = 1;
         let mut hp = std::collections::BinaryHeap::new();
         for point in &points {
-            while pn < points.len() && points[pn][0] - point[0] <= k {
-                hp.push((points[pn][0] + points[pn][1], points[pn][0]));
-                pn += 1;
-            }
             while let Some(&(s, x)) = hp.peek() {
-                if x > point[0] {
-                    m = m.max(s + point[1] - point[0]);
-                    break;
-                } else {
+                if point[0] - x > k {
                     hp.pop();
+                } else {
+                    m = m.max(s + point[0] + point[1]);
+                    break;
                 }
             }
+            hp.push((point[1] - point[0], point[0]));
         }
         m
     }
