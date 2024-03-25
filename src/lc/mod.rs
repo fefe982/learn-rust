@@ -655,6 +655,7 @@ pub mod lc_432;
 pub mod lc_435;
 pub mod lc_44;
 pub mod lc_440;
+pub mod lc_442;
 pub mod lc_443;
 pub mod lc_445;
 pub mod lc_446;
