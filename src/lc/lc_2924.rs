@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/find-champion-ii/
+// https://leetcode.com/problems/find-champion-ii/
 // 2924. Find Champion II
 pub struct Solution;
 impl Solution {
