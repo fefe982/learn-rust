@@ -376,6 +376,7 @@ pub mod lc_1962;
 pub mod lc_1964;
 pub mod lc_1969;
 pub mod lc_1970;
+pub mod lc_1971;
 pub mod lc_1976;
 pub mod lc_198;
 pub mod lc_1980;
