@@ -359,6 +359,7 @@ pub mod lc_1819;
 pub mod lc_1822;
 pub mod lc_1825;
 pub mod lc_1830;
+pub mod lc_1835;
 pub mod lc_1838;
 pub mod lc_1845;
 pub mod lc_1846;
