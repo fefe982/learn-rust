@@ -436,6 +436,7 @@ pub mod lc_21;
 pub mod lc_210;
 pub mod lc_2101;
 pub mod lc_2103;
+pub mod lc_2105;
 pub mod lc_2106;
 pub mod lc_2108;
 pub mod lc_211;
