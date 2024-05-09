@@ -11,10 +11,9 @@ macro_rules! vec_str {
 }
 #[macro_export]
 macro_rules! vec_vec {
-    ($($x:expr),*) => (
-        [$($x.to_vec()),*].to_vec()
+    ($([$($x:expr),*$(,)?]),*$(,)?) => (
+        vec![$(vec![$($x),*]),*]
     );
-    ($($x:expr,)*) => (vec![$($x),*])
 }
 #[macro_export]
 macro_rules! vec_vec_str {
