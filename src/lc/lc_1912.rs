@@ -11,7 +11,7 @@ pub struct MovieRentingSystem {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MovieRentingSystem {
-    pub fn new(n: i32, entries: Vec<Vec<i32>>) -> Self {
+    pub fn new(_n: i32, entries: Vec<Vec<i32>>) -> Self {
         let mut prices = std::collections::HashMap::<i32, std::collections::HashMap<i32, i32>>::new();
         let mut stock = std::collections::HashMap::<i32, std::collections::BTreeSet<(i32, i32)>>::new();
         for entry in entries {
