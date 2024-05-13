@@ -398,6 +398,7 @@ pub mod lc_1921;
 pub mod lc_1923;
 pub mod lc_1928;
 pub mod lc_1930;
+pub mod lc_1931;
 pub mod lc_1944;
 pub mod lc_1954;
 pub mod lc_1962;
