@@ -28,7 +28,7 @@ impl MovieRentingSystem {
         }
     }
 
-    fn search(&self, movie: i32) -> Vec<i32> {
+    pub fn search(&self, movie: i32) -> Vec<i32> {
         let mut ret = Vec::new();
         if let Some(stock) = self.stock.get(&movie) {
             for (_, shop) in stock {
