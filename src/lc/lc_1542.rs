@@ -3,21 +3,21 @@
 pub struct Solution;
 impl Solution {
     pub fn longest_awesome(s: String) -> i32 {
-        let mut map = std::collections::HashMap::new();
-        map.insert(0, 0);
+        let mut map = vec![-1; 1024];
+        map[0] = 0;
         let mut ans = 1;
         let mut num = 0;
         for (&c, i) in s.as_bytes().iter().zip(1..) {
             num = num ^ (1 << (c - b'0'));
-            if let Some(&j) = map.get(&num) {
-                ans = ans.max(i - j);
+            if map[num] >= 0 {
+                ans = ans.max(i - map[num]);
             } else {
-                map.insert(num, i);
+                map[num] = i;
             }
             for d in 0..10 {
                 let nn = num ^ (1 << d);
-                if let Some(&j) = map.get(&nn) {
-                    ans = ans.max(i - j);
+                if map[nn] >= 0 {
+                    ans = ans.max(i - map[nn]);
                 }
             }
         }
