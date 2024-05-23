@@ -33,7 +33,7 @@ impl Solution {
         v.append(&mut Self::recover(reduced));
         v
     }
-    pub fn recover_array(n: i32, sums: Vec<i32>) -> Vec<i32> {
+    pub fn recover_array(_n: i32, sums: Vec<i32>) -> Vec<i32> {
         let mut sums = sums;
         sums.sort_unstable();
         Self::recover(sums)
