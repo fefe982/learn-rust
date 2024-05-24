@@ -425,6 +425,7 @@ pub mod lc_1982;
 pub mod lc_1987;
 pub mod lc_1992;
 pub mod lc_1993;
+pub mod lc_1994;
 pub mod lc_1997;
 pub mod lc_2;
 pub mod lc_20;
