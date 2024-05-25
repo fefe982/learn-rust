@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/word-break-ii/
 // 140. Word Break II
+pub struct Solution;
 use std::{collections::HashMap, str::from_utf8};
 pub struct Trie {
     leaf: bool,
@@ -40,7 +41,6 @@ impl Default for Trie {
         }
     }
 }
-pub struct Solution;
 impl Solution {
     pub fn word_break(s: String, word_dict: Vec<String>) -> Vec<String> {
         let mut word_trie = Trie::default();
