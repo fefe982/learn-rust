@@ -434,6 +434,7 @@ pub mod lc_20;
 pub mod lc_200;
 pub mod lc_2000;
 pub mod lc_2003;
+pub mod lc_2004;
 pub mod lc_2007;
 pub mod lc_2008;
 pub mod lc_2009;
