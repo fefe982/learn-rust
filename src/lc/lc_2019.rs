@@ -32,7 +32,6 @@ impl Solution {
                 dp[j][j + i] = res;
             }
         }
-        println!("{:?}", &dp[0][nop]);
         let mut stk = vec![];
         let mut mul = false;
         for &c in s {
