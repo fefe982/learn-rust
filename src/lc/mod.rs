@@ -446,6 +446,7 @@ pub mod lc_2019;
 pub mod lc_2024;
 pub mod lc_2025;
 pub mod lc_2028;
+pub mod lc_2030;
 pub mod lc_2034;
 pub mod lc_2038;
 pub mod lc_2042;
