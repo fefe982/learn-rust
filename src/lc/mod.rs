@@ -714,6 +714,7 @@ pub mod lc_2917;
 pub mod lc_292;
 pub mod lc_2923;
 pub mod lc_2924;
+pub mod lc_2928;
 pub mod lc_295;
 pub mod lc_2951;
 pub mod lc_2952;
