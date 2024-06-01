@@ -453,6 +453,7 @@ pub mod lc_2035;
 pub mod lc_2038;
 pub mod lc_2040;
 pub mod lc_2042;
+pub mod lc_2045;
 pub mod lc_2048;
 pub mod lc_205;
 pub mod lc_2050;
