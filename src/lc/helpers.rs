@@ -22,3 +22,36 @@ macro_rules! vec_chr {
 macro_rules! vec_vec_chr {
     ($($x:tt),*$(,)?) => (vec![$(vec_chr!$x),*]);
 }
+
+pub enum Any {
+    Str(&'static str),
+    I32(i32),
+    Vec(Vec<Any>),
+}
+
+impl From<&'static str> for Any {
+    fn from(x: &'static str) -> Self {
+        Any::Str(x)
+    }
+}
+impl From<i32> for Any {
+    fn from(x: i32) -> Self {
+        Any::I32(x)
+    }
+}
+impl From<Vec<Any>> for Any {
+    fn from(x: Vec<Any>) -> Self {
+        Any::Vec(x)
+    }
+}
+
+#[macro_export]
+macro_rules! vec_any {
+    ($($x:tt),*$(,)?) => (vec![$(any_cast!($x)),*]);
+}
+
+#[macro_export]
+macro_rules! any_cast {
+    ([$($x:tt),*$(,)?]) => (vec![$(any_cast!($x)),*]);
+    ($x:expr) => ($crate::lc::helpers::Any::from($x));
+}
