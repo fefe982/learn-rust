@@ -16,7 +16,7 @@ macro_rules! vec_vec_str {
 }
 #[macro_export]
 macro_rules! vec_chr {
-    ($($x:expr),*$(,)?) => (vec![$($x.chars().nth(0).unwrap()),*]);
+    ($($x:expr),*$(,)?) => (vec![$($x.chars().next().unwrap()),*]);
 }
 #[macro_export]
 macro_rules! vec_vec_chr {
