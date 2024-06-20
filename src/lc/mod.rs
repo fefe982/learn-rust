@@ -702,6 +702,7 @@ pub mod lc_2739;
 pub mod lc_274;
 pub mod lc_2742;
 pub mod lc_2744;
+pub mod lc_2748;
 pub mod lc_275;
 pub mod lc_2760;
 pub mod lc_2765;
