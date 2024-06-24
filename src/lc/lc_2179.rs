@@ -2,38 +2,27 @@
 // 2179. Count Good Triplets in an Array
 pub struct Solution;
 impl Solution {
-    fn get_cnt(cnt: &Vec<i32>, i: usize, rl: usize, rr: usize, l: usize, r: usize) -> i32 {
-        if l >= r {
-            return 0;
+    fn get_cnt(cnt: &Vec<i32>, mut i: usize) -> i32 {
+        let mut res = cnt[i];
+        loop {
+            i = i & (i + 1);
+            if i == 0 {
+                break;
+            }
+            i -= 1;
+            res += cnt[i];
         }
-        if l <= rl && rr <= r {
-            return cnt[i];
-        }
-        if r <= rl || rr <= l {
-            return 0;
-        }
-        let mid = (rl + rr) / 2;
-        Self::get_cnt(cnt, i * 2 + 1, rl, mid, l, r) + Self::get_cnt(cnt, i * 2 + 2, mid, rr, l, r)
+        res
     }
-    fn set_cnt(cnt: &mut Vec<i32>, i: usize, rl: usize, rr: usize, idx: usize) {
-        cnt[i] += 1;
-        if rl + 1 == rr {
-            return;
-        }
-        let mid = (rl + rr) / 2;
-        if idx < mid {
-            Self::set_cnt(cnt, i * 2 + 1, rl, mid, idx);
-        } else {
-            Self::set_cnt(cnt, i * 2 + 2, mid, rr, idx);
+    fn set_cnt(cnt: &mut Vec<i32>, mut i: usize) {
+        while i < cnt.len() {
+            cnt[i] += 1;
+            i = i | (i + 1);
         }
     }
     pub fn good_triplets(nums1: Vec<i32>, nums2: Vec<i32>) -> i64 {
         let n = nums1.len();
-        let mut nn = 1;
-        while nn < n {
-            nn *= 2;
-        }
-        let mut cnt = vec![0; nn * 2];
+        let mut cnt = vec![0; n];
         let mut m2 = std::collections::HashMap::<i32, usize>::new();
         for (i2, n2) in nums2.into_iter().enumerate() {
             m2.insert(n2, i2);
@@ -41,10 +30,10 @@ impl Solution {
         let mut ans = 0;
         for (i1, n1) in nums1.into_iter().enumerate() {
             let i2 = m2[&n1];
-            let before = Self::get_cnt(&cnt, 0, 0, nn, 0, i2);
+            let before = Self::get_cnt(&cnt, i2);
             let after = n as i32 - i1 as i32 - i2 as i32 - 1 + before;
             ans += before as i64 * after as i64;
-            Self::set_cnt(&mut cnt, 0, 0, nn, i2);
+            Self::set_cnt(&mut cnt, i2);
         }
         ans
     }
