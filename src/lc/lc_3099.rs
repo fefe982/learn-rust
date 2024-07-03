@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/harshad-number/
+// https://leetcode.com/problems/harshad-number/
 // 3099. Harshad Number
 pub struct Solution;
 impl Solution {
