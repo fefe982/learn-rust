@@ -1,3 +1,4 @@
+use std::ops::Index;
 pub fn make_string_vec<const N: usize>(arr_in: [&str; N]) -> Vec<String> {
     arr_in.into_iter().map(|x| String::from(x)).collect()
 }
@@ -24,11 +25,22 @@ macro_rules! vec_vec_chr {
 }
 
 pub enum Any {
+    Null,
+    Char(char),
     Str(&'static str),
     I32(i32),
     Vec(Vec<Any>),
 }
-
+impl From<()> for Any {
+    fn from(_: ()) -> Self {
+        Any::Null
+    }
+}
+impl From<char> for Any {
+    fn from(x: char) -> Self {
+        Any::Char(x)
+    }
+}
 impl From<&'static str> for Any {
     fn from(x: &'static str) -> Self {
         Any::Str(x)
@@ -44,7 +56,59 @@ impl From<Vec<Any>> for Any {
         Any::Vec(x)
     }
 }
-
+impl Any {
+    pub fn as_char(&self) -> char {
+        match self {
+            Any::Char(x) => *x,
+            _ => panic!(),
+        }
+    }
+    pub fn as_i32(&self) -> i32 {
+        match self {
+            Any::I32(x) => *x,
+            _ => panic!(),
+        }
+    }
+    pub fn as_string(&self) -> String {
+        match self {
+            Any::Str(x) => x.to_string(),
+            _ => panic!(),
+        }
+    }
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Any::Str(x) => *x,
+            _ => panic!(),
+        }
+    }
+    pub fn as_slice(&self) -> &[Any] {
+        match self {
+            Any::Vec(x) => &x[..],
+            _ => panic!(),
+        }
+    }
+    pub fn as_vec_char(&self) -> Vec<char> {
+        match self {
+            Any::Vec(x) => x.iter().map(|x| x.as_char()).collect::<Vec<_>>(),
+            _ => panic!(),
+        }
+    }
+    pub fn as_vec_string(&self) -> Vec<String> {
+        match self {
+            Any::Vec(x) => x.iter().map(|x| x.as_string()).collect::<Vec<_>>(),
+            _ => panic!(),
+        }
+    }
+}
+impl Index<usize> for Any {
+    type Output = Any;
+    fn index(&self, index: usize) -> &Self::Output {
+        match self {
+            Any::Vec(x) => &x[index],
+            _ => panic!(),
+        }
+    }
+}
 #[macro_export]
 macro_rules! vec_any {
     ($($x:tt),*$(,)?) => (vec![$(any_cast!($x)),*]);
@@ -52,6 +116,6 @@ macro_rules! vec_any {
 
 #[macro_export]
 macro_rules! any_cast {
-    ([$($x:tt),*$(,)?]) => (vec![$(any_cast!($x)),*]);
+    ([$($x:tt),*$(,)?]) => (any_cast!(vec![$(any_cast!($x)),*]));
     ($x:expr) => ($crate::lc::helpers::Any::from($x));
 }
