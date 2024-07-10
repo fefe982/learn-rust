@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/encrypt-and-decrypt-strings/
 // 2227. Encrypt and Decrypt Strings
-struct Encrypter {
+pub struct Encrypter {
     values: Vec<String>,
     map: std::collections::HashMap<String, i32>,
 }
@@ -23,7 +23,7 @@ impl Encrypter {
             res
         }
     }
-    fn new(keys: Vec<char>, values: Vec<String>, dictionary: Vec<String>) -> Self {
+    pub fn new(keys: Vec<char>, values: Vec<String>, dictionary: Vec<String>) -> Self {
         let mut v = vec!["".to_string(); 26];
         for (k, val) in keys.into_iter().zip(values) {
             v[(k as u8 - b'a') as usize] = val;
@@ -38,11 +38,11 @@ impl Encrypter {
         Self { values: v, map: m }
     }
 
-    fn encrypt(&self, word1: String) -> String {
+    pub fn encrypt(&self, word1: String) -> String {
         Self::encrypt_inner(&self.values, word1)
     }
 
-    fn decrypt(&self, word2: String) -> i32 {
+    pub fn decrypt(&self, word2: String) -> i32 {
         self.map.get(&word2).cloned().unwrap_or(0)
     }
 }
