@@ -5,24 +5,24 @@ impl Solution {
     pub fn can_sort_array(nums: Vec<i32>) -> bool {
         let mut last_max = 0;
         let mut last_bit = 0;
-        let mut cur_min = 0;
         let mut cur_max = 0;
         for n in nums {
             let bit = n.count_ones();
             if bit == last_bit {
-                cur_min = cur_min.min(n);
+                if n < last_max {
+                    return false;
+                }
                 cur_max = cur_max.max(n);
             } else {
-                if cur_min < last_max {
+                if n < cur_max {
                     return false;
                 }
                 last_max = cur_max;
-                cur_min = n;
                 cur_max = n;
             }
             last_bit = bit;
         }
-        cur_min > last_max
+        true
     }
 }
 #[cfg(test)]
