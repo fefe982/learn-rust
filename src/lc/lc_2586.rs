@@ -28,10 +28,7 @@ mod tests {
     use crate::*;
     #[test]
     fn test_vowel_strings() {
-        assert_eq!(
-            Solution::vowel_strings(vec_str!["are", "amy", "u"], 0, 2),
-            2
-        );
+        assert_eq!(Solution::vowel_strings(vec_str!["are", "amy", "u"], 0, 2), 2);
         assert_eq!(
             Solution::vowel_strings(vec_str!["hey", "aeo", "mu", "ooo", "artro"], 1, 4),
             3
