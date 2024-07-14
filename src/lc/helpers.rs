@@ -29,6 +29,7 @@ pub enum Any {
     Char(char),
     Str(&'static str),
     I32(i32),
+    Bool(bool),
     Vec(Vec<Any>),
 }
 impl From<()> for Any {
@@ -56,6 +57,11 @@ impl From<Vec<Any>> for Any {
         Any::Vec(x)
     }
 }
+impl From<bool> for Any {
+    fn from(x: bool) -> Self {
+        Any::Bool(x)
+    }
+}
 impl Any {
     pub fn as_char(&self) -> char {
         match self {
@@ -75,6 +81,12 @@ impl Any {
             _ => panic!(),
         }
     }
+    pub fn as_bool(&self) -> bool {
+        match self {
+            Any::Bool(x) => *x,
+            _ => panic!(),
+        }
+    }
     pub fn as_str(&self) -> &'static str {
         match self {
             Any::Str(x) => *x,
@@ -90,6 +102,12 @@ impl Any {
     pub fn as_vec_char(&self) -> Vec<char> {
         match self {
             Any::Vec(x) => x.iter().map(|x| x.as_char()).collect::<Vec<_>>(),
+            _ => panic!(),
+        }
+    }
+    pub fn as_vec_i32(&self) -> Vec<i32> {
+        match self {
+            Any::Vec(x) => x.iter().map(|x| x.as_i32()).collect::<Vec<_>>(),
             _ => panic!(),
         }
     }
