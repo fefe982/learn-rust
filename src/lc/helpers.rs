@@ -23,6 +23,18 @@ macro_rules! vec_chr {
 macro_rules! vec_vec_chr {
     ($($x:tt),*$(,)?) => (vec![$(vec_chr!$x),*]);
 }
+#[macro_export]
+macro_rules! assert_sort_eq {
+    ($left:expr, $right:expr) => {
+        match ($left, $right) {
+            (mut left_val, mut right_val) => {
+                left_val.sort_unstable();
+                right_val.sort_unstable();
+                assert_eq!(left_val, right_val);
+            }
+        }
+    };
+}
 
 pub enum Any {
     Null,
