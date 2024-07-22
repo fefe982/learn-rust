@@ -2,15 +2,10 @@
 // 2418. Sort the People
 pub struct Solution;
 impl Solution {
-    pub fn sort_people(names: Vec<String>, mut heights: Vec<i32>) -> Vec<String> {
-        for (idx, h) in heights.iter_mut().enumerate() {
-            *h = *h * 1000 + idx as i32;
-        }
-        heights.sort_unstable_by_key(|x| -*x);
-        heights
-            .iter()
-            .map(|&x| names[x as usize % 1000].clone())
-            .collect()
+    pub fn sort_people(names: Vec<String>, heights: Vec<i32>) -> Vec<String> {
+        let mut zip = names.into_iter().zip(heights).collect::<Vec<_>>();
+        zip.sort_unstable_by_key(|x| -x.1);
+        zip.into_iter().map(|x| x.0).collect::<Vec<_>>()
     }
 }
 #[cfg(test)]
