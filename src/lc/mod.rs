@@ -598,6 +598,7 @@ pub mod lc_2316;
 pub mod lc_2318;
 pub mod lc_232;
 pub mod lc_2321;
+pub mod lc_2322;
 pub mod lc_2327;
 pub mod lc_2328;
 pub mod lc_233;
