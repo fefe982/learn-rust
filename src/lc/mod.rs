@@ -876,6 +876,7 @@ pub mod lc_312;
 pub mod lc_3128;
 pub mod lc_3129;
 pub mod lc_3130;
+pub mod lc_3131;
 pub mod lc_3143;
 pub mod lc_315;
 pub mod lc_316;
