@@ -2,7 +2,7 @@
 // 703. Kth Largest Element in a Stream
 pub struct Solution;
 pub struct KthLargest {
-    q: std::collections::BinaryHeap<i32>,
+    q: std::collections::BinaryHeap<std::cmp::Reverse<i32>>,
     k: usize,
 }
 
@@ -16,7 +16,7 @@ impl KthLargest {
         let k = k as usize;
         for i in 0..k {
             if i < nums.len() {
-                q.push(-nums[i]);
+                q.push(std::cmp::Reverse(nums[i]));
             }
         }
         let mut s = Self { q, k };
@@ -27,13 +27,13 @@ impl KthLargest {
     }
 
     pub fn add(&mut self, val: i32) -> i32 {
-        if self.q.len() == self.k && -val < *self.q.peek().unwrap() {
+        if self.q.len() == self.k && val > self.q.peek().unwrap().0 {
             self.q.pop();
         }
         if self.q.len() < self.k {
-            self.q.push(-val);
+            self.q.push(std::cmp::Reverse(val));
         }
-        -*self.q.peek().unwrap()
+        self.q.peek().unwrap().0
     }
 }
 
