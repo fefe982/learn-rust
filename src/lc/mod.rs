@@ -1032,6 +1032,7 @@ pub mod lc_668;
 pub mod lc_670;
 pub mod lc_673;
 pub mod lc_675;
+pub mod lc_676;
 pub mod lc_678;
 pub mod lc_679;
 pub mod lc_68;

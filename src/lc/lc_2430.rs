@@ -26,6 +26,8 @@ impl Solution {
                 }
                 if h1 == h2 && (mono || s[i..i + j + 1] == s[i + j + 1..i + 2 * j + 2]) {
                     dp[i] = dp[i].max(dp[i + j + 1] + 1);
+                } else {
+                    mono = false
                 }
             }
         }
