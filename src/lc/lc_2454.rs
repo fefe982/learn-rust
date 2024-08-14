@@ -4,26 +4,22 @@ pub struct Solution;
 impl Solution {
     pub fn second_greater_element(nums: Vec<i32>) -> Vec<i32> {
         let mut s1 = vec![];
-        let mut s2 = vec![];
+        let mut s2: Vec<usize> = vec![];
         let mut ans = vec![-1; nums.len()];
         for (i, &n) in nums.iter().enumerate() {
-            while s2.len() > 0 {
-                if nums[*s2.last().unwrap()] < n {
-                    ans[s2.pop().unwrap()] = n;
+            while let Some(&i) = s2.last() {
+                if nums[i] < n {
+                    ans[i] = n;
+                    s2.pop();
                 } else {
                     break;
                 }
             }
             let mut pos = s1.len();
-            while pos > 0 {
-                if nums[s1[pos - 1]] < n {
-                    pos -= 1;
-                } else {
-                    break;
-                }
+            while pos > 0 && nums[s1[pos - 1]] < n {
+                pos -= 1;
             }
-            let split = s1.split_at(pos);
-            s2.append(&mut split.1.to_vec());
+            s2.extend(s1.iter().skip(pos));
             s1.truncate(pos);
             s1.push(i);
         }
