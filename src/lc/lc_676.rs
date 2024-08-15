@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/implement-magic-dictionary/
 // 676. Implement Magic Dictionary
-struct MagicDictionary {
+pub struct MagicDictionary {
     dict: Vec<String>,
 }
 
@@ -9,15 +9,15 @@ struct MagicDictionary {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MagicDictionary {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self { dict: vec![] }
     }
 
-    fn build_dict(&mut self, dictionary: Vec<String>) {
+    pub fn build_dict(&mut self, dictionary: Vec<String>) {
         self.dict = dictionary
     }
 
-    fn search(&self, search_word: String) -> bool {
+    pub fn search(&self, search_word: String) -> bool {
         let s = search_word.as_bytes();
         'dict: for d in self.dict.iter() {
             if d.len() != s.len() {
