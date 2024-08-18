@@ -700,6 +700,7 @@ pub mod lc_2487;
 pub mod lc_2488;
 pub mod lc_2490;
 pub mod lc_2492;
+pub mod lc_2493;
 pub mod lc_2496;
 pub mod lc_25;
 pub mod lc_2500;
