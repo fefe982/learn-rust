@@ -1043,6 +1043,7 @@ pub mod lc_647;
 pub mod lc_648;
 pub mod lc_649;
 pub mod lc_65;
+pub mod lc_650;
 pub mod lc_652;
 pub mod lc_661;
 pub mod lc_662;
