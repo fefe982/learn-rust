@@ -979,6 +979,7 @@ pub mod lc_460;
 pub mod lc_463;
 pub mod lc_466;
 pub mod lc_472;
+pub mod lc_476;
 pub mod lc_479;
 pub mod lc_480;
 pub mod lc_483;
