@@ -2,7 +2,7 @@
 // 2509. Cycle Length Queries in a Tree
 pub struct Solution;
 impl Solution {
-    pub fn cycle_length_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
+    pub fn cycle_length_queries(_n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
         let mut res = Vec::with_capacity(queries.len());
         for mut q in queries {
             let tz0 = q[0].leading_zeros() as i32;
