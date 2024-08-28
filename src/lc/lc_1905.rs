@@ -1,101 +1,80 @@
-// https://leetcode.com/problems/find-in-mountain-array/
-// 1095. Find in Mountain Array
+// https://leetcode.com/problems/count-sub-islands/
+// 1905. Count Sub Islands
 pub struct Solution;
-
-// This is the MountainArray's API interface.
-// You should not implement it, or speculate about its implementation
-pub struct MountainArray {
-    v: Vec<i32>,
-}
-impl MountainArray {
-    pub fn new(v: Vec<i32>) -> Self {
-        Self { v }
-    }
-    fn get(&self, index: i32) -> i32 {
-        self.v[index as usize]
-    }
-    fn length(&self) -> i32 {
-        self.v.len() as i32
-    }
-}
-
 impl Solution {
-    pub fn find_in_mountain_array(target: i32, mountain_arr: &MountainArray) -> i32 {
-        let mut low = 0;
-        let mut high = mountain_arr.length() - 1;
-        while low != high {
-            let mid = (low + high) / 2;
-            let vmid = mountain_arr.get(mid);
-            let vmidl = mountain_arr.get(mid - 1);
-            let vmidr = mountain_arr.get(mid + 1);
-            if vmid > vmidl {
-                low = mid;
-            }
-            if vmid > vmidr {
-                high = mid;
-            }
-        }
-        low = 0;
-        let mut vlow = mountain_arr.get(low);
-        let vhigh = mountain_arr.get(high);
-        if vhigh == target {
-            return high;
-        }
-        if vhigh < target {
-            return -1;
-        }
-        if vlow == target {
-            return 0;
-        }
-        if vlow < target {
-            while low + 1 < high {
-                let mid = (low + high) / 2;
-                let vmid = mountain_arr.get(mid);
-                if vmid == target {
-                    return mid;
-                } else if vmid < target {
-                    low = mid;
-                } else if vmid > target {
-                    high = mid;
+    pub fn count_sub_islands(grid1: Vec<Vec<i32>>, grid2: Vec<Vec<i32>>) -> i32 {
+        let mut grid2 = grid2;
+        let mut cnt = 0;
+        for i in 0..grid2.len() {
+            for j in 0..grid2[0].len() {
+                if grid2[i][j] == 1 {
+                    let mut q = vec![(i, j)];
+                    grid2[i][j] = 0;
+                    let mut sub = true;
+                    while let Some((ci, cj)) = q.pop() {
+                        if grid1[ci][cj] == 0 {
+                            sub = false;
+                        }
+                        for (di, dj) in [(0, 1), (0, -1), (1, 0), (-1, 0)] {
+                            let (ni, nj) = ((ci as i32 + di) as usize, (cj as i32 + dj) as usize);
+                            if ni < grid2.len() && nj < grid2[0].len() && grid2[ni][nj] == 1 {
+                                q.push((ni, nj));
+                                grid2[ni][nj] = 0;
+                            }
+                        }
+                    }
+                    if sub {
+                        cnt += 1;
+                    }
                 }
             }
         }
-        low = mountain_arr.length() - 1;
-        vlow = mountain_arr.get(low);
-        if vlow == target {
-            return low;
-        }
-        if vlow > target {
-            return -1;
-        }
-        while high + 1 < low {
-            let mid = (low + high) / 2;
-            let vmid = mountain_arr.get(mid);
-            if vmid == target {
-                return mid;
-            } else if vmid < target {
-                low = mid;
-            } else if vmid > target {
-                high = mid;
-            }
-        }
-        return -1;
+        cnt
     }
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    use crate::*;
     #[test]
-    fn test_find_in_mountain_array() {
+    fn test_count_sub_islands() {
         assert_eq!(
-            Solution::find_in_mountain_array(3, &MountainArray::new(vec![1, 2, 3, 4, 5, 3, 1])),
-            2
+            Solution::count_sub_islands(
+                vec_vec![
+                    [1, 1, 1, 0, 0],
+                    [0, 1, 1, 1, 1],
+                    [0, 0, 0, 0, 0],
+                    [1, 0, 0, 0, 0],
+                    [1, 1, 0, 1, 1]
+                ],
+                vec_vec![
+                    [1, 1, 1, 0, 0],
+                    [0, 0, 1, 1, 1],
+                    [0, 1, 0, 0, 0],
+                    [1, 0, 1, 1, 0],
+                    [0, 1, 0, 1, 0]
+                ],
+            ),
+            3
         );
         assert_eq!(
-            Solution::find_in_mountain_array(3, &MountainArray::new(vec![0, 1, 2, 4, 2, 1])),
-            -1
+            Solution::count_sub_islands(
+                vec_vec![
+                    [1, 0, 1, 0, 1],
+                    [1, 1, 1, 1, 1],
+                    [0, 0, 0, 0, 0],
+                    [1, 1, 1, 1, 1],
+                    [1, 0, 1, 0, 1]
+                ],
+                vec_vec![
+                    [0, 0, 0, 0, 0],
+                    [1, 1, 1, 1, 1],
+                    [0, 1, 0, 1, 0],
+                    [0, 1, 0, 1, 0],
+                    [1, 0, 0, 0, 1]
+                ],
+            ),
+            2
         );
     }
 }

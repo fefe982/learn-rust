@@ -54,6 +54,7 @@ pub mod lc_1091;
 pub mod lc_1092;
 pub mod lc_1093;
 pub mod lc_1094;
+pub mod lc_1095;
 pub mod lc_1096;
 pub mod lc_1103;
 pub mod lc_1105;
