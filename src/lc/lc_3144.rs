@@ -24,6 +24,7 @@ impl Solution {
                 min_cnt = min_cnt.min(Self::count(&s[i + 1..], cache) + 1);
             }
         }
+        cache[s.len()] = min_cnt;
         min_cnt
     }
     pub fn minimum_substrings_in_partition(s: String) -> i32 {
