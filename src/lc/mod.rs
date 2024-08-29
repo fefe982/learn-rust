@@ -1225,6 +1225,7 @@ pub mod lc_940;
 pub mod lc_943;
 pub mod lc_945;
 pub mod lc_946;
+pub mod lc_947;
 pub mod lc_948;
 pub mod lc_95;
 pub mod lc_950;
