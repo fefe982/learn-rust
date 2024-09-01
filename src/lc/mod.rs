@@ -472,6 +472,7 @@ pub mod lc_2008;
 pub mod lc_2009;
 pub mod lc_201;
 pub mod lc_2019;
+pub mod lc_2022;
 pub mod lc_2024;
 pub mod lc_2025;
 pub mod lc_2028;
