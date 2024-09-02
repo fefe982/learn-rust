@@ -3,28 +3,27 @@
 pub struct Solution;
 impl Solution {
     pub fn max_consecutive_answers(answer_key: String, k: i32) -> i32 {
-        let mut tmap = std::collections::BTreeMap::<i32, i32>::new();
-        tmap.insert(0, 0);
-        let mut fmap = tmap.clone();
-        let (mut nt, mut nf) = (0, 0);
         let mut max = 0;
-        for (i, c) in (1..).zip(answer_key.chars()) {
-            if c == 'T' {
-                nt += 1;
-                tmap.insert(nt, i);
+        let mut cnt = vec![0, 0];
+        let mut left = 0;
+        let answer_key = answer_key.as_bytes();
+        for (i, &c) in answer_key.iter().enumerate() {
+            if c == b'T' {
+                cnt[1] += 1;
             } else {
-                nf += 1;
-                fmap.insert(nf, i);
+                cnt[0] += 1;
             }
-            if nt <= k || nf <= k {
-                max = i;
-                continue;
+            while cnt[0] > k && cnt[1] > k {
+                if answer_key[left] == b'T' {
+                    cnt[1] -= 1;
+                } else {
+                    cnt[0] -= 1;
+                }
+                left += 1;
             }
-            max = max
-                .max(i - *tmap.get(&(nt - k)).unwrap())
-                .max(i - *fmap.get(&(nf - k)).unwrap());
+            max = max.max(i - left + 1);
         }
-        max
+        max as i32
     }
 }
 #[cfg(test)]
@@ -34,9 +33,6 @@ mod tests {
     fn max_consecutive_answers() {
         assert_eq!(Solution::max_consecutive_answers("TTFF".to_string(), 2), 4);
         assert_eq!(Solution::max_consecutive_answers("TFFT".to_string(), 1), 3);
-        assert_eq!(
-            Solution::max_consecutive_answers("TTFTTFTT".to_string(), 1),
-            5
-        )
+        assert_eq!(Solution::max_consecutive_answers("TTFTTFTT".to_string(), 1), 5)
     }
 }
