@@ -3,83 +3,64 @@
 pub struct Solution;
 impl Solution {
     pub fn find_valid_split(nums: Vec<i32>) -> i32 {
-        if nums.len() == 1 {
-            return -1;
-        }
-        if nums[0] == 1 {
-            return 0;
-        }
-        let mut p = vec![0; 1000001];
-        let getp = |p: &mut Vec<usize>, i: usize| {
-            if p[i] == 0 {
-                p[i] = i;
-                return i;
-            }
-            let mut pi = p[i];
-            while pi != p[pi] {
-                pi = p[pi];
-            }
-            p[i] = pi;
-            pi
-        };
-        let merge = |p: &mut Vec<usize>, i: usize, j: usize| {
-            let pi = getp(p, i);
-            let pj = getp(p, j);
-            if pi != pj {
-                p[pj] = pi;
-            }
-        };
-        for &n in &nums {
-            let n = n as usize;
-            if n == 1 || p[n] != 0 {
-                continue;
-            }
-            let mut m = n;
-            let mut i = 2;
-            while m > 1 && i * i <= m {
-                if m % i == 0 {
-                    merge(&mut p, n, i);
-                    while m % i == 0 {
-                        m /= i;
+        let primes = [
+            2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103,
+            107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223,
+            227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347,
+            349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463,
+            467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607,
+            613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743,
+            751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883,
+            887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997,
+        ];
+        let get_primes = |mut n: i32| -> Vec<i32> {
+            let mut pv = vec![];
+            let mut i = 0;
+            while n > 1 && i < primes.len() && primes[i] * primes[i] <= n {
+                if n % primes[i] == 0 {
+                    pv.push(primes[i]);
+                    while n % primes[i] == 0 {
+                        n /= primes[i];
                     }
                 }
                 i += 1;
             }
-            if m > 1 {
-                merge(&mut p, n, m);
+            if n > 1 {
+                pv.push(n);
+            }
+            pv
+        };
+        let mut r = std::collections::HashMap::<i32, i32>::new();
+        let mut nums = nums
+            .into_iter()
+            .map(|n| {
+                let v = get_primes(n);
+                for &pv in &v {
+                    *r.entry(pv).or_default() += 1;
+                }
+                v
+            })
+            .collect::<Vec<_>>();
+        let mut l = std::collections::HashMap::<i32, i32>::new();
+        let mut common = 0;
+        nums.pop();
+        for (i, nv) in nums.iter().enumerate() {
+            for &n in nv {
+                let lc = l.entry(n).or_default();
+                *lc += 1;
+                let rc = r.entry(n).or_default();
+                *rc -= 1;
+                if *lc == 1 && *rc > 0 {
+                    common += 1;
+                } else if *lc > 1 && *rc == 0 {
+                    common -= 1;
+                }
+            }
+            if common == 0 {
+                return i as i32;
             }
         }
-        let mut p0 = usize::MAX;
-        let mut p1 = usize::MAX;
-        let mut split = 0;
-        for i in 0..nums.len() {
-            if nums[i] == 1 {
-                if split == 0 {
-                    split = i;
-                }
-                continue;
-            }
-            let pi = getp(&mut p, nums[i] as usize);
-            if p0 == usize::MAX {
-                p0 = pi;
-            } else if p0 == pi {
-                if p1 != usize::MAX {
-                    p[p1] = p0;
-                }
-                p1 = usize::MAX;
-                split = 0;
-            } else {
-                if p1 == usize::MAX {
-                    p1 = pi;
-                    if split == 0 {
-                        split = i;
-                    }
-                } else if p1 != pi {
-                    p[pi] = p1;
-                }
-            }
-        }
-        split as i32 - 1
+        -1
     }
 }
 #[cfg(test)]
