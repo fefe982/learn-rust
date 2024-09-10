@@ -32,7 +32,6 @@ impl Solution {
                     }
                 }
             }
-            println!("{i} {dist:?}");
         }
         if ans == i32::MAX {
             -1
