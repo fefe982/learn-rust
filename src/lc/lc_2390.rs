@@ -3,16 +3,15 @@
 pub struct Solution;
 impl Solution {
     pub fn remove_stars(s: String) -> String {
-        let s = s.as_bytes();
-        let mut v = Vec::with_capacity(s.len());
-        for &c in s {
-            if c != b'*' {
+        let mut v = "".to_string();
+        for c in s.chars() {
+            if c != '*' {
                 v.push(c);
             } else {
                 v.pop();
             }
         }
-        String::from_utf8(v).unwrap()
+        v
     }
 }
 
@@ -25,9 +24,6 @@ mod tests {
             Solution::remove_stars(String::from("leet**cod*e")),
             String::from("lecoe")
         );
-        assert_eq!(
-            Solution::remove_stars(String::from("erase*****")),
-            String::from("")
-        );
+        assert_eq!(Solution::remove_stars(String::from("erase*****")), String::from(""));
     }
 }
