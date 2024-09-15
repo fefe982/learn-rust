@@ -9,19 +9,23 @@ impl Solution {
         let mut sum = 0;
         let mut bound = 1;
         for i in 0..usage_limits.len() {
-            sum += usage_limits[i];
+            sum += usage_limits[i] as i64;
             if sum >= bound {
                 res += 1;
                 bound += res + 1;
             }
         }
-        res
+        res as i32
     }
 }
 mod tests {
     use super::*;
     #[test]
     fn test_max_increasing_groups() {
+        assert_eq!(
+            Solution::max_increasing_groups(vec![1000000000, 999999999, 999999998]),
+            3
+        );
         assert_eq!(Solution::max_increasing_groups(vec![1, 2, 5]), 3);
         assert_eq!(Solution::max_increasing_groups(vec![2, 1, 2]), 2);
     }
