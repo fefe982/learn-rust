@@ -9,6 +9,12 @@ impl Solution {
                 stop_to_route.entry(*stop).or_default().push(i as i32);
             }
         }
+        if source == target {
+            return 0;
+        }
+        if !stop_to_route.contains_key(&source) || !stop_to_route.contains_key(&target) {
+            return -1;
+        }
         let mut visited_stop = std::collections::HashSet::new();
         let mut visited_route = std::collections::HashSet::new();
         let mut queue = std::collections::VecDeque::new();
@@ -39,6 +45,14 @@ mod tests {
     use crate::*;
     #[test]
     fn test_num_buses_to_destination() {
+        assert_eq!(
+            Solution::num_buses_to_destination(vec_vec![[1, 2, 7], [3, 6, 7]], 10, 10),
+            0
+        );
+        assert_eq!(
+            Solution::num_buses_to_destination(vec_vec![[1, 2, 7], [3, 6, 7]], 8, 6),
+            -1
+        );
         assert_eq!(
             Solution::num_buses_to_destination(vec_vec![[1, 2, 7], [3, 6, 7]], 1, 6),
             2
