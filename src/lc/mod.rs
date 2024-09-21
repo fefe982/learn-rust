@@ -1001,6 +1001,7 @@ pub mod lc_380;
 pub mod lc_381;
 pub mod lc_382;
 pub mod lc_383;
+pub mod lc_386;
 pub mod lc_387;
 pub mod lc_389;
 pub mod lc_39;
