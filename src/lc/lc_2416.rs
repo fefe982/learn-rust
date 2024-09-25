@@ -1,47 +1,33 @@
 // https://leetcode.com/problems/sum-of-prefix-scores-of-strings/
 // 2416. Sum of Prefix Scores of Strings
 pub struct Solution;
-#[derive(Default)]
-struct Trie {
-    cnt: i32,
-    children: std::collections::HashMap<u8, Trie>,
-}
-impl Trie {
-    fn new() -> Self {
-        Self {
-            cnt: 0,
-            children: std::collections::HashMap::new(),
-        }
-    }
-    fn insert(&mut self, s: &str) {
-        self.insert_u8(s.as_bytes())
-    }
-    fn insert_u8(&mut self, s: &[u8]) {
-        self.cnt += 1;
-        if s.len() > 0 {
-            self.children.entry(s[0]).or_default().insert_u8(&s[1..]);
-        }
-    }
-    fn search(&self, s: &[u8]) -> i32 {
-        let mut res = self.cnt;
-        if s.len() > 0 {
-            if let Some(child) = self.children.get(&s[0]) {
-                res += child.search(&s[1..])
-            }
-        }
-        res
-    }
-}
 impl Solution {
     pub fn sum_prefix_scores(words: Vec<String>) -> Vec<i32> {
-        let mut trie = Trie::new();
-        for word in &words {
-            trie.insert(word);
+        let mut words = words.into_iter().enumerate().collect::<Vec<_>>();
+        words.sort_by(|a, b| a.1.cmp(&b.1));
+        let mut common_prefix_length = vec![0; words.len()];
+        for i in 1..words.len() {
+            common_prefix_length[i] = words[i - 1]
+                .1
+                .chars()
+                .zip(words[i].1.chars())
+                .take_while(|(a, b)| a == b)
+                .count() as i32;
         }
-        words
-            .into_iter()
-            .map(|word| trie.search(word.as_bytes()) - trie.cnt)
-            .collect()
+        let mut ans = vec![0; words.len()];
+        for (i, (idx, word)) in words.iter().enumerate() {
+            let mut prefix_len = word.len() as i32;
+            ans[*idx] += prefix_len;
+            for j in i + 1..words.len() {
+                prefix_len = prefix_len.min(common_prefix_length[j]);
+                if prefix_len == 0 {
+                    break;
+                }
+                ans[*idx] += prefix_len;
+                ans[words[j].0] += prefix_len;
+            }
+        }
+        ans
     }
 }
 #[cfg(test)]
