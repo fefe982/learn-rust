@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/my-calendar-i/
 // 729. My Calendar I
-struct MyCalendar {
+pub struct MyCalendar {
     book: std::collections::BTreeMap<i32, i32>,
 }
 
@@ -9,13 +9,13 @@ struct MyCalendar {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyCalendar {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             book: std::collections::BTreeMap::new(),
         }
     }
 
-    fn book(&mut self, start: i32, end: i32) -> bool {
+    pub fn book(&mut self, start: i32, end: i32) -> bool {
         if let Some((_, &e)) = self.book.range(..end).rev().next() {
             if start < e {
                 return false;
