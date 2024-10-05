@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-circular-deque/
 // 641. Design Circular Deque
-struct MyCircularDeque {
+pub struct MyCircularDeque {
     v: Vec<i32>,
     l: usize,
     r: usize,
@@ -11,7 +11,7 @@ struct MyCircularDeque {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyCircularDeque {
-    fn new(k: i32) -> Self {
+    pub fn new(k: i32) -> Self {
         Self {
             v: vec![0; k as usize + 1],
             l: 0,
@@ -19,7 +19,7 @@ impl MyCircularDeque {
         }
     }
 
-    fn insert_front(&mut self, value: i32) -> bool {
+    pub fn insert_front(&mut self, value: i32) -> bool {
         if self.is_full() {
             return false;
         }
@@ -28,7 +28,7 @@ impl MyCircularDeque {
         true
     }
 
-    fn insert_last(&mut self, value: i32) -> bool {
+    pub fn insert_last(&mut self, value: i32) -> bool {
         if self.is_full() {
             return false;
         }
@@ -37,7 +37,7 @@ impl MyCircularDeque {
         true
     }
 
-    fn delete_front(&mut self) -> bool {
+    pub fn delete_front(&mut self) -> bool {
         if self.is_empty() {
             return false;
         }
@@ -45,7 +45,7 @@ impl MyCircularDeque {
         true
     }
 
-    fn delete_last(&mut self) -> bool {
+    pub fn delete_last(&mut self) -> bool {
         if self.is_empty() {
             return false;
         }
@@ -53,7 +53,7 @@ impl MyCircularDeque {
         true
     }
 
-    fn get_front(&self) -> i32 {
+    pub fn get_front(&self) -> i32 {
         if self.is_empty() {
             -1
         } else {
@@ -61,7 +61,7 @@ impl MyCircularDeque {
         }
     }
 
-    fn get_rear(&self) -> i32 {
+    pub fn get_rear(&self) -> i32 {
         if self.is_empty() {
             -1
         } else {
@@ -69,11 +69,11 @@ impl MyCircularDeque {
         }
     }
 
-    fn is_empty(&self) -> bool {
+    pub fn is_empty(&self) -> bool {
         self.l == self.r
     }
 
-    fn is_full(&self) -> bool {
+    pub fn is_full(&self) -> bool {
         (self.r + 1) % self.v.len() == self.l
     }
 }
