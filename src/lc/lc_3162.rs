@@ -1,8 +1,8 @@
-// https://leetcode.com/problems/find-the-number-of-good-pairs-ii/
-// 3164. Find the Number of Good Pairs II
+// https://leetcode.com/problems/find-the-number-of-good-pairs-i/
+// 3162. Find the Number of Good Pairs I
 pub struct Solution;
 impl Solution {
-    pub fn number_of_pairs(nums1: Vec<i32>, nums2: Vec<i32>, k: i32) -> i64 {
+    pub fn number_of_pairs(nums1: Vec<i32>, nums2: Vec<i32>, k: i32) -> i32 {
         let get_cnt = |v: Vec<i32>| -> std::collections::HashMap<i32, i32> {
             let mut cnt = std::collections::HashMap::<i32, i32>::new();
             for i in v {
@@ -33,7 +33,7 @@ impl Solution {
         let mut res = 0;
         for (n, c) in cnt2 {
             if let Some(&c1) = cntp.get(&n) {
-                res += c as i64 * c1 as i64;
+                res += c * c1;
             }
         }
         res
