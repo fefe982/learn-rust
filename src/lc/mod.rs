@@ -451,6 +451,7 @@ pub mod lc_1931;
 pub mod lc_1932;
 pub mod lc_1937;
 pub mod lc_1938;
+pub mod lc_1942;
 pub mod lc_1944;
 pub mod lc_1945;
 pub mod lc_1948;
