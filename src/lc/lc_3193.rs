@@ -54,7 +54,7 @@ mod tests {
     use crate::*;
     #[test]
     fn test_number_of_permutations() {
-        assert_eq!(Solution::number_of_permutations(3, vec_vec![[2, 0]]), 2);
+        assert_eq!(Solution::number_of_permutations(3, vec_vec![[2, 0]]), 1);
         assert_eq!(
             Solution::number_of_permutations(20, vec_vec![[5, 10], [6, 14], [19, 90], [18, 90], [3, 3], [2, 1]]),
             658544754
