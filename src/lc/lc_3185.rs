@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/count-pairs-that-form-a-complete-day-ii/
-// 3184. Count Pairs That Form a Complete Day II
+// 3185. Count Pairs That Form a Complete Day II
 pub struct Solution;
 impl Solution {
     pub fn count_complete_day_pairs(hours: Vec<i32>) -> i64 {
