@@ -1,22 +1,22 @@
 // https://leetcode.com/problems/word-break/
 // 139. Word Break
 pub struct Solution;
-pub struct Trie {
+struct Trie {
     leaf: bool,
     children: std::collections::HashMap<u8, Trie>,
 }
 impl Trie {
-    pub fn insert(&mut self, s: &str) {
+    fn insert(&mut self, s: &str) {
         self.insert_u8(s.as_bytes())
     }
-    pub fn insert_u8(&mut self, s: &[u8]) {
+    fn insert_u8(&mut self, s: &[u8]) {
         if s.len() == 0 {
             self.leaf = true;
         } else {
             self.children.entry(s[0]).or_default().insert_u8(&s[1..]);
         }
     }
-    pub fn common_prefix_search(&self, s: &[u8]) -> Vec<usize> {
+    fn common_prefix_search(&self, s: &[u8]) -> Vec<usize> {
         let mut res: Vec<usize> = Vec::new();
         if s.len() > 0 {
             if let Some(child) = self.children.get(&s[0]) {
@@ -81,10 +81,7 @@ mod tests {
             true
         );
         assert_eq!(
-            Solution::word_break(
-                "catsandog".to_string(),
-                vec_str!["cats", "dog", "sand", "and", "cat"]
-            ),
+            Solution::word_break("catsandog".to_string(), vec_str!["cats", "dog", "sand", "and", "cat"]),
             false
         );
     }
