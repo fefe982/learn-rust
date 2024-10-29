@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-a-stack-with-increment-operation/
 // 1381. Design a Stack With Increment Operation
-struct CustomStack {
+pub struct CustomStack {
     v: Vec<i32>,
     inc: Vec<i32>,
 }
@@ -10,7 +10,7 @@ struct CustomStack {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl CustomStack {
-    fn new(max_size: i32) -> Self {
+    pub fn new(max_size: i32) -> Self {
         Self {
             v: Vec::with_capacity(max_size as usize),
             inc: vec![0; max_size as usize + 1],
@@ -32,14 +32,14 @@ impl CustomStack {
         v
     }
 
-    fn push(&mut self, x: i32) {
+    pub fn push(&mut self, x: i32) {
         if self.v.len() + 1 >= self.inc.len() {
             return;
         }
         self.v.push(x - self.get_inc(self.v.len() + 1));
     }
 
-    fn pop(&mut self) -> i32 {
+    pub fn pop(&mut self) -> i32 {
         if let Some(v) = self.v.pop() {
             v + self.get_inc(self.v.len() + 1)
         } else {
@@ -47,7 +47,7 @@ impl CustomStack {
         }
     }
 
-    fn increment(&mut self, k: i32, val: i32) {
+    pub fn increment(&mut self, k: i32, val: i32) {
         self.put_inc((k as usize).min(self.v.len()), val);
     }
 }
