@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/minimum-cost-to-equalize-array/
-// 3119. Minimum Cost to Equalize Array
+// 3139. Minimum Cost to Equalize Array
 pub struct Solution;
 impl Solution {
     pub fn min_cost_to_equalize_array(nums: Vec<i32>, cost1: i32, cost2: i32) -> i32 {
