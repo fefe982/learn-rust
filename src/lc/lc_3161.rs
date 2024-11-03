@@ -9,14 +9,12 @@ impl Solution {
         if v[next1].2 > pos {
             if v[next1].2 - v[next1].3 < pos {
                 let len = pos + v[next1].3 - v[next1].2;
-                println!("add1 {idx} {l} {r} {pos} {next1} {:?}", v[next1]);
                 (v[next1].2, v[next1].2 - pos, len)
             } else {
                 Self::add(v, next1, l, mid, pos)
             }
         } else if v[next2].2 - v[next2].3 < pos {
             let len = pos + v[next2].3 - v[next2].2;
-            println!("add2 {idx} {l} {r} {pos} {next2} {:?}", v[next2]);
             (v[next2].2, v[next2].2 - pos, len)
         } else {
             Self::add(v, next2, mid, r, pos)
@@ -41,7 +39,6 @@ impl Solution {
     }
     fn find(v: &Vec<(i32, i32, i32, i32)>, idx: usize, l: i32, r: i32, pos: i32) -> (i32, i32) {
         if pos + 1 >= r {
-            println!("{idx} {l} {r} {pos} {:?}", v[idx]);
             return (v[idx].1, v[idx].2);
         }
         let mid = (l + r) >> 1;
@@ -73,7 +70,6 @@ impl Solution {
                     ans.push(false);
                 } else {
                     let (max, last) = Self::find(&v, 0, 0, 65536, q[1]);
-                    println!("{max} {last} {:?}", q);
                     ans.push(max.max(q[1] - last) >= q[2]);
                 }
             }
