@@ -1067,6 +1067,7 @@ pub mod lc_322;
 pub mod lc_3222;
 pub mod lc_3226;
 pub mod lc_3254;
+pub mod lc_3255;
 pub mod lc_3259;
 pub mod lc_327;
 pub mod lc_329;
