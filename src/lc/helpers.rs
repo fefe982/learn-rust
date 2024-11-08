@@ -129,6 +129,12 @@ impl Any {
             _ => panic!(),
         }
     }
+    pub fn as_vec_vec_i32(&self) -> Vec<Vec<i32>> {
+        match self {
+            Any::Vec(x) => x.iter().map(|x| x.as_vec_i32()).collect::<Vec<_>>(),
+            _ => panic!(),
+        }
+    }
 }
 impl Index<usize> for Any {
     type Output = Any;
