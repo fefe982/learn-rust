@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/count-the-number-of-good-nodes/
+// https://leetcode.com/problems/count-the-number-of-good-nodes/
 // 3249. Count the Number of Good Nodes in Binary Tree
 pub struct Solution;
 impl Solution {
@@ -17,7 +17,6 @@ impl Solution {
             minnodes = minnodes.min(cn);
             gchild += cg;
         }
-        println!("{p} {n} {nchild} {nnodes} {minnodes}");
         if minnodes * nchild == nnodes {
             (gchild + 1, nnodes + 1)
         } else {
@@ -30,6 +29,7 @@ impl Solution {
             g[e[0] as usize].push(e[1] as usize);
             g[e[1] as usize].push(e[0] as usize);
         }
+        Self::count(&g, usize::MAX, 0).0
     }
 }
 #[cfg(test)]
