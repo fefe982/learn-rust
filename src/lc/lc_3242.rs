@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-neighbor-sum-service/
 // 3242. Design Neighbor Sum Service
-struct NeighborSum {
+pub struct NeighborSum {
     sum: Vec<(i32, i32)>,
 }
 
@@ -9,7 +9,7 @@ struct NeighborSum {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl NeighborSum {
-    fn new(grid: Vec<Vec<i32>>) -> Self {
+    pub fn new(grid: Vec<Vec<i32>>) -> Self {
         let mut sum = vec![(0, 0); grid.len() * grid[0].len()];
         for i in 0..grid.len() {
             for j in 0..grid[0].len() {
@@ -45,11 +45,11 @@ impl NeighborSum {
         Self { sum }
     }
 
-    fn adjacent_sum(&self, value: i32) -> i32 {
+    pub fn adjacent_sum(&self, value: i32) -> i32 {
         self.sum[value as usize].0
     }
 
-    fn diagonal_sum(&self, value: i32) -> i32 {
+    pub fn diagonal_sum(&self, value: i32) -> i32 {
         self.sum[value as usize].1
     }
 }
