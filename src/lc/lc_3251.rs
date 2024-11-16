@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/find-the-count-of-monotonic-pairs-ii/
-// 3251. Find the Count of Monotonic Pairs in an Array
+// 3251. Find the Count of Monotonic Pairs in an Array II
 pub struct Solution;
 impl Solution {
     pub fn count_of_pairs(nums: Vec<i32>) -> i32 {
