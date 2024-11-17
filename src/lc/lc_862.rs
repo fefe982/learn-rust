@@ -11,20 +11,12 @@ impl Solution {
         q.push_back(0);
         let mut min = usize::MAX;
         for i in 1..=nums.len() {
-            while let Some(&n) = q.back() {
-                if sum[i] <= sum[n] {
-                    q.pop_back();
-                } else {
-                    break;
-                }
+            while q.back().is_some_and(|&n| sum[i] <= sum[n]) {
+                q.pop_back();
             }
-            while let Some(&n) = q.front() {
-                if sum[i] - sum[n] >= k as i64 {
-                    min = std::cmp::min(min, i - n);
-                    q.pop_front();
-                } else {
-                    break;
-                }
+            while let Some(n) = q.front().filter(|&&n| sum[i] - sum[n] >= k as i64) {
+                min = std::cmp::min(min, i - n);
+                q.pop_front();
             }
             q.push_back(i);
         }
