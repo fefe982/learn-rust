@@ -720,6 +720,7 @@ pub mod lc_2454;
 pub mod lc_2455;
 pub mod lc_2458;
 pub mod lc_2460;
+pub mod lc_2461;
 pub mod lc_2462;
 pub mod lc_2463;
 pub mod lc_2465;
