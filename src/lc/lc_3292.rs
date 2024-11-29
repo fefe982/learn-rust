@@ -54,5 +54,10 @@ mod tests {
             Solution::min_valid_strings(vec_str!["abc", "aaaaa", "bcdef"], "aabcdabc".to_string()),
             3
         );
+        assert_eq!(
+            Solution::min_valid_strings(vec_str!["abababab", "ab"], "ababaababa".to_string()),
+            2
+        );
+        assert_eq!(Solution::min_valid_strings(vec_str!["abcdef"], "xyz".to_string()), -1);
     }
 }
