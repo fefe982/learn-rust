@@ -22,30 +22,28 @@ impl Solution {
         }
     }
     pub fn gcd_values(nums: Vec<i32>, queries: Vec<i64>) -> Vec<i32> {
-        let mut div = vec![vec![]; 500001];
-        let mut cnt = std::collections::BTreeMap::<i32, i32>::new();
+        let max = *nums.iter().max().unwrap();
+        let mut div = vec![vec![]; max as usize + 1];
+        let mut cnt = vec![0; max as usize + 1];
         for n in nums {
             Self::get_divs(n, &mut div);
             for &d in div[n as usize].iter().chain([n].iter()) {
-                cnt.entry(d).and_modify(|x| *x += 1).or_insert(1);
+                cnt[d as usize] += 1;
             }
         }
-        let mut gcd = std::collections::BTreeMap::<i32, i64>::new();
-        for (k, v) in cnt.into_iter().rev() {
+        let mut gcd = vec![0; max as usize + 1];
+        for (k, &v) in cnt.iter().enumerate().skip(1).rev() {
             let v = v as i64;
             let nv = v * (v - 1) / 2;
-            let &mut nf = gcd.entry(k).and_modify(|x| *x += nv).or_insert(nv);
-            if nf != 0 {
-                Self::get_divs(k, &mut div);
-                for &d in div[k as usize].iter().rev() {
-                    gcd.entry(d).and_modify(|x| *x -= nf).or_insert(-nf);
-                }
-            } else {
-                gcd.remove(&k);
+            gcd[k] += nv;
+            for j in 2..=max as usize / k {
+                gcd[k] -= gcd[k * j];
             }
         }
         let cnt = gcd
             .into_iter()
+            .enumerate()
+            .filter(|&(_, v)| v != 0)
             .scan(0, |s, (k, v)| {
                 *s += v;
                 Some((k, *s))
@@ -54,7 +52,7 @@ impl Solution {
         let mut ans = Vec::with_capacity(queries.len());
         for q in queries {
             let p = cnt.partition_point(|x| x.1 <= q);
-            ans.push(cnt[p].0);
+            ans.push(cnt[p].0 as i32);
         }
         ans
     }
