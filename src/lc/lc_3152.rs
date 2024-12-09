@@ -4,21 +4,14 @@ pub struct Solution;
 impl Solution {
     pub fn is_array_special(nums: Vec<i32>, queries: Vec<Vec<i32>>) -> Vec<bool> {
         let mut nums = nums;
-        let mut s = 0;
-        let mut e = 1;
-        while e < nums.len() {
-            if nums[e] % 2 == nums[e - 1] % 2 {
-                for i in s..e {
-                    nums[i] = (e - 1) as i32;
-                }
-                s = e;
-            }
-            e += 1;
+        nums[0] = nums[0] % 2;
+        for i in 1..nums.len() {
+            nums[i] = (nums[i - 1] + nums[i]) % 2 + nums[i - 1];
         }
-        for i in s..e {
-            nums[i] = (e - 1) as i32;
-        }
-        queries.into_iter().map(|q| nums[q[0] as usize] >= q[1]).collect()
+        queries
+            .into_iter()
+            .map(|q| nums[q[1] as usize] - nums[q[0] as usize] == q[1] - q[0])
+            .collect()
     }
 }
 #[cfg(test)]
