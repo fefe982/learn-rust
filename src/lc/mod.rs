@@ -1373,6 +1373,7 @@ pub mod lc_761;
 pub mod lc_765;
 pub mod lc_767;
 pub mod lc_768;
+pub mod lc_769;
 pub mod lc_77;
 pub mod lc_770;
 pub mod lc_771;
