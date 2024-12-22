@@ -39,7 +39,7 @@ impl std::cmp::Ord for Rng {
         self.partial_cmp(&other).unwrap()
     }
 }
-struct ExamRoom {
+pub struct ExamRoom {
     rngs: std::collections::BinaryHeap<Rng>,
     n: i32,
     seats: std::collections::BTreeMap<i32, i32>,
@@ -50,7 +50,7 @@ struct ExamRoom {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl ExamRoom {
-    fn new(n: i32) -> Self {
+    pub fn new(n: i32) -> Self {
         Self {
             rngs: std::collections::BinaryHeap::from([Rng::new(-1, i32::MAX, n)]),
             n,
@@ -58,7 +58,7 @@ impl ExamRoom {
         }
     }
 
-    fn seat(&mut self) -> i32 {
+    pub fn seat(&mut self) -> i32 {
         while let Some(rng) = self.rngs.pop() {
             if let Some(&r) = self.seats.get(&rng.left) {
                 if r != rng.right {
@@ -76,7 +76,7 @@ impl ExamRoom {
         -1
     }
 
-    fn leave(&mut self, p: i32) {
+    pub fn leave(&mut self, p: i32) {
         let r = self.seats.remove(&p).unwrap();
         let l = *self.seats.range(..p).rev().next().unwrap().0;
         self.seats.insert(l, r);
