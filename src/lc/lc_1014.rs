@@ -3,19 +3,11 @@
 pub struct Solution;
 impl Solution {
     pub fn max_score_sightseeing_pair(values: Vec<i32>) -> i32 {
-        let mut suffix = values.clone();
-        let n = values.len();
-        for i in (1..n).rev() {
-            suffix[i] -= i as i32;
-            if i + 1 < n {
-                suffix[i] = suffix[i].max(suffix[i + 1]);
-            }
-        }
         let mut m = i32::MIN;
         let mut prefix = i32::MIN;
-        for i in 0..n - 1 {
+        for i in 0..values.len() - 1 {
             prefix = prefix.max(values[i] + i as i32);
-            m = m.max(prefix + suffix[i + 1]);
+            m = m.max(prefix + values[i + 1] - i as i32 - 1);
         }
         m
     }
