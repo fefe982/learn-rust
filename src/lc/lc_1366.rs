@@ -4,7 +4,7 @@
 pub struct Solution;
 impl Solution {
     pub fn rank_teams(votes: Vec<String>) -> String {
-        let mut cnt: Vec<Vec<i32>> = vec![vec![0; 28]; 26];
+        let mut cnt = [[0; 28]; 26];
         for vote in votes {
             for (rank, team) in vote.chars().enumerate() {
                 let t: usize = team as usize - 'A' as usize;
