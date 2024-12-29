@@ -1,51 +1,32 @@
 // https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary/
 // 1639. Number of Ways to Form a Target String Given a Dictionary
 pub struct Solution;
-use std::collections::HashMap;
 impl Solution {
-    fn add(a: i64, b: i64) -> i64 {
-        (a + b) % 1000000007
-    }
-    fn mul(a: i64, b: i64) -> i64 {
-        (a * b) % 1000000007
-    }
-    fn count(
-        words: &Vec<&[u8]>,
-        target: &[u8],
-        sw: usize,
-        cache: &mut HashMap<(usize, usize), i64>,
-    ) -> i64 {
-        if let Some(&cnt) = cache.get(&(sw, target.len())) {
-            return cnt;
-        }
-        let mut cnt = 0;
-        for w in words {
-            if w[sw] == target[0] {
-                cnt += 1;
-            }
-        }
-        if target.len() > 1 {
-            let mut cnt_rest = 0;
-            for w in 0..(words[0].len() - sw - target.len() + 1) {
-                cnt_rest = Self::add(
-                    cnt_rest,
-                    Self::count(words, &target[1..], sw + w + 1, cache),
-                );
-            }
-            cnt = Self::mul(cnt, cnt_rest);
-        }
-        cache.insert((sw, target.len()), cnt);
-        cnt
-    }
     pub fn num_ways(words: Vec<String>, target: String) -> i32 {
-        let words: Vec<&[u8]> = words.iter().map(|x| x.as_bytes()).collect();
-        let target = target.as_bytes();
-        let mut cnt = 0;
-        let mut cache: HashMap<(usize, usize), i64> = HashMap::new();
-        for start in 0..(words[0].len() - target.len() + 1) {
-            cnt = Self::add(cnt, Self::count(&words, target, start, &mut cache));
+        if target.len() > words[0].len() {
+            return 0;
         }
-        cnt as i32
+        let wl = words[0].len();
+        let words = words.iter().fold(vec![[0; 26]; wl], |mut v, x| {
+            x.as_bytes()
+                .iter()
+                .enumerate()
+                .for_each(|(i, c)| v[i][(c - b'a') as usize] += 1);
+            v
+        });
+        let target = target.as_bytes();
+        let mut cnt = vec![0; target.len() + 1];
+        cnt[0] = 1;
+        let m = 1_000_000_007;
+        for i in 0..wl {
+            let mut ncnt = vec![0; target.len() + 1];
+            ncnt[0] = 1;
+            for j in 0..target.len() {
+                ncnt[j + 1] = (cnt[j + 1] + (cnt[j] * words[i][(target[j] - b'a') as usize] as i64) % m) % m;
+            }
+            cnt = ncnt;
+        }
+        cnt[target.len()] as i32
     }
 }
 #[cfg(test)]
@@ -54,6 +35,7 @@ mod tests {
     use crate::*;
     #[test]
     fn num_ways() {
+        assert_eq!(Solution::num_ways(vec_str!["abba", "baab"], String::from("babbbb")), 0);
         assert_eq!(
             Solution::num_ways(
                 vec_str![
@@ -110,9 +92,6 @@ mod tests {
             Solution::num_ways(vec_str!["acca", "bbbb", "caca"], String::from("aba")),
             6
         );
-        assert_eq!(
-            Solution::num_ways(vec_str!["abba", "baab"], String::from("bab")),
-            4
-        );
+        assert_eq!(Solution::num_ways(vec_str!["abba", "baab"], String::from("bab")), 4);
     }
 }
