@@ -2,7 +2,8 @@
 // 16. 3Sum Closest
 pub struct Solution;
 impl Solution {
-    pub fn three_sum_closest(mut nums: Vec<i32>, target: i32) -> i32 {
+    pub fn three_sum_closest(nums: Vec<i32>, target: i32) -> i32 {
+        let mut nums = nums;
         nums.sort_unstable();
         let mut closest = nums[0] + nums[1] + nums[2];
         for i in 0..nums.len() - 2 {
@@ -48,10 +49,7 @@ mod tests {
     use super::*;
     #[test]
     fn three_sum_closest() {
-        assert_eq!(
-            Solution::three_sum_closest(vec![4, 0, 5, -5, 3, 3, 0, -4, -5], -2),
-            -2
-        );
+        assert_eq!(Solution::three_sum_closest(vec![4, 0, 5, -5, 3, 3, 0, -4, -5], -2), -2);
         assert_eq!(Solution::three_sum_closest(vec![-1, 2, 1, -4], 1), 2);
         assert_eq!(Solution::three_sum_closest(vec![0, 0, 0], 1), 0);
     }

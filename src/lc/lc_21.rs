@@ -3,10 +3,9 @@
 pub struct Solution;
 use super::linked_list::ListNode;
 impl Solution {
-    pub fn merge_two_lists(
-        mut list1: Option<Box<ListNode>>,
-        mut list2: Option<Box<ListNode>>,
-    ) -> Option<Box<ListNode>> {
+    pub fn merge_two_lists(list1: Option<Box<ListNode>>, list2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut list1 = list1;
+        let mut list2 = list2;
         let mut head = ListNode::new(0);
         let mut cur = &mut head;
         loop {
@@ -40,10 +39,7 @@ mod tests {
     #[test]
     fn merge_two_lists() {
         assert_eq!(
-            Solution::merge_two_lists(
-                ListNode::from_vec(vec![1, 2, 4]),
-                ListNode::from_vec(vec![1, 3, 4])
-            ),
+            Solution::merge_two_lists(ListNode::from_vec(vec![1, 2, 4]), ListNode::from_vec(vec![1, 3, 4])),
             ListNode::from_vec(vec![1, 1, 2, 3, 4, 4])
         );
         assert_eq!(

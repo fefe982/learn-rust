@@ -2,7 +2,8 @@
 // 18. 4Sum
 pub struct Solution;
 impl Solution {
-    pub fn four_sum(mut nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
+    pub fn four_sum(nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
+        let mut nums = nums;
         nums.sort_unstable();
         let mut res = vec![];
         if nums.len() < 4 {
@@ -48,10 +49,7 @@ mod tests {
     #[test]
     fn is_valid() {
         assert_eq!(
-            Solution::four_sum(
-                vec![1000000000, 1000000000, 1000000000, 1000000000],
-                -294967296
-            ),
+            Solution::four_sum(vec![1000000000, 1000000000, 1000000000, 1000000000], -294967296),
             Vec::<Vec<i32>>::new()
         );
         assert_eq!(
@@ -62,9 +60,6 @@ mod tests {
             Solution::four_sum(vec![1, 0, -1, 0, -2, 2], 0),
             vec_vec![[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
         );
-        assert_eq!(
-            Solution::four_sum(vec![2, 2, 2, 2, 2], 8),
-            vec_vec![[2, 2, 2, 2]]
-        );
+        assert_eq!(Solution::four_sum(vec![2, 2, 2, 2, 2], 8), vec_vec![[2, 2, 2, 2]]);
     }
 }
