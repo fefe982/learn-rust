@@ -404,6 +404,7 @@ pub mod lc_1760;
 pub mod lc_1761;
 pub mod lc_1766;
 pub mod lc_1768;
+pub mod lc_1769;
 pub mod lc_1770;
 pub mod lc_1771;
 pub mod lc_1776;
