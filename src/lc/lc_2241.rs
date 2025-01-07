@@ -1,6 +1,6 @@
 // https://leetcode.cn/problems/design-an-atm-machine/
 // 2241. Design an ATM Machine
-struct ATM {
+pub struct ATM {
     cnt: [i32; 5],
 }
 
@@ -9,17 +9,17 @@ struct ATM {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl ATM {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self { cnt: [0; 5] }
     }
 
-    fn deposit(&mut self, banknotes_count: Vec<i32>) {
+    pub fn deposit(&mut self, banknotes_count: Vec<i32>) {
         for i in 0..5 {
             self.cnt[i] += banknotes_count[i];
         }
     }
 
-    fn withdraw(&mut self, amount: i32) -> Vec<i32> {
+    pub fn withdraw(&mut self, amount: i32) -> Vec<i32> {
         let mut res = vec![0; 5];
         let val = [20, 50, 100, 200, 500];
         let mut amount = amount;

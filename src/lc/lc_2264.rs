@@ -20,7 +20,7 @@ impl Solution {
         if max == '\0' {
             "".to_string()
         } else {
-            vec![max; 3].into_iter().collect::<String>()
+            std::iter::repeat(max).take(3).collect::<String>()
         }
     }
 }
