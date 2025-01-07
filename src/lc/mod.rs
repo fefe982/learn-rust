@@ -205,6 +205,7 @@ pub mod lc_1402;
 pub mod lc_1404;
 pub mod lc_1405;
 pub mod lc_1406;
+pub mod lc_1408;
 pub mod lc_1410;
 pub mod lc_1411;
 pub mod lc_1416;
