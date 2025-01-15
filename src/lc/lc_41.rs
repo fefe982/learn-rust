@@ -2,7 +2,8 @@
 // 41. First Missing Positive
 pub struct Solution;
 impl Solution {
-    pub fn first_missing_positive(mut nums: Vec<i32>) -> i32 {
+    pub fn first_missing_positive(nums: Vec<i32>) -> i32 {
+        let mut nums = nums;
         for idx in 0..nums.len() {
             let n = nums[idx];
             if n < 0 || n > nums.len() as i32 {
@@ -33,9 +34,7 @@ mod tests {
     #[test]
     fn first_missing_positive() {
         assert_eq!(
-            Solution::first_missing_positive(vec![
-                11, 1, 6, 11, 5, 5, -6, 9, -3, 9, 5, 4, 2, -8, 16, -6, -4, 2, 3
-            ]),
+            Solution::first_missing_positive(vec![11, 1, 6, 11, 5, 5, -6, 9, -3, 9, 5, 4, 2, -8, 16, -6, -4, 2, 3]),
             7
         );
         assert_eq!(Solution::first_missing_positive(vec![4, 1, 3, 3]), 2);
