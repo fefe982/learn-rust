@@ -1,28 +1,34 @@
 // https://leetcode.com/problems/wildcard-matching/
 // 44. Wildcard Matching
 pub struct Solution;
-use std::collections::HashSet;
 impl Solution {
-    fn is_match_str(s: &[u8], p: &[u8], cache: &mut HashSet<(usize, usize)>) -> bool {
-        if cache.contains(&(s.len(), p.len())) {
-            return false;
-        }
-        if p.len() == 0 {
-            return s.len() == 0;
-        }
-        let res = match p[0] {
-            b'?' => s.len() > 0 && Self::is_match_str(&s[1..], &p[1..], cache),
-            b'*' => {
-                (s.len() > 0 && Self::is_match_str(&s[1..], p, cache))
-                    || Self::is_match_str(s, &p[1..], cache)
-            }
-            _ => s.len() > 0 && s[0] == p[0] && Self::is_match_str(&s[1..], &p[1..], cache),
-        };
-        cache.insert((s.len(), p.len()));
-        res
-    }
     pub fn is_match(s: String, p: String) -> bool {
-        Self::is_match_str(s.as_bytes(), p.as_bytes(), &mut HashSet::new())
+        let s = s.as_bytes();
+        let p = p.as_bytes();
+        let mut is = 0;
+        let mut ip = 0;
+        let mut s_star = usize::MAX;
+        let mut p_star = usize::MAX;
+        while is < s.len() {
+            if ip < p.len() && (p[ip] == b'?' || p[ip] == s[is]) {
+                is += 1;
+                ip += 1;
+            } else if ip < p.len() && p[ip] == b'*' {
+                s_star = is;
+                p_star = ip;
+                ip += 1;
+            } else if p_star != usize::MAX {
+                ip = p_star + 1;
+                s_star += 1;
+                is = s_star
+            } else {
+                return false;
+            }
+        }
+        while ip < p.len() && p[ip] == b'*' {
+            ip += 1;
+        }
+        ip == p.len()
     }
 }
 #[cfg(test)]
@@ -30,17 +36,9 @@ mod tests {
     use super::*;
     #[test]
     fn is_match() {
-        assert_eq!(
-            Solution::is_match(String::from("aa"), String::from("a")),
-            false
-        );
-        assert_eq!(
-            Solution::is_match(String::from("aa"), String::from("*")),
-            true
-        );
-        assert_eq!(
-            Solution::is_match(String::from("cb"), String::from("?a")),
-            false
-        );
+        assert_eq!(Solution::is_match(String::from(""), String::from("****")), true);
+        assert_eq!(Solution::is_match(String::from("aa"), String::from("a")), false);
+        assert_eq!(Solution::is_match(String::from("aa"), String::from("*")), true);
+        assert_eq!(Solution::is_match(String::from("cb"), String::from("?a")), false);
     }
 }
