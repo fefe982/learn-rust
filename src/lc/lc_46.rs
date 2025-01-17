@@ -2,7 +2,8 @@
 // 46. Permutations
 pub struct Solution;
 impl Solution {
-    pub fn permute(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut nums = nums;
         nums.sort_unstable();
         let mut res = vec![nums.clone()];
         loop {
@@ -41,14 +42,7 @@ mod tests {
     fn my_pow() {
         assert_eq!(
             Solution::permute(vec![1, 2, 3]),
-            vec_vec![
-                [1, 2, 3],
-                [1, 3, 2],
-                [2, 1, 3],
-                [2, 3, 1],
-                [3, 1, 2],
-                [3, 2, 1]
-            ]
+            vec_vec![[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
         );
         assert_eq!(Solution::permute(vec![0, 1]), vec_vec![[0, 1], [1, 0]]);
         assert_eq!(Solution::permute(vec![1]), vec_vec![[1]]);
