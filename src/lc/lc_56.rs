@@ -2,7 +2,8 @@
 // 56. Merge Intervals
 pub struct Solution;
 impl Solution {
-    pub fn merge(mut intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+    pub fn merge(intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let mut intervals = intervals;
         intervals.sort_unstable();
         let mut res = Vec::<Vec<i32>>::new();
         for i in intervals {
