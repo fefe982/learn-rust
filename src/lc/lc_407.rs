@@ -2,65 +2,37 @@
 // 407. Trapping Rain Water II
 pub struct Solution;
 impl Solution {
-    pub fn trap_rain_water(mut height_map: Vec<Vec<i32>>) -> i32 {
+    pub fn trap_rain_water(height_map: Vec<Vec<i32>>) -> i32 {
         let h = height_map.len();
         let w = height_map[0].len();
-        let mut fixed = vec![vec![false; w]; h];
-        for i in 0..h {
-            fixed[i][0] = true;
-            fixed[i][w - 1] = true;
+        if h <= 2 || w <= 2 {
+            return 0;
         }
-        for i in 0..w {
-            fixed[0][i] = true;
-            fixed[h - 1][i] = true;
+        let mut visited = vec![vec![false; w]; h];
+        let mut q = std::collections::BinaryHeap::new();
+        for i in 0..h {
+            q.push((std::cmp::Reverse(height_map[i][0]), i, 0));
+            q.push((std::cmp::Reverse(height_map[i][w - 1]), i, w - 1));
+            visited[i][0] = true;
+            visited[i][w - 1] = true;
+        }
+        for i in 1..w - 1 {
+            q.push((std::cmp::Reverse(height_map[0][i]), 0, i));
+            q.push((std::cmp::Reverse(height_map[h - 1][i]), h - 1, i));
+            visited[0][i] = true;
+            visited[h - 1][i] = true;
         }
         let mut nwater = 0;
-        for ih in 1..h - 1 {
-            for iw in 1..w - 1 {
-                if fixed[ih][iw] {
-                    continue;
-                }
-                let mut visited = vec![vec![false; w]; h];
-                let mut q = std::collections::BinaryHeap::new();
-                q.push((-height_map[ih][iw], ih, iw));
-                visited[ih][iw] = true;
-                let mut min_bound = height_map[ih][iw];
-                let mut filled = vec![];
-                let mut fix = false;
-                while let Some((h, ch, cw)) = q.pop() {
-                    min_bound = -h;
-                    if fixed[ch][cw] {
-                        fix = true;
-                        break;
-                    }
-                    filled.push((ch, cw));
-                    let mut rise = true;
-                    for d in [[0, -1], [-1, 0], [1, 0], [0, 1]] {
-                        let nh = (ch as i32 + d[0]) as usize;
-                        let nw = (cw as i32 + d[1]) as usize;
-                        if !visited[nh][nw] && height_map[nh][nw] < height_map[ch][cw] {
-                            rise = false;
-                            break;
-                        }
-                    }
-                    if !rise {
-                        break;
-                    }
-                    for d in [[0, -1], [-1, 0], [1, 0], [0, 1]] {
-                        let nh = (ch as i32 + d[0]) as usize;
-                        let nw = (cw as i32 + d[1]) as usize;
-                        if !visited[nh][nw] {
-                            visited[nh][nw] = true;
-                            q.push((-height_map[nh][nw], nh, nw));
-                        }
-                    }
-                }
-                for (ch, cw) in filled {
-                    nwater += min_bound - height_map[ch][cw];
-                    height_map[ch][cw] = min_bound;
-                    if fix {
-                        fixed[ch][cw] = true;
-                    }
+        let mut level = 0;
+        while let Some((std::cmp::Reverse(height), i, j)) = q.pop() {
+            nwater += (level - height).max(0);
+            level = level.max(height);
+            for d in [[0, -1], [-1, 0], [1, 0], [0, 1]] {
+                let ni = (i as i32 + d[0]) as usize;
+                let nj = (j as i32 + d[1]) as usize;
+                if ni < h && nj < w && !visited[ni][nj] {
+                    q.push((std::cmp::Reverse(height_map[ni][nj]), ni, nj));
+                    visited[ni][nj] = true;
                 }
             }
         }
@@ -75,11 +47,7 @@ mod tests {
     #[test]
     fn trap_rain_water() {
         assert_eq!(
-            Solution::trap_rain_water(vec_vec![
-                [1, 4, 3, 1, 3, 2],
-                [3, 2, 1, 3, 2, 4],
-                [2, 3, 3, 2, 3, 1]
-            ]),
+            Solution::trap_rain_water(vec_vec![[1, 4, 3, 1, 3, 2], [3, 2, 1, 3, 2, 4], [2, 3, 3, 2, 3, 1]]),
             4
         );
         assert_eq!(
