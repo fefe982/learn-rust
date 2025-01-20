@@ -2,9 +2,9 @@
 // 63. Unique Paths II
 pub struct Solution;
 impl Solution {
-    pub fn unique_paths_with_obstacles(mut obstacle_grid: Vec<Vec<i32>>) -> i32 {
-        if obstacle_grid[obstacle_grid.len() - 1][obstacle_grid[obstacle_grid.len() - 1].len() - 1]
-            != 0
+    pub fn unique_paths_with_obstacles(obstacle_grid: Vec<Vec<i32>>) -> i32 {
+        let mut obstacle_grid = obstacle_grid;
+        if obstacle_grid[obstacle_grid.len() - 1][obstacle_grid[obstacle_grid.len() - 1].len() - 1] != 0
             || obstacle_grid[0][0] != 0
         {
             return 0;
@@ -34,17 +34,11 @@ mod tests {
     use crate::*;
     #[test]
     fn unique_paths_with_obstacles() {
-        assert_eq!(
-            Solution::unique_paths_with_obstacles(vec_vec![[0, 0], [0, 1]]),
-            0
-        );
+        assert_eq!(Solution::unique_paths_with_obstacles(vec_vec![[0, 0], [0, 1]]), 0);
         assert_eq!(
             Solution::unique_paths_with_obstacles(vec_vec![[0, 0, 0], [0, 1, 0], [0, 0, 0]]),
             2
         );
-        assert_eq!(
-            Solution::unique_paths_with_obstacles(vec_vec![[0, 1], [0, 0]]),
-            1
-        );
+        assert_eq!(Solution::unique_paths_with_obstacles(vec_vec![[0, 1], [0, 0]]), 1);
     }
 }

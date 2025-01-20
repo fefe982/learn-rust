@@ -2,7 +2,8 @@
 // 60. Permutation Sequence
 pub struct Solution;
 impl Solution {
-    pub fn get_permutation(n: i32, mut k: i32) -> String {
+    pub fn get_permutation(n: i32, k: i32) -> String {
+        let mut k = k;
         let mut digits: Vec<u8> = (b'1'..=(b'0' + n as u8)).collect();
         let mut result = Vec::with_capacity(n as usize);
         let mut modulo = 1;
