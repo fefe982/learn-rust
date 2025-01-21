@@ -1391,6 +1391,7 @@ pub mod lc_684;
 pub mod lc_685;
 pub mod lc_688;
 pub mod lc_689;
+pub mod lc_69;
 pub mod lc_691;
 pub mod lc_698;
 pub mod lc_699;
