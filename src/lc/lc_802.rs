@@ -2,31 +2,29 @@
 // 802. Find Eventual Safe States
 pub struct Solution;
 impl Solution {
+    fn walk(graph: &Vec<Vec<i32>>, node: usize, state: &mut Vec<i32>) -> i32 {
+        if state[node] != 0 {
+            return state[node];
+        }
+        state[node] = 1;
+        for &n in graph[node].iter() {
+            if Self::walk(graph, n as usize, state) == 1 {
+                return 1;
+            }
+        }
+        state[node] = 2;
+        2
+    }
     pub fn eventual_safe_nodes(graph: Vec<Vec<i32>>) -> Vec<i32> {
-        let mut degree = vec![0; graph.len()];
-        let mut edge_in = vec![vec![]; graph.len()];
-        let mut q = std::collections::VecDeque::new();
-        let mut safe = vec![];
-        for (i, e) in graph.iter().enumerate() {
-            for &t in e {
-                edge_in[t as usize].push(i);
-            }
-            if e.is_empty() {
-                q.push_back(i);
-            }
+        let mut state = vec![0; graph.len()];
+        for i in 0..graph.len() {
+            Self::walk(&graph, i, &mut state);
         }
-        while let Some(i) = q.pop_back() {
-            safe.push(i as i32);
-            for &from in edge_in[i].iter() {
-                let from = from as usize;
-                degree[from] += 1;
-                if degree[from] == graph[from].len() {
-                    q.push_back(from);
-                }
-            }
-        }
-        safe.sort_unstable();
-        safe
+        state
+            .into_iter()
+            .enumerate()
+            .filter_map(|(i, s)| if s == 2 { Some(i as i32) } else { None })
+            .collect::<Vec<_>>()
     }
 }
 #[cfg(test)]
