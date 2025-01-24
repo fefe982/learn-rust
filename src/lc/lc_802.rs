@@ -3,30 +3,30 @@
 pub struct Solution;
 impl Solution {
     pub fn eventual_safe_nodes(graph: Vec<Vec<i32>>) -> Vec<i32> {
-        let mut edge_out: Vec<std::collections::HashSet<i32>> =
-            graph.iter().map(|v| v.iter().cloned().collect()).collect();
-        let mut edge_in = vec![std::collections::HashSet::<i32>::new(); edge_out.len()];
+        let mut degree = vec![0; graph.len()];
+        let mut edge_in = vec![vec![]; graph.len()];
         let mut q = std::collections::VecDeque::new();
-        let mut safe = std::collections::BTreeSet::new();
-        for (e, i) in edge_out.iter().zip(0..) {
+        let mut safe = vec![];
+        for (i, e) in graph.iter().enumerate() {
+            for &t in e {
+                edge_in[t as usize].push(i);
+            }
             if e.is_empty() {
                 q.push_back(i);
-            } else {
-                for &to in e {
-                    edge_in[to as usize].insert(i);
-                }
             }
         }
         while let Some(i) = q.pop_back() {
-            safe.insert(i);
-            for &from in &edge_in[i as usize] {
-                edge_out[from as usize].remove(&i);
-                if edge_out[from as usize].is_empty() {
+            safe.push(i as i32);
+            for &from in edge_in[i].iter() {
+                let from = from as usize;
+                degree[from] += 1;
+                if degree[from] == graph[from].len() {
                     q.push_back(from);
                 }
             }
         }
-        safe.into_iter().collect()
+        safe.sort_unstable();
+        safe
     }
 }
 #[cfg(test)]
