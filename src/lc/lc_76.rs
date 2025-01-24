@@ -16,27 +16,30 @@ impl Solution {
         for &c in t {
             vec_t[Self::to_idx(c)] += 1;
         }
-        let mut vec_s = Vec::with_capacity(s.len() + 1);
-        let mut vec_sc = vec![0; 52];
-        for &c in s {
-            vec_s.push(vec_sc.clone());
-            vec_sc[Self::to_idx(c)] += 1;
+        let mut vec_s = vec![0; 52];
+        let mut good = 0;
+        for i in 0..52 {
+            if vec_s[i] >= vec_t[i] {
+                good += 1;
+            }
         }
-        vec_s.push(vec_sc);
         let mut min_len = usize::MAX;
         let mut min_start = 0;
         let mut start = 0;
-        let mut end = 1;
-        let mut cur_c = 0;
-        while end <= s.len() {
-            while cur_c < 52 && vec_t[cur_c] <= vec_s[end][cur_c] - vec_s[start][cur_c] {
-                cur_c += 1;
+        let mut end = 0;
+        while end < s.len() {
+            let iec = Self::to_idx(s[end]);
+            vec_s[iec] += 1;
+            if vec_s[iec] == vec_t[iec] {
+                good += 1;
             }
-            if cur_c >= 52 {
+            end += 1;
+            if good == 52 {
                 loop {
-                    let c = Self::to_idx(s[start]);
-                    if vec_t[c] < vec_s[end][c] - vec_s[start][c] {
+                    let isc = Self::to_idx(s[start]);
+                    if vec_t[isc] < vec_s[isc] {
                         start += 1;
+                        vec_s[isc] -= 1;
                     } else {
                         break;
                     }
@@ -47,7 +50,6 @@ impl Solution {
                     min_start = start;
                 }
             }
-            end += 1;
         }
         if min_len == usize::MAX {
             String::from("")
