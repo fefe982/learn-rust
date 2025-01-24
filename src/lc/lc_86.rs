@@ -3,7 +3,8 @@
 pub struct Solution;
 use super::linked_list::ListNode;
 impl Solution {
-    pub fn partition(mut head: Option<Box<ListNode>>, x: i32) -> Option<Box<ListNode>> {
+    pub fn partition(head: Option<Box<ListNode>>, x: i32) -> Option<Box<ListNode>> {
+        let mut head = head;
         let mut hl = None;
         let mut hr = None;
         while let Some(mut n) = head {
