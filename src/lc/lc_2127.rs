@@ -3,14 +3,14 @@
 pub struct Solution;
 impl Solution {
     pub fn maximum_invitations(favorite: Vec<i32>) -> i32 {
-        let mut p = vec![std::collections::HashSet::<i32>::new(); favorite.len()];
-        for (i, &f) in favorite.iter().enumerate() {
-            p[f as usize].insert(i as i32);
+        let mut p = vec![0; favorite.len()];
+        for &f in &favorite {
+            p[f as usize] += 1;
         }
         let mut l = vec![1; favorite.len()];
         let mut q = vec![];
-        for (i, pv) in p.iter().enumerate() {
-            if pv.is_empty() {
+        for (i, &deg) in p.iter().enumerate() {
+            if deg == 0 {
                 q.push(i);
                 l[i] = 1;
             }
@@ -19,9 +19,9 @@ impl Solution {
         while let Some(i) = q.pop() {
             visited[i] = true;
             let j = favorite[i] as usize;
-            p[j].remove(&(i as i32));
+            p[j] -= 1;
             l[j] = l[j].max(l[i] + 1);
-            if p[j].is_empty() {
+            if p[j] == 0 {
                 q.push(j);
             }
         }
