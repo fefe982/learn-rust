@@ -30,6 +30,7 @@ pub mod lc_1035;
 pub mod lc_1036;
 pub mod lc_1038;
 pub mod lc_1039;
+pub mod lc_104;
 pub mod lc_1040;
 pub mod lc_1041;
 pub mod lc_1042;
