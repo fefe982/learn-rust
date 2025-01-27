@@ -2,62 +2,43 @@
 // 1462. Course Schedule IV
 pub struct Solution;
 impl Solution {
-    fn check_if_prerequisite_helper(
-        pre: i32,
-        cur: i32,
-        visited: &mut Vec<bool>,
-        graph: &mut std::collections::HashMap<i32, std::collections::HashSet<i32>>,
-    ) -> bool {
-        if visited[pre as usize] {
-            return graph
-                .get(&pre)
-                .and_then(|s| Some(s.contains(&cur)))
-                .unwrap_or(false);
+    pub fn check_if_prerequisite(num_courses: i32, prerequisites: Vec<Vec<i32>>, queries: Vec<Vec<i32>>) -> Vec<bool> {
+        let mut graph = [0_i128; 100];
+        let mut deg = [0; 100];
+        for prerequisite in prerequisites {
+            graph[prerequisite[1] as usize] |= 1 << prerequisite[0];
+            deg[prerequisite[0] as usize] += 1;
         }
-        visited[pre as usize] = true;
-        let pre_set = graph.remove(&pre);
-        if let Some(mut pre_set) = pre_set {
-            let mut v = vec![];
-            for &next in pre_set.iter() {
-                Self::check_if_prerequisite_helper(next, cur, visited, graph);
+        let mut q = std::collections::VecDeque::new();
+        for i in 0..num_courses {
+            if deg[i as usize] == 0 {
+                q.push_back(i);
             }
-            for &next in pre_set.iter() {
-                if let Some(ns) = graph.get(&next) {
-                    for &nn in ns {
-                        v.push(nn);
+        }
+        let mut nxt = [0_i128; 100];
+        while let Some(i) = q.pop_front() {
+            let prei = graph[i as usize];
+            if prei == 0 {
+                continue;
+            }
+            for j in 0..num_courses {
+                if prei & (1 << j) != 0 {
+                    nxt[j as usize] |= 1 << i;
+                    nxt[j as usize] |= nxt[i as usize];
+                    deg[j as usize] -= 1;
+                    if deg[j as usize] == 0 {
+                        q.push_back(j);
                     }
                 }
             }
-            for nn in v {
-                pre_set.insert(nn);
-            }
-            graph.insert(pre, pre_set);
-            return graph.get(&pre).unwrap().contains(&cur);
-        } else {
-            false
         }
-    }
-    pub fn check_if_prerequisite(
-        num_courses: i32,
-        prerequisites: Vec<Vec<i32>>,
-        queries: Vec<Vec<i32>>,
-    ) -> Vec<bool> {
-        let mut graph = std::collections::HashMap::<i32, std::collections::HashSet<i32>>::new();
-        for prerequisite in prerequisites {
-            graph
-                .entry(prerequisite[0])
-                .or_default()
-                .insert(prerequisite[1]);
-        }
-        let mut visited = vec![false; num_courses as usize];
-        let mut result = vec![];
+        let mut result = Vec::with_capacity(queries.len());
         for query in queries {
-            result.push(Solution::check_if_prerequisite_helper(
-                query[0],
-                query[1],
-                &mut visited,
-                &mut graph,
-            ));
+            result.push(if nxt[query[0] as usize] & (1 << query[1]) != 0 {
+                true
+            } else {
+                false
+            });
         }
         result
     }
@@ -85,11 +66,7 @@ mod tests {
             vec![false, false]
         );
         assert_eq!(
-            Solution::check_if_prerequisite(
-                3,
-                vec_vec![[1, 2], [1, 0], [2, 0]],
-                vec_vec![[1, 0], [1, 2]]
-            ),
+            Solution::check_if_prerequisite(3, vec_vec![[1, 2], [1, 0], [2, 0]], vec_vec![[1, 0], [1, 2]]),
             vec![true, true]
         );
     }
