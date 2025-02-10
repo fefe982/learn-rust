@@ -291,6 +291,7 @@ pub mod lc_1520;
 pub mod lc_1521;
 pub mod lc_1526;
 pub mod lc_1529;
+pub mod lc_153;
 pub mod lc_1530;
 pub mod lc_1531;
 pub mod lc_1535;
