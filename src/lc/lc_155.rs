@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/min-stack/
 // 155. Min Stack
-struct MinStack {
+pub struct MinStack {
     stack: Vec<i32>,
     min_stack: Vec<i32>,
 }
@@ -10,31 +10,31 @@ struct MinStack {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MinStack {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             stack: Vec::new(),
             min_stack: Vec::new(),
         }
     }
 
-    fn push(&mut self, val: i32) {
+    pub fn push(&mut self, val: i32) {
         self.stack.push(val);
         if self.min_stack.is_empty() || val <= *self.min_stack.last().unwrap() {
             self.min_stack.push(val);
         }
     }
 
-    fn pop(&mut self) {
+    pub fn pop(&mut self) {
         if self.stack.pop().unwrap() == *self.min_stack.last().unwrap() {
             self.min_stack.pop();
         }
     }
 
-    fn top(&self) -> i32 {
+    pub fn top(&self) -> i32 {
         *self.stack.last().unwrap()
     }
 
-    fn get_min(&self) -> i32 {
+    pub fn get_min(&self) -> i32 {
         *self.min_stack.last().unwrap()
     }
 }

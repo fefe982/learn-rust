@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-a-number-container-system/
 // 2349. Design a Number Container System
-struct NumberContainers {
+pub struct NumberContainers {
     idx: std::collections::HashMap<i32, std::collections::BTreeSet<i32>>,
     num: std::collections::HashMap<i32, i32>,
 }
@@ -10,14 +10,14 @@ struct NumberContainers {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl NumberContainers {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             idx: std::collections::HashMap::new(),
             num: std::collections::HashMap::new(),
         }
     }
 
-    fn change(&mut self, index: i32, number: i32) {
+    pub fn change(&mut self, index: i32, number: i32) {
         if let Some(old) = self.num.get(&index) {
             self.idx.get_mut(old).unwrap().remove(&index);
         }
@@ -25,7 +25,7 @@ impl NumberContainers {
         self.num.insert(index, number);
     }
 
-    fn find(&self, number: i32) -> i32 {
+    pub fn find(&self, number: i32) -> i32 {
         self.idx
             .get(&number)
             .map_or(-1, |s| s.iter().next().copied().unwrap_or(-1))
