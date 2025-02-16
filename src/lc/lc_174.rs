@@ -2,7 +2,8 @@
 // 174. Dungeon Game
 pub struct Solution;
 impl Solution {
-    pub fn calculate_minimum_hp(mut dungeon: Vec<Vec<i32>>) -> i32 {
+    pub fn calculate_minimum_hp(dungeon: Vec<Vec<i32>>) -> i32 {
+        let mut dungeon = dungeon;
         let r = dungeon.len() - 1;
         let c = dungeon[0].len() - 1;
         dungeon[r][c] = std::cmp::max(1, 1 - dungeon[r][c]);
