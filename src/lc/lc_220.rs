@@ -2,7 +2,8 @@
 // 220. Contains Duplicate III
 pub struct Solution;
 impl Solution {
-    pub fn contains_nearby_almost_duplicate(mut nums: Vec<i32>, index_diff: i32, value_diff: i32) -> bool {
+    pub fn contains_nearby_almost_duplicate(nums: Vec<i32>, index_diff: i32, value_diff: i32) -> bool {
+        let mut nums = nums;
         let mut buckets = std::collections::HashMap::<i32, i32>::new();
         let index_diff = index_diff as usize;
         for idx in 0..nums.len() {
