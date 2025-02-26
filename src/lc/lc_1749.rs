@@ -3,25 +3,17 @@
 pub struct Solution;
 impl Solution {
     pub fn max_absolute_sum(nums: Vec<i32>) -> i32 {
-        let mut sum = vec![0; nums.len() + 1];
-        let mut min = sum.clone();
-        let mut max = sum.clone();
-        for i in 0..nums.len() {
-            sum[i + 1] = sum[i] + nums[i];
-            min[i + 1] = min[i].min(sum[i + 1]);
-            max[i + 1] = max[i].max(sum[i + 1]);
+        let mut rmin = 0;
+        let mut rmax = 0;
+        let mut min = 0;
+        let mut max = 0;
+        for n in nums {
+            rmin = (rmin + n).min(0);
+            rmax = (rmax + n).max(0);
+            min = min.min(rmin);
+            max = max.max(rmax);
         }
-        let mut mx = sum[nums.len()];
-        let mut mn = sum[nums.len()];
-        let mut mxdiff = 0;
-        let mut mndiff = 0;
-        for i in (0..nums.len()).rev() {
-            mxdiff = mxdiff.max(mx - min[i]);
-            mndiff = mndiff.min(mn - max[i]);
-            mx = mx.max(sum[i]);
-            mn = mn.min(sum[i]);
-        }
-        mxdiff.abs().max(mndiff.abs())
+        max.max(min.abs())
     }
 }
 #[cfg(test)]
