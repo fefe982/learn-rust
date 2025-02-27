@@ -3,24 +3,22 @@
 pub struct Solution;
 impl Solution {
     pub fn max_sliding_window(nums: Vec<i32>, k: i32) -> Vec<i32> {
-        let mut heap = std::collections::BinaryHeap::new();
-        let mut removed = std::collections::BinaryHeap::new();
-        let mut res = Vec::new();
         let k = k as usize;
-        for idx in 0..k {
-            heap.push(nums[idx]);
-        }
-        res.push(*heap.peek().unwrap());
-        for idx in k..nums.len() {
-            removed.push(nums[idx - k]);
-            heap.push(nums[idx]);
-            while !removed.is_empty() && removed.peek() == heap.peek() {
-                removed.pop();
-                heap.pop();
+        let mut q = std::collections::VecDeque::new();
+        let mut v = Vec::with_capacity(nums.len() - k + 1);
+        for i in 0..nums.len() {
+            while q.back().is_some_and(|&j| nums[j] < nums[i]) {
+                q.pop_back();
             }
-            res.push(*heap.peek().unwrap())
+            q.push_back(i);
+            while q.front().is_some_and(|&j| j + k <= i) {
+                q.pop_front();
+            }
+            if i >= k - 1 {
+                v.push(nums[*q.front().unwrap()]);
+            }
         }
-        res
+        v
     }
 }
 #[cfg(test)]

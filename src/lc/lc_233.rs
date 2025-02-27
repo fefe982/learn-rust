@@ -2,7 +2,8 @@
 // 233. Number of Digit One
 pub struct Solution;
 impl Solution {
-    pub fn count_digit_one(mut n: i32) -> i32 {
+    pub fn count_digit_one(n: i32) -> i32 {
+        let mut n = n;
         if n == 0 {
             return 0;
         }
