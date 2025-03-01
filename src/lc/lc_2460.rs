@@ -2,7 +2,8 @@
 // 2460. Apply Operations to an Array
 pub struct Solution;
 impl Solution {
-    pub fn apply_operations(mut nums: Vec<i32>) -> Vec<i32> {
+    pub fn apply_operations(nums: Vec<i32>) -> Vec<i32> {
+        let mut nums = nums;
         let mut idx = 0;
         for i in 1..nums.len() {
             if nums[i - 1] != 0 {
