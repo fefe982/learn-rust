@@ -17,7 +17,7 @@ impl Solution {
             .collect::<Vec<_>>();
         let mut max = 0;
         for i in 0..words.len() - 1 {
-            for j in 1..words.len() {
+            for j in i + 1..words.len() {
                 if (words[i].0 & words[j].0) == 0 {
                     max = max.max(words[i].1 * words[j].1);
                 }

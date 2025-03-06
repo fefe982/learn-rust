@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-memory-allocator/
 // 2502. Design Memory Allocator
-struct Allocator {
+pub struct Allocator {
     v: Vec<i32>,
 }
 
@@ -9,11 +9,11 @@ struct Allocator {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Allocator {
-    fn new(n: i32) -> Self {
+    pub fn new(n: i32) -> Self {
         Self { v: vec![0; n as usize] }
     }
 
-    fn allocate(&mut self, size: i32, m_id: i32) -> i32 {
+    pub fn allocate(&mut self, size: i32, m_id: i32) -> i32 {
         let mut len = 0;
         for i in 0..self.v.len() {
             if self.v[i] == 0 {
@@ -32,7 +32,7 @@ impl Allocator {
         -1
     }
 
-    fn free_memory(&mut self, m_id: i32) -> i32 {
+    pub fn free_memory(&mut self, m_id: i32) -> i32 {
         let mut cnt = 0;
         for i in 0..self.v.len() {
             if self.v[i] == m_id {
