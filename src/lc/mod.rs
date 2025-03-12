@@ -1327,6 +1327,7 @@ pub mod lc_357;
 pub mod lc_36;
 pub mod lc_363;
 pub mod lc_365;
+pub mod lc_367;
 pub mod lc_368;
 pub mod lc_37;
 pub mod lc_373;
