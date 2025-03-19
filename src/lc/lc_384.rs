@@ -10,18 +10,18 @@ pub struct Solution {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Solution {
-    fn new(nums: Vec<i32>) -> Self {
+    pub fn new(nums: Vec<i32>) -> Self {
         Self {
             origin: nums,
             rng: rand::thread_rng(),
         }
     }
 
-    fn reset(&self) -> Vec<i32> {
+    pub fn reset(&self) -> Vec<i32> {
         self.origin.clone()
     }
 
-    fn shuffle(&mut self) -> Vec<i32> {
+    pub fn shuffle(&mut self) -> Vec<i32> {
         let mut shuffled = self.origin.clone();
         for i in (1..shuffled.len()).rev() {
             let j = self.rng.gen_range(0..=i);

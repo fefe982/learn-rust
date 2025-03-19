@@ -1,11 +1,7 @@
 // https://leetcode.com/problems/flatten-nested-list-iterator/
 // 341. Flatten Nested List Iterator
 pub struct Solution;
-#[derive(Debug, PartialEq, Eq)]
-pub enum NestedInteger {
-    Int(i32),
-    List(Vec<NestedInteger>),
-}
+use super::nested_integer::NestedInteger;
 pub struct NestedIterator {
     vec: Vec<i32>,
     index: usize,
