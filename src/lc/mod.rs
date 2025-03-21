@@ -930,6 +930,7 @@ pub mod lc_2639;
 pub mod lc_264;
 pub mod lc_2641;
 pub mod lc_2642;
+pub mod lc_2643;
 pub mod lc_2644;
 pub mod lc_2645;
 pub mod lc_2646;
