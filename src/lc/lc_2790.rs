@@ -18,6 +18,7 @@ impl Solution {
         res as i32
     }
 }
+#[cfg(test)]
 mod tests {
     use super::*;
     #[test]

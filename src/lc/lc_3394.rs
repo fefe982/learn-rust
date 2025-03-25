@@ -2,7 +2,7 @@
 // 3394. Check if Grid can be Cut into Squares
 pub struct Solution;
 impl Solution {
-    pub fn check_valid_cuts(n: i32, rectangles: Vec<Vec<i32>>) -> bool {
+    pub fn check_valid_cuts(_n: i32, rectangles: Vec<Vec<i32>>) -> bool {
         let mut bond = rectangles.iter().map(|r| (r[0], r[2])).collect::<Vec<_>>();
         bond.sort_unstable();
         let mut cut = 0;
