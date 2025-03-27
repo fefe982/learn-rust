@@ -993,6 +993,7 @@ pub mod lc_2765;
 pub mod lc_2766;
 pub mod lc_2769;
 pub mod lc_2779;
+pub mod lc_2780;
 pub mod lc_2781;
 pub mod lc_2785;
 pub mod lc_2786;
