@@ -1374,6 +1374,7 @@ pub mod lc_392;
 pub mod lc_393;
 pub mod lc_394;
 pub mod lc_395;
+pub mod lc_396;
 pub mod lc_399;
 pub mod lc_4;
 pub mod lc_40;

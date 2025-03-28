@@ -2,7 +2,8 @@
 // 2360. Longest Cycle in a Graph
 pub struct Solution;
 impl Solution {
-    pub fn longest_cycle(mut edges: Vec<i32>) -> i32 {
+    pub fn longest_cycle(edges: Vec<i32>) -> i32 {
+        let mut edges = edges;
         let mut max_cycle = -1;
         for idx in 0..edges.len() {
             if edges[idx] < 0 {
