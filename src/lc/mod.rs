@@ -1045,6 +1045,8 @@ pub mod lc_2867;
 pub mod lc_287;
 pub mod lc_2870;
 pub mod lc_2872;
+pub mod lc_2873;
+pub mod lc_2874;
 pub mod lc_2876;
 pub mod lc_2886;
 pub mod lc_289;
