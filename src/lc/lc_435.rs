@@ -2,7 +2,8 @@
 // 435. Non-overlapping Intervals
 pub struct Solution;
 impl Solution {
-    pub fn erase_overlap_intervals(mut intervals: Vec<Vec<i32>>) -> i32 {
+    pub fn erase_overlap_intervals(intervals: Vec<Vec<i32>>) -> i32 {
+        let mut intervals = intervals;
         let mut ends = Vec::<(i32, i32)>::new();
         intervals.sort_unstable();
         let len = intervals.len();
@@ -33,13 +34,7 @@ mod tests {
             Solution::erase_overlap_intervals(vec_vec![[1, 2], [2, 3], [3, 4], [1, 3]]),
             1
         );
-        assert_eq!(
-            Solution::erase_overlap_intervals(vec_vec![[1, 2], [1, 2], [1, 2]]),
-            2
-        );
-        assert_eq!(
-            Solution::erase_overlap_intervals(vec_vec![[1, 2], [2, 3]]),
-            0
-        );
+        assert_eq!(Solution::erase_overlap_intervals(vec_vec![[1, 2], [1, 2], [1, 2]]), 2);
+        assert_eq!(Solution::erase_overlap_intervals(vec_vec![[1, 2], [2, 3]]), 0);
     }
 }
