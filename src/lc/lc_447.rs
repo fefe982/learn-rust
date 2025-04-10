@@ -3,26 +3,18 @@
 pub struct Solution;
 impl Solution {
     pub fn number_of_boomerangs(points: Vec<Vec<i32>>) -> i32 {
-        let mut count = std::collections::HashMap::<(i32, i32), std::collections::HashMap<i32, i32>>::new();
+        let mut count = vec![std::collections::HashMap::<i32, i32>::new(); points.len()];
         for i in 0..points.len() - 1 {
             for j in i + 1..points.len() {
                 let dx = points[i][0] - points[j][0];
                 let dy = points[i][1] - points[j][1];
                 let d = dx * dx + dy * dy;
-                *count
-                    .entry((points[i][0], points[i][1]))
-                    .or_default()
-                    .entry(d)
-                    .or_default() += 1;
-                *count
-                    .entry((points[j][0], points[j][1]))
-                    .or_default()
-                    .entry(d)
-                    .or_default() += 1;
+                *count[i].entry(d).or_default() += 1;
+                *count[j].entry(d).or_default() += 1;
             }
         }
         let mut c = 0;
-        for (_, m) in count {
+        for m in count {
             for (_, cnt) in m {
                 c += cnt * (cnt - 1);
             }
