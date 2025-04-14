@@ -7,7 +7,6 @@ impl Solution {
         let s0 = &s[0..n];
         for i in 1..l / n {
             if s0 != &s[n * i..n * (i + 1)] {
-                println!("{s:?}, {n}, {i}, {s0:?}, {:?}", &s[n * i..n * (i + 1)]);
                 return false;
             }
         }
@@ -43,22 +42,11 @@ mod tests {
     #[test]
     fn repeated_substring_pattern() {
         assert_eq!(
-            Solution::repeated_substring_pattern(String::from(
-                "ababababababaababababababaababababababa"
-            )),
+            Solution::repeated_substring_pattern(String::from("ababababababaababababababaababababababa")),
             true
         );
-        assert_eq!(
-            Solution::repeated_substring_pattern(String::from("abab")),
-            true
-        );
-        assert_eq!(
-            Solution::repeated_substring_pattern(String::from("aba")),
-            false
-        );
-        assert_eq!(
-            Solution::repeated_substring_pattern(String::from("abcabcabc")),
-            true
-        );
+        assert_eq!(Solution::repeated_substring_pattern(String::from("abab")), true);
+        assert_eq!(Solution::repeated_substring_pattern(String::from("aba")), false);
+        assert_eq!(Solution::repeated_substring_pattern(String::from("abcabcabc")), true);
     }
 }
