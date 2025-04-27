@@ -11,8 +11,9 @@ impl Solution {
         let mut left: i32 = 0;
         let mut s = 0;
         for m in machines {
+            s = s.max(left.abs());
             if m > avg {
-                s = s.max((m - avg).max(left.abs()));
+                s = s.max(m - avg);
             }
             left += m - avg;
         }
@@ -24,6 +25,8 @@ mod tests {
     use super::*;
     #[test]
     fn find_min_moves() {
+        assert_eq!(Solution::find_min_moves(vec![0, 0, 10, 0, 0, 0, 10, 0, 0, 0]), 8);
+        assert_eq!(Solution::find_min_moves(vec![7, 6, 5, 4, 3, 2, 1]), 6);
         assert_eq!(Solution::find_min_moves(vec![9, 1, 8, 8, 9]), 4);
         assert_eq!(Solution::find_min_moves(vec![0, 0, 11, 5]), 8);
         assert_eq!(Solution::find_min_moves(vec![4, 0, 0, 4]), 2);
