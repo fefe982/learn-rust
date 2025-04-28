@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/
 // 497. Random Point in Non-overlapping Rectangles
 use rand::distributions::Distribution;
-struct Solution {
+pub struct Solution {
     rects: Vec<Vec<i32>>,
     start: Vec<i32>,
     uni: rand::distributions::Uniform<i32>,
@@ -13,7 +13,7 @@ struct Solution {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Solution {
-    fn new(rects: Vec<Vec<i32>>) -> Self {
+    pub fn new(rects: Vec<Vec<i32>>) -> Self {
         let mut start = Vec::with_capacity(rects.len());
         let mut total = 0;
         for r in &rects {
@@ -28,7 +28,7 @@ impl Solution {
         }
     }
 
-    fn pick(&mut self) -> Vec<i32> {
+    pub fn pick(&mut self) -> Vec<i32> {
         let val = self.uni.sample(&mut self.rng);
         let pos = self.start.partition_point(|&x| x <= val) - 1;
         let offset = val - self.start[pos];

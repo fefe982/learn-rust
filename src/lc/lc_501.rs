@@ -43,10 +43,7 @@ mod tests {
     #[test]
     fn test_find_mode() {
         let null = NULL;
-        assert_eq!(
-            Solution::find_mode(TreeNode::from_vec(vec![1, null, 2, 2])),
-            vec![2]
-        );
+        assert_eq!(Solution::find_mode(TreeNode::from_vec(vec![1, null, 2, 2])), vec![2]);
         assert_eq!(Solution::find_mode(TreeNode::from_vec(vec![0])), vec![0]);
     }
 }
