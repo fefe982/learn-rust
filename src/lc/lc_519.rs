@@ -12,11 +12,11 @@ pub struct Solution {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Solution {
-    fn new(m: i32, n: i32) -> Self {
+    pub fn new(m: i32, n: i32) -> Self {
         Self { m, n, zpos: Vec::new() }
     }
 
-    fn flip(&mut self) -> Vec<i32> {
+    pub fn flip(&mut self) -> Vec<i32> {
         let len = self.m * self.n - self.zpos.len() as i32;
         let mut target = rand::thread_rng().gen_range(0..len);
         let mut pos = self.zpos.partition_point(|&x| x <= target);
@@ -29,7 +29,7 @@ impl Solution {
         vec![target / self.n, target % self.n]
     }
 
-    fn reset(&mut self) {
+    pub fn reset(&mut self) {
         self.zpos.clear();
     }
 }
