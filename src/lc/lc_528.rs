@@ -10,13 +10,13 @@ pub struct Solution {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Solution {
-    fn new(w: Vec<i32>) -> Self {
+    pub fn new(w: Vec<i32>) -> Self {
         Self {
             rng: rand::distributions::WeightedIndex::new(w).unwrap(),
         }
     }
 
-    fn pick_index(&self) -> i32 {
+    pub fn pick_index(&self) -> i32 {
         self.rng.sample(&mut rand::thread_rng()) as i32
     }
 }
