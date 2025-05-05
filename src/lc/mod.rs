@@ -510,6 +510,7 @@ pub mod lc_1912;
 pub mod lc_1913;
 pub mod lc_1915;
 pub mod lc_1916;
+pub mod lc_1920;
 pub mod lc_1921;
 pub mod lc_1922;
 pub mod lc_1923;
