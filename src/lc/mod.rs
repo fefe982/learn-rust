@@ -1515,6 +1515,7 @@ pub mod lc_528;
 pub mod lc_529;
 pub mod lc_53;
 pub mod lc_530;
+pub mod lc_532;
 pub mod lc_539;
 pub mod lc_54;
 pub mod lc_540;
