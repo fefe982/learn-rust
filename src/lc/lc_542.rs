@@ -2,7 +2,8 @@
 // 542. 01 Matrix
 pub struct Solution;
 impl Solution {
-    pub fn update_matrix(mut mat: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+    pub fn update_matrix(mat: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let mut mat = mat;
         let mut q = std::collections::VecDeque::<(usize, usize)>::new();
         for i in 0..mat.len() {
             for j in 0..mat[i].len() {
