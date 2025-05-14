@@ -31,6 +31,7 @@ impl Solution {
             } else {
                 rlen = 0;
             }
+            i += 1;
         }
         (nums.len() - llen - rlen) as i32
     }
