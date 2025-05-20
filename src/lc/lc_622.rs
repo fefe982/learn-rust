@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-circular-queue/
 // 622. Design Circular Queue
-struct MyCircularQueue {
+pub struct MyCircularQueue {
     v: Vec<i32>,
     head: usize,
     tail: usize,
@@ -11,7 +11,7 @@ struct MyCircularQueue {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyCircularQueue {
-    fn new(k: i32) -> Self {
+    pub fn new(k: i32) -> Self {
         Self {
             v: vec![0; k as usize + 1],
             head: 0,
@@ -19,7 +19,7 @@ impl MyCircularQueue {
         }
     }
 
-    fn en_queue(&mut self, value: i32) -> bool {
+    pub fn en_queue(&mut self, value: i32) -> bool {
         if self.is_full() {
             false
         } else {
@@ -29,7 +29,7 @@ impl MyCircularQueue {
         }
     }
 
-    fn de_queue(&mut self) -> bool {
+    pub fn de_queue(&mut self) -> bool {
         if self.is_empty() {
             false
         } else {
@@ -38,7 +38,7 @@ impl MyCircularQueue {
         }
     }
 
-    fn front(&self) -> i32 {
+    pub fn front(&self) -> i32 {
         if self.is_empty() {
             -1
         } else {
@@ -46,7 +46,7 @@ impl MyCircularQueue {
         }
     }
 
-    fn rear(&self) -> i32 {
+    pub fn rear(&self) -> i32 {
         if self.is_empty() {
             -1
         } else {
@@ -54,11 +54,11 @@ impl MyCircularQueue {
         }
     }
 
-    fn is_empty(&self) -> bool {
+    pub fn is_empty(&self) -> bool {
         self.head == self.tail
     }
 
-    fn is_full(&self) -> bool {
+    pub fn is_full(&self) -> bool {
         self.head == (self.tail + 1) % self.v.len()
     }
 }
