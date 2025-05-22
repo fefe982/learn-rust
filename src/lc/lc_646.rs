@@ -2,7 +2,8 @@
 // 646. Maximum Length of Pair Chain
 pub struct Solution;
 impl Solution {
-    pub fn find_longest_chain(mut pairs: Vec<Vec<i32>>) -> i32 {
+    pub fn find_longest_chain(pairs: Vec<Vec<i32>>) -> i32 {
+        let mut pairs = pairs;
         let mut max = 0;
         let mut h = std::collections::BinaryHeap::<(std::cmp::Reverse<i32>, i32)>::new();
         pairs.sort_unstable();
@@ -968,13 +969,7 @@ mod tests {
             ]),
             4
         );
-        assert_eq!(
-            Solution::find_longest_chain(vec_vec![[1, 2], [2, 3], [3, 4]]),
-            2
-        );
-        assert_eq!(
-            Solution::find_longest_chain(vec_vec![[1, 2], [7, 8], [4, 5]]),
-            3
-        );
+        assert_eq!(Solution::find_longest_chain(vec_vec![[1, 2], [2, 3], [3, 4]]), 2);
+        assert_eq!(Solution::find_longest_chain(vec_vec![[1, 2], [7, 8], [4, 5]]), 3);
     }
 }
