@@ -49,7 +49,7 @@ mod tests {
         assert_eq!(
             Solution::max_target_nodes(
                 vec_vec![[0, 1], [0, 2], [0, 3], [0, 4]],
-                vec_vec![[0, 1], [1, 2], [2, 3]],
+                vec_vec![[0, 1], [1, 2], [2, 3]]
             ),
             [3, 6, 6, 6, 6]
         );
