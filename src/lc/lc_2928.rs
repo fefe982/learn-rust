@@ -3,18 +3,7 @@
 pub struct Solution;
 impl Solution {
     pub fn distribute_candies(n: i32, limit: i32) -> i32 {
-        let mut total = (n + 2) * (n + 1) / 2;
-        for i in 0..n - limit {
-            total -= (i + 1) * 3;
-        }
-        for i in 0..n - limit * 2 - 1 {
-            total += (n - i - limit * 2 - 2 + 1) * 3;
-        }
-        if n >= limit * 3 + 3 {
-            let t = n - limit * 3 - 3;
-            total -= (t + 2) * (t + 1) / 2;
-        }
-        total
+        super::lc_2929::Solution::distribute_candies(n, limit) as i32
     }
 }
 #[cfg(test)]
