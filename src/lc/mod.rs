@@ -1630,6 +1630,7 @@ pub mod lc_673;
 pub mod lc_674;
 pub mod lc_675;
 pub mod lc_676;
+pub mod lc_677;
 pub mod lc_678;
 pub mod lc_679;
 pub mod lc_68;
