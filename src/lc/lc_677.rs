@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/map-sum-pairs/
 // 677. Map Sum Pairs
 
-struct MapSum {
+pub struct MapSum {
     leaf: i32,
     sum: i32,
     children: std::collections::HashMap<u8, MapSum>,
@@ -11,7 +11,7 @@ struct MapSum {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MapSum {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             leaf: 0,
             sum: 0,
@@ -19,12 +19,12 @@ impl MapSum {
         }
     }
 
-    fn insert(&mut self, key: String, val: i32) {
+    pub fn insert(&mut self, key: String, val: i32) {
         let val = val - self.common_prefix_search(key.as_bytes()).1;
         self.insert_u8(key.as_bytes(), val)
     }
 
-    fn sum(&self, prefix: String) -> i32 {
+    pub fn sum(&self, prefix: String) -> i32 {
         self.common_prefix_search(prefix.as_bytes()).0
     }
 
