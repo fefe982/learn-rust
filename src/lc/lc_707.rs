@@ -1,7 +1,6 @@
 // https://leetcode.com/problems/design-linked-list/
 // 707. Design Linked List
-#[derive(Debug)]
-struct MyLinkedList {
+pub struct MyLinkedList {
     val: i32,
     next: Option<Box<MyLinkedList>>,
 }
@@ -11,11 +10,11 @@ struct MyLinkedList {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyLinkedList {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self { val: -1, next: None }
     }
 
-    fn get(&self, index: i32) -> i32 {
+    pub fn get(&self, index: i32) -> i32 {
         let mut i = index;
         let mut n = &self.next;
         while i >= 0 {
@@ -32,12 +31,12 @@ impl MyLinkedList {
         return -1;
     }
 
-    fn add_at_head(&mut self, val: i32) {
+    pub fn add_at_head(&mut self, val: i32) {
         let tail = self.next.take();
         self.next = Some(Box::new(MyLinkedList { val, next: tail }));
     }
 
-    fn add_at_tail(&mut self, val: i32) {
+    pub fn add_at_tail(&mut self, val: i32) {
         let mut n = self;
         while n.next.is_some() {
             n = n.next.as_mut().unwrap();
@@ -45,7 +44,7 @@ impl MyLinkedList {
         n.next = Some(Box::new(MyLinkedList { val, next: None }));
     }
 
-    fn add_at_index(&mut self, index: i32, val: i32) {
+    pub fn add_at_index(&mut self, index: i32, val: i32) {
         let mut i = index;
         let mut n = self;
         while i >= 0 {
@@ -63,7 +62,7 @@ impl MyLinkedList {
         }
     }
 
-    fn delete_at_index(&mut self, index: i32) {
+    pub fn delete_at_index(&mut self, index: i32) {
         let mut i = index;
         let mut n = self;
         while i >= 0 {
@@ -102,7 +101,6 @@ mod tests {
         obj.add_at_head(1);
         obj.add_at_tail(3);
         obj.add_at_index(1, 2);
-        println!("{obj:?}");
         assert_eq!(obj.get(1), 2);
         obj.delete_at_index(1);
         assert_eq!(obj.get(1), 3);
