@@ -1,6 +1,5 @@
 // https://leetcode.com/problems/kth-largest-element-in-a-stream/
 // 703. Kth Largest Element in a Stream
-pub struct Solution;
 pub struct KthLargest {
     q: std::collections::BinaryHeap<std::cmp::Reverse<i32>>,
     k: usize,
