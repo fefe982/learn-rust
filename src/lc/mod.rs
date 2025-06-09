@@ -1373,6 +1373,7 @@ pub mod lc_342;
 pub mod lc_343;
 pub mod lc_344;
 pub mod lc_3442;
+pub mod lc_3445;
 pub mod lc_345;
 pub mod lc_347;
 pub mod lc_349;
