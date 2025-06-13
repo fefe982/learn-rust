@@ -1696,6 +1696,7 @@ pub mod lc_736;
 pub mod lc_738;
 pub mod lc_739;
 pub mod lc_74;
+pub mod lc_740;
 pub mod lc_741;
 pub mod lc_743;
 pub mod lc_744;
