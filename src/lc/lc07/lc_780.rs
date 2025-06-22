@@ -2,7 +2,9 @@
 // 780. Reaching Points
 pub struct Solution;
 impl Solution {
-    pub fn reaching_points(sx: i32, sy: i32, mut tx: i32, mut ty: i32) -> bool {
+    pub fn reaching_points(sx: i32, sy: i32, tx: i32, ty: i32) -> bool {
+        let mut tx = tx;
+        let mut ty = ty;
         loop {
             if tx < sx {
                 return false;
