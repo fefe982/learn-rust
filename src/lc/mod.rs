@@ -1,6 +1,7 @@
 pub mod binary_tree;
 pub mod helpers;
 pub mod lc07;
+pub mod lc08;
 pub mod lc22;
 pub mod lc23;
 pub mod linked_list;
