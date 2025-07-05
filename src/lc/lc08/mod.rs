@@ -12,3 +12,4 @@ pub mod lc_820;
 pub mod lc_821;
 pub mod lc_824;
 pub mod lc_830;
+pub mod lc_832;

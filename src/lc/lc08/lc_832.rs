@@ -1,93 +1,37 @@
-// https://leetcode.com/problems/binary-trees-with-factors/
-// 823. Binary Trees With Factors
+// https://leetcode.com/problems/flipping-an-image/
+// 832. Flipping an Image
 pub struct Solution;
-const MOD: i64 = 1_000_000_007;
-#[derive(Copy, Clone)]
-struct IMod {
-    val: i64,
-}
-impl IMod {
-    fn from_i32(val: i32) -> Self {
-        Self { val: val as i64 }
-    }
-    fn to_i32(&self) -> i32 {
-        self.val as i32
-    }
-}
-impl std::ops::Mul<IMod> for IMod {
-    type Output = IMod;
-    fn mul(self, rhs: IMod) -> IMod {
-        IMod {
-            val: (self.val * rhs.val) % MOD,
-        }
-    }
-}
-impl std::ops::Mul<i32> for IMod {
-    type Output = IMod;
-    fn mul(self, rhs: i32) -> IMod {
-        IMod {
-            val: (self.val * rhs as i64) % MOD,
-        }
-    }
-}
-impl std::ops::AddAssign for IMod {
-    fn add_assign(&mut self, rhs: Self) {
-        self.val = (self.val + rhs.val) % MOD;
-    }
-}
-impl std::ops::Add<IMod> for IMod {
-    type Output = IMod;
-    fn add(self, rhs: IMod) -> IMod {
-        IMod {
-            val: (self.val + rhs.val) % MOD,
-        }
-    }
-}
 impl Solution {
-    pub fn num_factored_binary_trees(arr: Vec<i32>) -> i32 {
-        let mut arr = arr;
-        arr.sort();
-        let mut dp = vec![IMod::from_i32(1); arr.len()];
-        let mut sum = dp[0];
-        for i in 1..arr.len() {
-            let mut j = 0;
-            let mut k = i - 1;
-            let (left, right) = dp.split_at_mut(i);
-            while j <= k {
-                match (arr[i] % arr[j] == 0, (arr[i] / arr[j]).cmp(&arr[k])) {
-                    (true, std::cmp::Ordering::Equal) => {
-                        if j == k {
-                            right[0] += left[j] * left[k];
-                        } else {
-                            right[0] += left[j] * left[k] * 2;
-                        }
-                        j += 1;
-                        if k == 0 {
-                            break;
-                        }
-                        k -= 1;
-                    }
-                    (_, std::cmp::Ordering::Greater) => j += 1,
-                    (_, std::cmp::Ordering::Less) => {
-                        if k == 0 {
-                            break;
-                        }
-                        k -= 1;
-                    }
-                    (false, std::cmp::Ordering::Equal) => j += 1,
+    pub fn flip_and_invert_image(image: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        let mut image = image;
+        let n = image[0].len();
+        for row in image.iter_mut() {
+            for i in 0..n / 2 {
+                if row[i] == row[n - i - 1] {
+                    row[i] ^= 1;
+                    row[n - i - 1] ^= 1;
                 }
             }
-            sum += right[0]
+            if n % 2 == 1 {
+                row[n / 2] ^= 1;
+            }
         }
-        sum.to_i32()
+        image
     }
 }
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::*;
     #[test]
-    fn test_num_factored_binary_trees() {
-        assert_eq!(Solution::num_factored_binary_trees(vec![2, 4]), 3);
-        assert_eq!(Solution::num_factored_binary_trees(vec![2, 4, 5, 10]), 7);
+    fn flip_and_invert_image() {
+        assert_eq!(
+            Solution::flip_and_invert_image(vec_vec![[1, 1, 0], [1, 0, 1], [0, 0, 0]]),
+            vec_vec![[1, 0, 0], [0, 1, 0], [1, 1, 1]]
+        );
+        assert_eq!(
+            Solution::flip_and_invert_image(vec_vec![[1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 1, 0]]),
+            vec_vec![[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 1], [1, 0, 1, 0]]
+        );
     }
 }
