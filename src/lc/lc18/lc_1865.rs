@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/finding-pairs-with-a-certain-sum/
 // 1865. Finding Pairs With a Certain Sum
-struct FindSumPairs {
+pub struct FindSumPairs {
     map1: std::collections::HashMap<i32, i32>,
     nums2: Vec<i32>,
     map2: std::collections::HashMap<i32, i32>,
@@ -11,7 +11,7 @@ struct FindSumPairs {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl FindSumPairs {
-    fn new(nums1: Vec<i32>, nums2: Vec<i32>) -> Self {
+    pub fn new(nums1: Vec<i32>, nums2: Vec<i32>) -> Self {
         let mut map1 = std::collections::HashMap::new();
         for i in nums1 {
             *map1.entry(i).or_insert(0) += 1;
@@ -23,14 +23,14 @@ impl FindSumPairs {
         Self { map1, nums2, map2 }
     }
 
-    fn add(&mut self, index: i32, val: i32) {
+    pub fn add(&mut self, index: i32, val: i32) {
         let index = index as usize;
         *self.map2.entry(self.nums2[index]).or_insert(0) -= 1;
         self.nums2[index] += val;
         *self.map2.entry(self.nums2[index]).or_insert(0) += 1;
     }
 
-    fn count(&self, tot: i32) -> i32 {
+    pub fn count(&self, tot: i32) -> i32 {
         self.map1
             .iter()
             .map(|(&k, &v)| self.map2.get(&(tot - k)).unwrap_or(&0) * v)
