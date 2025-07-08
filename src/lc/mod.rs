@@ -9,5 +9,6 @@ pub mod lc20;
 pub mod lc22;
 pub mod lc23;
 pub mod lc33;
+pub mod lc34;
 pub mod linked_list;
 pub mod nested_integer;
