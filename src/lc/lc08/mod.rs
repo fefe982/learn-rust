@@ -25,3 +25,4 @@ pub mod lc_853;
 pub mod lc_856;
 pub mod lc_858;
 pub mod lc_865;
+pub mod lc_866;
