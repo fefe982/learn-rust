@@ -5,6 +5,7 @@ pub mod lc07;
 pub mod lc08;
 pub mod lc12;
 pub mod lc13;
+pub mod lc16;
 pub mod lc17;
 pub mod lc18;
 pub mod lc20;
