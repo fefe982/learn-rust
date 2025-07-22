@@ -3,6 +3,7 @@ pub mod helpers;
 pub mod lc06;
 pub mod lc07;
 pub mod lc08;
+pub mod lc09;
 pub mod lc12;
 pub mod lc13;
 pub mod lc16;
