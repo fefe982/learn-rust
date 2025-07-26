@@ -9,7 +9,6 @@ impl Solution {
             .collect::<Vec<_>>();
         pair.sort_by(|a, b| a.1.cmp(&b.1));
         let mut cnt = 0i64;
-        // let mut h = std::collections::BinaryHeap::new();
         let mut p = 0;
         let mut max = 0;
         let mut maxs = 0;
