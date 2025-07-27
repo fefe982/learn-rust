@@ -4,7 +4,7 @@ use super::super::binary_tree::TreeNode;
 use std::cell::RefCell;
 use std::collections::VecDeque;
 use std::rc::Rc;
-struct CBTInserter {
+pub struct CBTInserter {
     root: Option<Rc<RefCell<TreeNode>>>,
     queue: VecDeque<Rc<RefCell<TreeNode>>>,
 }
@@ -14,7 +14,7 @@ struct CBTInserter {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl CBTInserter {
-    fn new(root: Option<Rc<RefCell<TreeNode>>>) -> Self {
+    pub fn new(root: Option<Rc<RefCell<TreeNode>>>) -> Self {
         let mut lvl = 1;
         let mut q0 = vec![];
         let mut q1 = vec![];
@@ -52,7 +52,7 @@ impl CBTInserter {
         }
     }
 
-    fn insert(&mut self, val: i32) -> i32 {
+    pub fn insert(&mut self, val: i32) -> i32 {
         let node = self.queue.pop_front().unwrap();
         let new_node = Rc::new(RefCell::new(TreeNode::new(val)));
         let val = node.borrow().val;
@@ -66,7 +66,7 @@ impl CBTInserter {
         val
     }
 
-    fn get_root(&self) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn get_root(&self) -> Option<Rc<RefCell<TreeNode>>> {
         self.root.clone()
     }
 }
