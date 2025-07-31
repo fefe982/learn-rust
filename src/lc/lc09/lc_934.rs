@@ -2,7 +2,8 @@
 // 934. Shortest Bridge
 pub struct Solution;
 impl Solution {
-    pub fn shortest_bridge(mut grid: Vec<Vec<i32>>) -> i32 {
+    pub fn shortest_bridge(grid: Vec<Vec<i32>>) -> i32 {
+        let mut grid = grid;
         let n = grid.len();
         let dir = [[0, 1], [1, 0], [-1, 0], [0, -1]];
         let mut q1 = std::collections::VecDeque::new();
@@ -62,10 +63,7 @@ mod tests {
     #[test]
     fn shortest_bridge() {
         assert_eq!(Solution::shortest_bridge(vec_vec![[0, 1], [1, 0]]), 1);
-        assert_eq!(
-            Solution::shortest_bridge(vec_vec![[0, 1, 0], [0, 0, 0], [0, 0, 1]]),
-            2
-        );
+        assert_eq!(Solution::shortest_bridge(vec_vec![[0, 1, 0], [0, 0, 0], [0, 0, 1]]), 2);
         assert_eq!(
             Solution::shortest_bridge(vec_vec![
                 [1, 1, 1, 1, 1],
