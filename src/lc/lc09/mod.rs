@@ -26,3 +26,4 @@ pub mod lc_961;
 pub mod lc_963;
 pub mod lc_965;
 pub mod lc_966;
+pub mod lc_967;
