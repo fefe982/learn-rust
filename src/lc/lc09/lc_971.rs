@@ -49,11 +49,9 @@ impl Solution {
 }
 #[cfg(test)]
 mod tests {
-    use super::super::super::binary_tree::NULL;
     use super::*;
     #[test]
     fn flip_match_voyage() {
-        let null = NULL;
         assert_eq!(
             Solution::flip_match_voyage(TreeNode::from_vec(vec![1, 2]), vec![2, 1]),
             vec![-1]
