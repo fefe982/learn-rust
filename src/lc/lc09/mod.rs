@@ -35,3 +35,4 @@ pub mod lc_978;
 pub mod lc_981;
 pub mod lc_984;
 pub mod lc_985;
+pub mod lc_986;
