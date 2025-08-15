@@ -1,1 +1,2 @@
 pub mod lc_1004;
+pub mod lc_1005;
