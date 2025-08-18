@@ -5,3 +5,4 @@ pub mod lc_1008;
 pub mod lc_1009;
 pub mod lc_1013;
 pub mod lc_1018;
+pub mod lc_1021;
