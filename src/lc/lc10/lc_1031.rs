@@ -2,7 +2,8 @@
 // 1031. Maximum Sum of Two Non-Overlapping Subarrays
 pub struct Solution;
 impl Solution {
-    pub fn max_sum_two_no_overlap(mut nums: Vec<i32>, first_len: i32, second_len: i32) -> i32 {
+    pub fn max_sum_two_no_overlap(nums: Vec<i32>, first_len: i32, second_len: i32) -> i32 {
+        let mut nums = nums;
         for idx in 1..nums.len() {
             nums[idx] += nums[idx - 1];
         }
@@ -12,15 +13,9 @@ impl Solution {
         let mut max_sum1 = nums[first_len - 1];
         let mut max_sum2 = nums[second_len - 1];
         for idx in first_len + second_len..nums.len() {
-            max_sum1 = std::cmp::max(
-                max_sum1,
-                nums[idx - second_len] - nums[idx - second_len - first_len],
-            );
+            max_sum1 = std::cmp::max(max_sum1, nums[idx - second_len] - nums[idx - second_len - first_len]);
             max_sum = std::cmp::max(max_sum1 + nums[idx] - nums[idx - second_len], max_sum);
-            max_sum2 = std::cmp::max(
-                max_sum2,
-                nums[idx - first_len] - nums[idx - first_len - second_len],
-            );
+            max_sum2 = std::cmp::max(max_sum2, nums[idx - first_len] - nums[idx - first_len - second_len]);
             max_sum = std::cmp::max(max_sum2 + nums[idx] - nums[idx - first_len], max_sum);
         }
         max_sum
