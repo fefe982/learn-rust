@@ -2,7 +2,8 @@
 // 1054. Distant Barcodes
 pub struct Solution;
 impl Solution {
-    pub fn rearrange_barcodes(mut barcodes: Vec<i32>) -> Vec<i32> {
+    pub fn rearrange_barcodes(barcodes: Vec<i32>) -> Vec<i32> {
+        let mut barcodes = barcodes;
         let mut cnt = vec![0; 10001];
         let mut max_cnt = 0;
         let mut max_cnt_i = 0;
@@ -62,11 +63,7 @@ mod tests {
     fn rearrange_barcodes() {
         assert!(check_res(Solution::rearrange_barcodes(vec![1, 1, 2])));
         assert!(check_res(Solution::rearrange_barcodes(vec![2, 2, 1, 3])));
-        assert!(check_res(Solution::rearrange_barcodes(vec![
-            1, 1, 1, 2, 2, 2
-        ])));
-        assert!(check_res(Solution::rearrange_barcodes(vec![
-            1, 1, 1, 1, 2, 2, 3, 3
-        ])));
+        assert!(check_res(Solution::rearrange_barcodes(vec![1, 1, 1, 2, 2, 2])));
+        assert!(check_res(Solution::rearrange_barcodes(vec![1, 1, 1, 1, 2, 2, 3, 3])));
     }
 }
