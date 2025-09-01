@@ -6,3 +6,4 @@ pub mod lc_1124;
 pub mod lc_1129;
 pub mod lc_1131;
 pub mod lc_1138;
+pub mod lc_1139;
