@@ -2,13 +2,11 @@
 // 1253. Reconstruct a 2-Row Binary Matrix
 pub struct Solution;
 impl Solution {
-    pub fn reconstruct_matrix(mut upper: i32, mut lower: i32, colsum: Vec<i32>) -> Vec<Vec<i32>> {
+    pub fn reconstruct_matrix(upper: i32, lower: i32, colsum: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut upper = upper;
+        let mut lower = lower;
         let (sum, cnt, mut dup) = colsum.iter().fold((0, 0, 0), |(s, cn, f), &c| {
-            (
-                s + c,
-                cn + if c != 0 { 1 } else { 0 },
-                f + if c == 2 { 1 } else { 0 },
-            )
+            (s + c, cn + if c != 0 { 1 } else { 0 }, f + if c == 2 { 1 } else { 0 })
         });
         if sum != upper + lower || cnt < upper || cnt < lower {
             return vec![];
@@ -54,10 +52,7 @@ mod tests {
         );
         assert_eq!(
             Solution::reconstruct_matrix(5, 5, vec![2, 1, 2, 0, 1, 0, 1, 2, 0, 1]),
-            vec_vec![
-                [1, 1, 1, 0, 1, 0, 0, 1, 0, 0],
-                [1, 0, 1, 0, 0, 0, 1, 1, 0, 1]
-            ]
+            vec_vec![[1, 1, 1, 0, 1, 0, 0, 1, 0, 0], [1, 0, 1, 0, 0, 0, 1, 1, 0, 1]]
         );
     }
 }
