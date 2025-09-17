@@ -2,7 +2,8 @@
 // 1281. Subtract the Product and Sum of Digits of an Integer
 pub struct Solution;
 impl Solution {
-    pub fn subtract_product_and_sum(mut n: i32) -> i32 {
+    pub fn subtract_product_and_sum(n: i32) -> i32 {
+        let mut n = n;
         let mut p = 1;
         let mut s = 0;
         while n > 0 {
