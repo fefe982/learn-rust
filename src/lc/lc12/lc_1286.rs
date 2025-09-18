@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/iterator-for-combination/
 // 1286. Iterator for Combination
-struct CombinationIterator {
+pub struct CombinationIterator {
     characters: Vec<char>,
     index: Vec<usize>,
 }
@@ -10,14 +10,14 @@ struct CombinationIterator {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl CombinationIterator {
-    fn new(characters: String, combination_length: i32) -> Self {
+    pub fn new(characters: String, combination_length: i32) -> Self {
         Self {
             characters: characters.chars().collect(),
             index: (0..combination_length as usize).collect(),
         }
     }
 
-    fn next(&mut self) -> String {
+    pub fn next(&mut self) -> String {
         let mut ret = String::new();
         for i in &self.index {
             ret.push(self.characters[*i]);
@@ -37,7 +37,7 @@ impl CombinationIterator {
         ret
     }
 
-    fn has_next(&self) -> bool {
+    pub fn has_next(&self) -> bool {
         self.index.len() != 0
     }
 }
