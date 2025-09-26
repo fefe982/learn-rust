@@ -1,34 +1,46 @@
-// https://leetcode.cn/problems/count-largest-group/
+// https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/
 // 1339. Maximum Product of Splitted Binary Tree
 pub struct Solution;
+use super::super::binary_tree::TreeNode;
+use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
-    pub fn count_largest_group(n: i32) -> i32 {
-        let mut cnt = vec![0; 37];
-        let mut s = vec![0; 10001];
-        for i in 1..=n as usize {
-            let si = s[i / 10] + i % 10;
-            s[i] = si;
-            cnt[si as usize] += 1;
-        }
-        let mut ans = 0;
-        let mut max = 0;
-        for i in 1..=36 {
-            if cnt[i] > max {
-                max = cnt[i];
-                ans = 1;
-            } else if cnt[i] == max {
-                ans += 1;
+    fn sum(root: &Option<Rc<RefCell<TreeNode>>>, subtree: &mut Vec<i32>) -> i32 {
+        match root {
+            None => 0,
+            Some(node) => {
+                let l = Self::sum(&node.borrow().left, subtree);
+                let r = Self::sum(&node.borrow().right, subtree);
+                let s = node.borrow().val + l + r;
+                subtree.push(s);
+                s
             }
         }
-        ans
+    }
+    pub fn max_product(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        let mut v = vec![];
+        let s = Solution::sum(&root, &mut v);
+        v.sort_unstable();
+        let mut pos = v.partition_point(|&x| x * 2 < s);
+        if pos == v.len() {
+            pos -= 1;
+        } else if pos > 0 && (s - v[pos] < v[pos - 1]) {
+            pos -= 1;
+        }
+        ((s - v[pos]) as i64 * v[pos] as i64 % 1_000_000_007) as i32
     }
 }
 #[cfg(test)]
 mod tests {
+    use super::super::super::binary_tree::NULL;
     use super::*;
     #[test]
-    fn count_largest_group() {
-        assert_eq!(Solution::count_largest_group(13), 4);
-        assert_eq!(Solution::count_largest_group(2), 2);
+    fn max_product() {
+        let null = NULL;
+        assert_eq!(Solution::max_product(TreeNode::from_vec(vec![1, 2, 3, 4, 5, 6])), 110);
+        assert_eq!(
+            Solution::max_product(TreeNode::from_vec(vec![1, null, 2, 3, 4, null, null, 5, 6])),
+            90
+        );
     }
 }
