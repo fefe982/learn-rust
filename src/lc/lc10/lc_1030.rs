@@ -9,7 +9,7 @@ impl Solution {
                 res.push(vec![r, c]);
             }
         }
-        res.sort_by_key(|x| ((x[0] - r_center).abs() + (x[1] - c_center).abs()));
+        res.sort_by_key(|x| (x[0] - r_center).abs() + (x[1] - c_center).abs());
         res
     }
 }
