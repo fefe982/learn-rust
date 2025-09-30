@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/apply-discount-every-n-orders/
 // 1357. Apply Discount Every N Orders
-struct Cashier {
+pub struct Cashier {
     n: i32,
     discount: i32,
     product_price: std::collections::HashMap<i32, i32>,
@@ -12,7 +12,7 @@ struct Cashier {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Cashier {
-    fn new(n: i32, discount: i32, products: Vec<i32>, prices: Vec<i32>) -> Self {
+    pub fn new(n: i32, discount: i32, products: Vec<i32>, prices: Vec<i32>) -> Self {
         let product_price = products
             .into_iter()
             .zip(prices.into_iter())
@@ -25,7 +25,7 @@ impl Cashier {
         }
     }
 
-    fn get_bill(&mut self, product: Vec<i32>, amount: Vec<i32>) -> f64 {
+    pub fn get_bill(&mut self, product: Vec<i32>, amount: Vec<i32>) -> f64 {
         self.order_count += 1;
         let mut total = 0.0;
         for (p, a) in product.into_iter().zip(amount.into_iter()) {
