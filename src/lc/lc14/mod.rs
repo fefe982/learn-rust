@@ -9,3 +9,4 @@ pub mod lc_1437;
 pub mod lc_1443;
 pub mod lc_1446;
 pub mod lc_1447;
+pub mod lc_1451;
