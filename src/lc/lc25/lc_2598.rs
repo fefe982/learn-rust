@@ -25,7 +25,6 @@ mod tests {
     fn find_smallest_integer() {
         assert_eq!(Solution::find_smallest_integer(vec![1, 3, 5, 7], 2), 0);
         assert_eq!(Solution::find_smallest_integer(vec![1, -10, 7, 13, 6, 8], 5), 4);
-        assert_eq!(Solution::find_smallest_integer(vec![1, -10, 7, 13, 6, 8], 5), 4);
         assert_eq!(Solution::find_smallest_integer(vec![1, -10, 7, 13, 6, 8], 7), 2);
     }
 }
