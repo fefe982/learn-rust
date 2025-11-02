@@ -34,25 +34,19 @@ impl Solution {
             }
             r
         }
-        let mut c = vec![];
         for i in 1..=mx / 2 {
+            if gp[i].is_empty() {
+                continue;
+            }
             let len = mx / i + 1;
-            let mut clear = false;
+            let mut c = vec![0; len];
             for &n in &gp[i] {
                 let n = n as usize;
-                if n % i == 0 {
-                    if !clear {
-                        c = vec![0; len];
-                        clear = true;
-                    }
-                    let ni = n / i;
-                    let sum = get(&c, ni - 1);
-                    add(&mut c, ni, sum + 1, len);
-                }
+                let ni = n / i;
+                let sum = get(&c, ni - 1);
+                add(&mut c, ni, sum + 1, len);
             }
-            if clear {
-                g[i] = get(&c, mx / i);
-            }
+            g[i] = get(&c, mx / i);
         }
         let hmx = (mx / 2) as i32;
         for &n in &nums {
