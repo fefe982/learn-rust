@@ -1,4 +1,5 @@
 pub mod lc_3607;
+pub mod lc_3655;
 pub mod lc_3661;
 pub mod lc_3666;
 pub mod lc_3671;
