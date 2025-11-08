@@ -16,6 +16,7 @@ pub mod lc17;
 pub mod lc18;
 pub mod lc19;
 pub mod lc20;
+pub mod lc21;
 pub mod lc22;
 pub mod lc23;
 pub mod lc24;
