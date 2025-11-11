@@ -31,5 +31,6 @@ pub mod lc34;
 pub mod lc35;
 pub mod lc36;
 pub mod lc37;
+pub mod lc_cn_int;
 pub mod linked_list;
 pub mod nested_integer;
