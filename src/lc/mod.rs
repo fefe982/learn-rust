@@ -1,5 +1,6 @@
 pub mod binary_tree;
 pub mod helpers;
+pub mod lc02;
 pub mod lc03;
 pub mod lc06;
 pub mod lc07;
