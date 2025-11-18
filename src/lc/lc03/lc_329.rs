@@ -2,12 +2,7 @@
 // 329. Longest Increasing Path in a Matrix
 pub struct Solution;
 impl Solution {
-    fn get_max_len(
-        matrix: &Vec<Vec<i32>>,
-        ih: usize,
-        iw: usize,
-        max_len: &mut Vec<Vec<i32>>,
-    ) -> i32 {
+    fn get_max_len(matrix: &Vec<Vec<i32>>, ih: usize, iw: usize, max_len: &mut Vec<Vec<i32>>) -> i32 {
         if max_len[ih][iw] > 0 {
             return max_len[ih][iw];
         }
