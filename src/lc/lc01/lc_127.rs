@@ -14,7 +14,8 @@ impl Solution {
         }
         cnt == 1
     }
-    pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<String>) -> i32 {
+    pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String>) -> i32 {
+        let mut word_list = word_list;
         let mut begin_word_idx = usize::MAX;
         let mut end_word_idx = usize::MAX;
         for (idx, w) in word_list.iter().enumerate() {
