@@ -2,7 +2,8 @@
 // 2141. Maximum Running Time of N Computers
 pub struct Solution;
 impl Solution {
-    pub fn max_run_time(n: i32, mut batteries: Vec<i32>) -> i64 {
+    pub fn max_run_time(n: i32, batteries: Vec<i32>) -> i64 {
+        let mut batteries = batteries;
         batteries.sort_unstable();
         let n = n as usize;
         let mut s = batteries
