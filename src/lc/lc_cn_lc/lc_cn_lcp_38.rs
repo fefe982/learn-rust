@@ -71,13 +71,11 @@ impl Flow {
                         iter[n] = i + 1;
                         continue;
                     }
-                    // println!("try {} -> {}, cap {}", n, edge.to, edge.cap - edge.flow);
                     let d = dfs(g, edge.to, t, level, iter, (flow - f).min(edge.cap - edge.flow));
                     if d <= 0 {
                         iter[n] = i + 1;
                         continue;
                     }
-                    // println!("{} -> {}, d = {}, cap={}", n, edge.to, d, edge.cap - edge.flow);
                     f += d;
                     g.edges[g.graph[n][i]].flow += d;
                     g.edges[g.graph[n][i] ^ 1].flow -= d;
@@ -91,7 +89,6 @@ impl Flow {
             }
             iter.fill(0);
             let f = dfs(self, s, t, &mut level, &mut iter, 21000);
-            // println!("f {f}");
             if f == 0 {
                 break;
             }
