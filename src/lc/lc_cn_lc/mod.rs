@@ -1,3 +1,4 @@
+pub mod lc_cn_lcp_26;
 pub mod lc_cn_lcp_27;
 pub mod lc_cn_lcp_31;
 pub mod lc_cn_lcp_32;
