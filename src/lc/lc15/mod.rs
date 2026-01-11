@@ -8,3 +8,4 @@ pub mod lc_1528;
 pub mod lc_1536;
 pub mod lc_1540;
 pub mod lc_1541;
+pub mod lc_1556;
