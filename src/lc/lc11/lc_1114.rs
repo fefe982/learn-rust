@@ -7,14 +7,14 @@ pub struct Foo {
 unsafe impl Send for Foo {}
 unsafe impl Sync for Foo {}
 impl Foo {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Foo {
             cv: std::sync::Condvar::new(),
             mtx: std::sync::Mutex::new(0),
         }
     }
 
-    fn first<F>(&self, print_first: F)
+    pub fn first<F>(&self, print_first: F)
     where
         F: FnOnce(),
     {
@@ -24,7 +24,7 @@ impl Foo {
         self.cv.notify_all();
     }
 
-    fn second<F>(&self, print_second: F)
+    pub fn second<F>(&self, print_second: F)
     where
         F: FnOnce(),
     {
@@ -38,7 +38,7 @@ impl Foo {
         self.cv.notify_all();
     }
 
-    fn third<F>(&self, print_third: F)
+    pub fn third<F>(&self, print_third: F)
     where
         F: FnOnce(),
     {
