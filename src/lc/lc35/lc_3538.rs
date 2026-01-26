@@ -30,7 +30,7 @@ impl Solution {
         memo[start][end][k] = min_time;
         min_time
     }
-    pub fn min_travel_time(l: i32, n: i32, k: i32, position: Vec<i32>, time: Vec<i32>) -> i32 {
+    pub fn min_travel_time(_l: i32, _n: i32, k: i32, position: Vec<i32>, time: Vec<i32>) -> i32 {
         let mut acc = Vec::with_capacity(time.len() + 1);
         acc.push(0);
         for i in 0..time.len() {
