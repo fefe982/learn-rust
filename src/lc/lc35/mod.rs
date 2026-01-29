@@ -3,6 +3,7 @@ pub mod lc_3508;
 pub mod lc_3510;
 pub mod lc_3512;
 pub mod lc_3516;
+pub mod lc_3530;
 pub mod lc_3531;
 pub mod lc_3533;
 pub mod lc_3534;
