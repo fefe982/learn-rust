@@ -3,3 +3,4 @@ pub mod lc_3806;
 pub mod lc_3812;
 pub mod lc_3816;
 pub mod lc_3821;
+pub mod lc_3826;
