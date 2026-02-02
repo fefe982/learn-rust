@@ -7,7 +7,7 @@ pub struct ZeroEvenOdd {
 }
 
 impl ZeroEvenOdd {
-    fn new(n: i32) -> Self {
+    pub fn new(n: i32) -> Self {
         ZeroEvenOdd {
             n,
             cv: std::sync::Condvar::new(),
@@ -16,7 +16,7 @@ impl ZeroEvenOdd {
     }
 
     // printNumber(x) prints the integer x
-    fn zero<F>(&self, print_number: F)
+    pub fn zero<F>(&self, print_number: F)
     where
         F: Fn(i32),
     {
@@ -31,7 +31,7 @@ impl ZeroEvenOdd {
         }
     }
 
-    fn even<F>(&self, print_number: F)
+    pub fn even<F>(&self, print_number: F)
     where
         F: Fn(i32),
     {
@@ -46,7 +46,7 @@ impl ZeroEvenOdd {
         }
     }
 
-    fn odd<F>(&self, print_number: F)
+    pub fn odd<F>(&self, print_number: F)
     where
         F: Fn(i32),
     {
