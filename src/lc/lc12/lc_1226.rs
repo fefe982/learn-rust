@@ -1,16 +1,12 @@
 // https://leetcode.com/problems/the-dining-philosophers/
 // 1226. The Dining Philosophers
 pub struct DiningPhilosophers {
-    cv: std::sync::Condvar,
-    mtx: std::sync::Mutex<i32>,
     forks: Vec<std::sync::Mutex<i32>>,
 }
 
 impl DiningPhilosophers {
     pub fn new() -> Self {
         DiningPhilosophers {
-            cv: std::sync::Condvar::new(),
-            mtx: std::sync::Mutex::new(0),
             forks: vec![
                 std::sync::Mutex::new(1),
                 std::sync::Mutex::new(1),
@@ -37,26 +33,23 @@ impl DiningPhilosophers {
         F4: FnOnce(),
         F5: FnOnce(),
     {
-        // TODO: implement your dining philosophers solution here
-        // You can translate your C++ logic into Rust inside this function.
-        let mut mtx = self.mtx.lock().unwrap();
-        while *mtx == 5 {
-            mtx = self.cv.wait(mtx).unwrap();
+        if philosopher % 2 == 0 {
+            let _ul = self.forks[(philosopher + 1) as usize % 5].lock().unwrap();
+            let _ur = self.forks[philosopher as usize].lock().unwrap();
+            pick_left_fork();
+            pick_right_fork();
+            eat();
+            put_left_fork();
+            put_right_fork();
+        } else {
+            let _ur = self.forks[philosopher as usize].lock().unwrap();
+            let _ul = self.forks[(philosopher + 1) as usize % 5].lock().unwrap();
+            pick_left_fork();
+            pick_right_fork();
+            eat();
+            put_left_fork();
+            put_right_fork();
         }
-        *mtx += 1;
-        drop(mtx);
-        let left_fork = self.forks[(philosopher + 1) as usize % 5].lock().unwrap();
-        pick_left_fork();
-        let right_fork = self.forks[philosopher as usize].lock().unwrap();
-        pick_right_fork();
-        eat();
-        put_left_fork();
-        drop(left_fork);
-        put_right_fork();
-        drop(right_fork);
-        let mut mtx = self.mtx.lock().unwrap();
-        *mtx -= 1;
-        self.cv.notify_all();
     }
 }
 unsafe impl Send for DiningPhilosophers {}
