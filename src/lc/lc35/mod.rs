@@ -1,3 +1,4 @@
+pub mod lc_3505;
 pub mod lc_3507;
 pub mod lc_3508;
 pub mod lc_3509;
