@@ -1,6 +1,5 @@
 // https://leetcode.com/problems/throne-inheritance/
 // 1600. Throne Inheritance
-pub struct Solution;
 struct TreeNode {
     name: String,
     dead: bool,
