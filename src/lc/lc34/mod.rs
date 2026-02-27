@@ -2,6 +2,7 @@ pub mod lc_3408;
 pub mod lc_3410;
 pub mod lc_3414;
 pub mod lc_3420;
+pub mod lc_3426;
 pub mod lc_3430;
 pub mod lc_3432;
 pub mod lc_3433;
