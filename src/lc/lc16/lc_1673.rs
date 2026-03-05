@@ -3,21 +3,21 @@
 pub struct Solution;
 impl Solution {
     pub fn most_competitive(nums: Vec<i32>, k: i32) -> Vec<i32> {
-        let mut q = std::collections::BinaryHeap::new();
-        let mut res = vec![];
-        let mut last = usize::MAX;
+        let mut q = std::collections::VecDeque::new();
         let n = nums.len();
         let k = k as usize;
+        let mut res = Vec::with_capacity(k);
         for (i, num) in nums.into_iter().enumerate() {
-            q.push(std::cmp::Reverse((num, i)));
-            if i + k >= n {
-                while let Some(std::cmp::Reverse((top, itop))) = q.pop() {
-                    if last == usize::MAX || last < itop {
-                        res.push(top);
-                        last = itop;
-                        break;
-                    }
+            while let Some(&top) = q.back() {
+                if top > num {
+                    q.pop_back();
+                } else {
+                    break;
                 }
+            }
+            q.push_back(num);
+            if i + k >= n {
+                res.push(q.pop_front().unwrap());
             }
         }
         res
