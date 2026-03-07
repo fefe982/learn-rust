@@ -15,4 +15,5 @@ pub mod lc_1678;
 pub mod lc_1679;
 pub mod lc_1680;
 pub mod lc_1689;
+pub mod lc_1694;
 pub mod lc_1695;
