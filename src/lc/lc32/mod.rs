@@ -4,3 +4,4 @@ pub mod lc_3224;
 pub mod lc_3227;
 pub mod lc_3228;
 pub mod lc_3289;
+pub mod lc_3296;
