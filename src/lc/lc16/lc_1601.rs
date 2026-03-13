@@ -40,10 +40,7 @@ mod tests {
             Solution::maximum_requests(5, vec_vec![[0, 1], [1, 0], [0, 1], [1, 2], [2, 0], [3, 4]]),
             5
         );
-        assert_eq!(
-            Solution::maximum_requests(3, vec_vec![[0, 0], [1, 2], [2, 1]]),
-            3
-        );
+        assert_eq!(Solution::maximum_requests(3, vec_vec![[0, 0], [1, 2], [2, 1]]), 3);
         assert_eq!(
             Solution::maximum_requests(4, vec_vec![[0, 3], [3, 1], [1, 2], [2, 0]]),
             4
