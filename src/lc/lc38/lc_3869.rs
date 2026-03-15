@@ -61,7 +61,6 @@ impl Solution {
         qincdec.extend(q[9..].iter());
         for mut q in qincdec {
             if q >= l && q <= r {
-                println!("q: {}", q);
                 let mut s = 0;
                 while q > 0 {
                     s += q % 10;
