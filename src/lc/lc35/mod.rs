@@ -38,3 +38,4 @@ pub mod lc_3579;
 pub mod lc_3583;
 pub mod lc_3590;
 pub mod lc_3594;
+pub mod lc_3546;
