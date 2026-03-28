@@ -28,7 +28,6 @@ impl Solution {
             }
             last_val = n;
         }
-        println!("{nums:?}");
         let mut max = 0;
         let mut next = 0;
         let mut q = vec![];
@@ -44,14 +43,12 @@ impl Solution {
                     continue;
                 }
                 q.push((n, i, j));
-                println!("{q:?}");
                 used[i] = true;
                 set[n as usize] = true;
                 next = j + 1;
                 sum += n;
                 cnt += 1;
                 if cnt < nrow && next < nums.len() && sum + nums[next].0 * (nrow - cnt) > max {
-                    println!("{nums:?}, {next}, {sum}, {cnt}, {nrow}, {max}");
                     backtrack = false;
                 }
                 break;
