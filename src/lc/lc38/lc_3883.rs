@@ -46,6 +46,8 @@ impl Solution {
             ans
         }
 
+        insert(&mut prefix_sum, 0, 1);
+
         for &s_i32 in digit_sum.iter() {
             let s = s_i32 as usize;
             if by_sum[s].is_empty() {
@@ -56,7 +58,6 @@ impl Solution {
 
             for &v in &by_sum[s] {
                 let val = query(&prefix_sum, v);
-                println!("s={}, v={}, val={}", s, v, val);
                 insert(&mut prefix, v, val);
             }
             prefix_sum = prefix;
