@@ -4,6 +4,7 @@ pub mod lc_1806;
 pub mod lc_1807;
 pub mod lc_1816;
 pub mod lc_1817;
+pub mod lc_1818;
 pub mod lc_1865;
 pub mod lc_1878;
 pub mod lc_1886;
