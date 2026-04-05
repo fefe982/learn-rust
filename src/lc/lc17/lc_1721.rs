@@ -3,7 +3,8 @@
 use super::linked_list::ListNode;
 pub struct Solution;
 impl Solution {
-    pub fn swap_nodes(mut head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
+    pub fn swap_nodes(head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
+        let mut head = head;
         let mut v = Vec::new();
         while let Some(n) = head {
             v.push(n.as_ref().val);
