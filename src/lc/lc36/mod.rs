@@ -20,6 +20,7 @@ pub mod lc_3646;
 pub mod lc_3650;
 pub mod lc_3651;
 pub mod lc_3652;
+pub mod lc_3653;
 pub mod lc_3655;
 pub mod lc_3661;
 pub mod lc_3666;
