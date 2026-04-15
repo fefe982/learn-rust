@@ -33,4 +33,5 @@ pub mod lc_1881;
 pub mod lc_1882;
 pub mod lc_1886;
 pub mod lc_1888;
+pub mod lc_1893;
 pub mod lc_1895;
