@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/apply-operations-to-maximize-frequency-score/
-// 2986. Maximum Frequency Score of a Good Array
+// 2968. Apply Operations to Maximize Frequency Score
 pub struct Solution;
 impl Solution {
     pub fn max_frequency_score(nums: Vec<i32>, k: i64) -> i32 {
