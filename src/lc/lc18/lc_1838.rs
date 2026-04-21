@@ -9,18 +9,19 @@ impl Solution {
         let mut count = 1;
         let mut last = nums[0];
         let mut diff = 0;
+        let k = k as i64;
         for i in 1..nums.len() {
             let n = nums[i];
-            diff += (n - last) * count;
+            diff += (n - last) as i64 * count;
             count += 1;
             while diff > k {
-                diff -= n - nums[i + 1 - count as usize];
+                diff -= (n - nums[i + 1 - count as usize]) as i64;
                 count -= 1;
             }
             max = max.max(count);
             last = n;
         }
-        max
+        max as i32
     }
 }
 #[cfg(test)]
