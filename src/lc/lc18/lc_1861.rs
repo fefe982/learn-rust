@@ -2,16 +2,16 @@
 // 1861. Rotating the Box
 pub struct Solution;
 impl Solution {
-    pub fn rotate_the_box(bx: Vec<Vec<char>>) -> Vec<Vec<char>> {
-        let mut ans = vec![vec!['.'; bx.len()]; bx[0].len()];
-        let l = bx.len();
-        for i in 0..bx.len() {
-            let mut nx = bx[i].len();
-            for j in (0..bx[i].len()).rev() {
-                if bx[i][j] == '*' {
+    pub fn rotate_the_box(box_grid: Vec<Vec<char>>) -> Vec<Vec<char>> {
+        let mut ans = vec![vec!['.'; box_grid.len()]; box_grid[0].len()];
+        let l = box_grid.len();
+        for i in 0..box_grid.len() {
+            let mut nx = box_grid[i].len();
+            for j in (0..box_grid[i].len()).rev() {
+                if box_grid[i][j] == '*' {
                     nx = j;
                     ans[j][l - i - 1] = '*';
-                } else if bx[i][j] == '#' {
+                } else if box_grid[i][j] == '#' {
                     nx -= 1;
                     ans[nx][l - i - 1] = '#';
                 }
