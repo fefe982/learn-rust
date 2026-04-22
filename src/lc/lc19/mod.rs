@@ -9,4 +9,5 @@ pub mod lc_1935;
 pub mod lc_1936;
 pub mod lc_1941;
 pub mod lc_1943;
+pub mod lc_1946;
 pub mod lc_1984;
