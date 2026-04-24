@@ -14,4 +14,5 @@ pub mod lc_1947;
 pub mod lc_1952;
 pub mod lc_1959;
 pub mod lc_1961;
+pub mod lc_1967;
 pub mod lc_1984;
