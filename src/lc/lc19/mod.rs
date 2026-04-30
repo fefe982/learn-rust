@@ -24,3 +24,4 @@ pub mod lc_1985;
 pub mod lc_1986;
 pub mod lc_1991;
 pub mod lc_1995;
+pub mod lc_1996;
