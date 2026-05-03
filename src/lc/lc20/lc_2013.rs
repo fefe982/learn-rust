@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/detect-squares/
 // 2013. Detect Squares
-struct DetectSquares {
+pub struct DetectSquares {
     cnt: Vec<Vec<i32>>,
     points: Vec<(i32, i32)>,
 }
@@ -10,20 +10,20 @@ struct DetectSquares {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl DetectSquares {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             cnt: vec![vec![0; 1001]; 1001],
             points: Vec::new(),
         }
     }
 
-    fn add(&mut self, point: Vec<i32>) {
+    pub fn add(&mut self, point: Vec<i32>) {
         let (x, y) = (point[0] as usize, point[1] as usize);
         self.cnt[x][y] += 1;
         self.points.push((point[0], point[1]));
     }
 
-    fn count(&self, point: Vec<i32>) -> i32 {
+    pub fn count(&self, point: Vec<i32>) -> i32 {
         let (x, y) = (point[0] as usize, point[1] as usize);
         self.points.iter().fold(0, |ans, &(px, py)| {
             if px == point[0] || py == point[1] || (point[0] - px).abs() != (point[1] - py).abs() {
