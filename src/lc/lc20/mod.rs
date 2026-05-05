@@ -8,6 +8,7 @@ pub mod lc_2023;
 pub mod lc_2027;
 pub mod lc_2029;
 pub mod lc_2032;
+pub mod lc_2039;
 pub mod lc_2043;
 pub mod lc_2069;
 pub mod lc_2075;
