@@ -1,5 +1,5 @@
 // https://leetcode.cn/problems/minimum-jumps-to-reach-end-via-prime-teleportation/
-// 2629. Minimum Jumps to Reach End via Prime Teleportation
+// 3629. Minimum Jumps to Reach End via Prime Teleportation
 pub struct Solution;
 use std::collections::{HashMap, HashSet, VecDeque};
 impl Solution {
