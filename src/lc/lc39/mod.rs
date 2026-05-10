@@ -5,3 +5,4 @@ pub mod lc_3911;
 pub mod lc_3915;
 pub mod lc_3920;
 pub mod lc_3924;
+pub mod lc_3928;
