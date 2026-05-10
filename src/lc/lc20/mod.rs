@@ -22,5 +22,6 @@ pub mod lc_2069;
 pub mod lc_2074;
 pub mod lc_2075;
 pub mod lc_2078;
+pub mod lc_2086;
 pub mod lc_2087;
 pub mod lc_2099;
