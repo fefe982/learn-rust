@@ -23,6 +23,14 @@ impl ListNode {
 }
 
 #[cfg(test)]
+#[macro_export]
+macro_rules! linked_list {
+    ($($x:expr),*$(,)?) => {
+        $crate::lc::linked_list::ListNode::from_vec(vec![$($x),*])
+    };
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
     #[test]
