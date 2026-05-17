@@ -1,10 +1,10 @@
 // https://leetcode.com/problems/jump-game-iv/
 // 1345. Jump Game IV
-use std::collections::HashMap;
-use std::collections::VecDeque;
 pub struct Solution;
 impl Solution {
     pub fn min_jumps(arr: Vec<i32>) -> i32 {
+        use std::collections::HashMap;
+        use std::collections::VecDeque;
         if arr.len() == 1 {
             return 0;
         }

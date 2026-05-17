@@ -9,5 +9,6 @@ pub mod lc_2124;
 pub mod lc_2126;
 pub mod lc_2133;
 pub mod lc_2135;
+pub mod lc_2139;
 pub mod lc_2154;
 pub mod lc_2169;
