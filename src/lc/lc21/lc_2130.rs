@@ -1,9 +1,10 @@
 // https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/
 // 2130. Maximum Twin Sum of a Linked List
-use super::linked_list::ListNode;
+use super::super::linked_list::ListNode;
 pub struct Solution;
 impl Solution {
-    pub fn pair_sum(mut head: Option<Box<ListNode>>) -> i32 {
+    pub fn pair_sum(head: Option<Box<ListNode>>) -> i32 {
+        let mut head = head;
         let mut v = Vec::new();
         while let Some(n) = head {
             v.push(n.val);
@@ -24,9 +25,6 @@ mod tests {
     fn pair_sum() {
         assert_eq!(Solution::pair_sum(ListNode::from_vec(vec![5, 4, 2, 1])), 6);
         assert_eq!(Solution::pair_sum(ListNode::from_vec(vec![4, 2, 2, 3])), 7);
-        assert_eq!(
-            Solution::pair_sum(ListNode::from_vec(vec![1, 100000])),
-            100001
-        );
+        assert_eq!(Solution::pair_sum(ListNode::from_vec(vec![1, 100000])), 100001);
     }
 }
