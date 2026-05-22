@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-bitset/
 // 2166. Design Bitset
-struct Bitset {
+pub struct Bitset {
     bits: Vec<bool>,
     flipped: bool,
     ones: i32,
@@ -11,7 +11,7 @@ struct Bitset {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Bitset {
-    fn new(size: i32) -> Self {
+    pub fn new(size: i32) -> Self {
         Self {
             bits: vec![false; size as usize],
             flipped: false,
@@ -19,7 +19,7 @@ impl Bitset {
         }
     }
 
-    fn fix(&mut self, idx: i32) {
+    pub fn fix(&mut self, idx: i32) {
         let idx = idx as usize;
         if self.bits[idx] == self.flipped {
             self.bits[idx] = !self.flipped;
@@ -27,7 +27,7 @@ impl Bitset {
         }
     }
 
-    fn unfix(&mut self, idx: i32) {
+    pub fn unfix(&mut self, idx: i32) {
         let idx = idx as usize;
         if self.bits[idx] != self.flipped {
             self.bits[idx] = self.flipped;
@@ -35,24 +35,24 @@ impl Bitset {
         }
     }
 
-    fn flip(&mut self) {
+    pub fn flip(&mut self) {
         self.flipped = !self.flipped;
         self.ones = self.bits.len() as i32 - self.ones;
     }
 
-    fn all(&self) -> bool {
+    pub fn all(&self) -> bool {
         self.ones == self.bits.len() as i32
     }
 
-    fn one(&self) -> bool {
+    pub fn one(&self) -> bool {
         self.ones > 0
     }
 
-    fn count(&self) -> i32 {
+    pub fn count(&self) -> i32 {
         self.ones
     }
 
-    fn to_string(&self) -> String {
+    pub fn to_string(&self) -> String {
         self.bits
             .iter()
             .map(|&bit| if bit ^ self.flipped { '1' } else { '0' })
