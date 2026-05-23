@@ -2,7 +2,8 @@
 // 2178. Maximum Split of Positive Even Integers
 pub struct Solution;
 impl Solution {
-    pub fn maximum_even_split(mut final_sum: i64) -> Vec<i64> {
+    pub fn maximum_even_split(final_sum: i64) -> Vec<i64> {
+        let mut final_sum = final_sum;
         let mut r = vec![];
         if final_sum % 2 == 0 {
             let mut n = 2;
