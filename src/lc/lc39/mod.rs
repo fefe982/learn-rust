@@ -8,3 +8,4 @@ pub mod lc_3924;
 pub mod lc_3928;
 pub mod lc_3934;
 pub mod lc_3939;
+pub mod lc_3943;
