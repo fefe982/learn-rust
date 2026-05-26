@@ -1,5 +1,6 @@
 pub mod lc_2200;
 pub mod lc_2201;
+pub mod lc_2202;
 pub mod lc_2210;
 pub mod lc_2211;
 pub mod lc_2221;
