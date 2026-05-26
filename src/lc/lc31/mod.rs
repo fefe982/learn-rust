@@ -1,5 +1,6 @@
 pub mod lc_3100;
 pub mod lc_3120;
+pub mod lc_3121;
 pub mod lc_3136;
 pub mod lc_3147;
 pub mod lc_3186;
