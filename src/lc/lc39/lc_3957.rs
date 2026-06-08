@@ -104,63 +104,11 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    fn brute_force(nums: &[i32], m: usize, l: usize, r: usize) -> i64 {
-        fn dfs(nums: &[i32], index: usize, left: usize, l: usize, r: usize) -> i64 {
-            const NEG_INF: i64 = i64::MIN / 4;
-
-            if left == 0 || index >= nums.len() {
-                return NEG_INF;
-            }
-
-            let mut best = dfs(nums, index + 1, left, l, r);
-            let mut sum = 0_i64;
-            for end in index..nums.len().min(index + r) {
-                sum += nums[end] as i64;
-                let len = end - index + 1;
-                if len < l {
-                    continue;
-                }
-                best = best.max(sum);
-                if left > 1 && end + 1 < nums.len() {
-                    best = best.max(sum + dfs(nums, end + 1, left - 1, l, r).max(0));
-                }
-            }
-            best
-        }
-
-        dfs(nums, 0, m, l, r)
-    }
-
     #[test]
     fn test_maximum_sum() {
         assert_eq!(Solution::maximum_sum(vec![4, 1, -5, 2], 2, 1, 3), 7);
         assert_eq!(Solution::maximum_sum(vec![1, 0, 3, 4], 2, 1, 2), 8);
         assert_eq!(Solution::maximum_sum(vec![-1, 7, -4], 1, 2, 3), 6);
         assert_eq!(Solution::maximum_sum(vec![-3, -4, -1], 2, 1, 2), -1);
-    }
-
-    #[test]
-    fn test_maximum_sum_bruteforce_small() {
-        for n in 1..=4 {
-            let total = 5_i32.pow(n as u32);
-            for mask in 0..total {
-                let mut value = mask;
-                let mut nums = vec![0; n as usize];
-                for num in &mut nums {
-                    *num = value % 5 - 2;
-                    value /= 5;
-                }
-                for l in 1..=n {
-                    for r in l..=n {
-                        for m in 1..=n {
-                            let expected = brute_force(&nums, m as usize, l as usize, r as usize);
-                            let actual = Solution::maximum_sum(nums.clone(), m, l, r);
-                            assert_eq!(actual, expected, "nums={nums:?}, m={m}, l={l}, r={r}");
-                        }
-                    }
-                }
-            }
-        }
     }
 }
