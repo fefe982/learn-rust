@@ -49,5 +49,6 @@ mod tests {
     fn process_str() {
         assert_eq!(Solution::process_str("a#b%*".to_string(), 1), 'a');
         assert_eq!(Solution::process_str("cd%#*#".to_string(), 3), 'd');
+        assert_eq!(Solution::process_str("k*#".to_string(), 0), '.');
     }
 }
