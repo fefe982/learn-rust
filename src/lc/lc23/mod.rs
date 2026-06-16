@@ -10,3 +10,4 @@ pub mod lc_2325;
 pub mod lc_2333;
 pub mod lc_2335;
 pub mod lc_2341;
+pub mod lc_2343;
