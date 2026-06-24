@@ -2,5 +2,6 @@ pub mod lc_2400;
 pub mod lc_2410;
 pub mod lc_2411;
 pub mod lc_2420;
+pub mod lc_2424;
 pub mod lc_2438;
 pub mod lc_2452;
