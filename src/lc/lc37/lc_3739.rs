@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/count-subarrays-with-majority-element-ii/
-// 3793. Count Subarrays With Majority Element II
+// 3739. Count Subarrays With Majority Element II
 pub struct Solution;
 impl Solution {
     pub fn count_majority_subarrays(nums: Vec<i32>, target: i32) -> i64 {
