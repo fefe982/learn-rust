@@ -2,7 +2,8 @@
 // 2465. Number of Distinct Averages
 pub struct Solution;
 impl Solution {
-    pub fn distinct_averages(mut nums: Vec<i32>) -> i32 {
+    pub fn distinct_averages(nums: Vec<i32>) -> i32 {
+        let mut nums = nums;
         let mut s = std::collections::HashSet::<i32>::new();
         nums.sort_unstable();
         let l = nums.len();
