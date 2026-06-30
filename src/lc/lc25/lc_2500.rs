@@ -2,7 +2,8 @@
 // 2500. Delete Greatest Value in Each Row
 pub struct Solution;
 impl Solution {
-    pub fn delete_greatest_value(mut grid: Vec<Vec<i32>>) -> i32 {
+    pub fn delete_greatest_value(grid: Vec<Vec<i32>>) -> i32 {
+        let mut grid = grid;
         grid.iter_mut().for_each(|v| v.sort_unstable());
         let mut sum = 0;
         for j in 0..grid[0].len() {
