@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/find-consecutive-integers-from-a-data-stream/
 // 2526. Find Consecutive Integers from a Data Stream
-struct DataStream {
+pub struct DataStream {
     value: i32,
     k: i32,
     count: i32,
@@ -11,11 +11,11 @@ struct DataStream {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl DataStream {
-    fn new(value: i32, k: i32) -> Self {
+    pub fn new(value: i32, k: i32) -> Self {
         Self { value, k, count: 0 }
     }
 
-    fn consec(&mut self, num: i32) -> bool {
+    pub fn consec(&mut self, num: i32) -> bool {
         if num == self.value {
             self.count += 1;
             self.count >= self.k
