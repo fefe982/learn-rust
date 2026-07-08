@@ -2,7 +2,7 @@
 // 3532. Path Existence Queries in a Graph I
 pub struct Solution;
 impl Solution {
-    pub fn path_existence_queries(n: i32, nums: Vec<i32>, max_diff: i32, queries: Vec<Vec<i32>>) -> Vec<bool> {
+    pub fn path_existence_queries(_n: i32, nums: Vec<i32>, max_diff: i32, queries: Vec<Vec<i32>>) -> Vec<bool> {
         let mut nums = nums;
         let mut last = -max_diff - 1;
         let mut n = 0;
