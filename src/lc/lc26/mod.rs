@@ -4,4 +4,5 @@ pub mod lc_2607;
 pub mod lc_2615;
 pub mod lc_2640;
 pub mod lc_2651;
+pub mod lc_2653;
 pub mod lc_2654;
