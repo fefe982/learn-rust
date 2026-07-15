@@ -1,6 +1,7 @@
 pub mod lc_2718;
 pub mod lc_2729;
 pub mod lc_2730;
+pub mod lc_2733;
 pub mod lc_2749;
 pub mod lc_2770;
 pub mod lc_2784;
