@@ -19,7 +19,6 @@ impl Solution {
             for j in 0..n {
                 let nj = j as usize;
                 if one[nj] == 1 {
-                    println!("t2 {} ^ {} = {}", ni, nj, ni ^ nj);
                     two[ni ^ nj] = 1;
                 }
             }
@@ -30,7 +29,6 @@ impl Solution {
             for j in 0..n {
                 let nj = j as usize;
                 if two[nj] == 1 {
-                    println!("t3 {} ^ {} = {}", ni, nj, ni ^ nj);
                     three[ni ^ nj] = 1;
                 }
             }
