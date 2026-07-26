@@ -38,6 +38,7 @@ pub mod lc36;
 pub mod lc37;
 pub mod lc38;
 pub mod lc39;
+pub mod lc40;
 pub mod lc_cn_int;
 pub mod lc_cn_lc;
 pub mod linked_list;
