@@ -20,6 +20,7 @@ pub mod lc_2946;
 pub mod lc_2947;
 pub mod lc_2949;
 pub mod lc_2957;
+pub mod lc_2967;
 pub mod lc_2968;
 pub mod lc_2975;
 pub mod lc_2996;
