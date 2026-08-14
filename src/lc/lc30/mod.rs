@@ -2,6 +2,7 @@ pub mod lc_3000;
 pub mod lc_3002;
 pub mod lc_3003;
 pub mod lc_3010;
+pub mod lc_3012;
 pub mod lc_3013;
 pub mod lc_3014;
 pub mod lc_3020;
