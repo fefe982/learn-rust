@@ -9,6 +9,7 @@ pub mod lc_3015;
 pub mod lc_3020;
 pub mod lc_3021;
 pub mod lc_3025;
+pub mod lc_3026;
 pub mod lc_3027;
 pub mod lc_3047;
 pub mod lc_3070;
