@@ -2,7 +2,7 @@
 // 4023. Elevator Requests II
 pub struct Solution;
 impl Solution {
-    pub fn elevator_requests(n: i32, start: i32, requests: Vec<i32>) -> i64 {
+    pub fn elevator_requests(_n: i32, start: i32, requests: Vec<i32>) -> i64 {
         let mut requests = requests;
         if requests.iter().find(|&&x| x == start).is_none() {
             requests.push(start);
