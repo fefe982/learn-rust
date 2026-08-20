@@ -18,6 +18,7 @@ pub mod lc_3035;
 pub mod lc_3039;
 pub mod lc_3044;
 pub mod lc_3047;
+pub mod lc_3048;
 pub mod lc_3069;
 pub mod lc_3070;
 pub mod lc_3074;
