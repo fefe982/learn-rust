@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/shortest-subarray-with-or-at-least-k-ii/
-// 3097. Shortest Subarray With at Least K ORs
+// 3097. Shortest Subarray With OR at Least K II
 pub struct Solution;
 impl Solution {
     pub fn minimum_subarray_length(nums: Vec<i32>, k: i32) -> i32 {
