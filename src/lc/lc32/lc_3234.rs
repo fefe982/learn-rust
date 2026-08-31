@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/count-the-number-of-substrings-with-dominant-ones/
-// 3224. Count the Number of Substrings With Dominant Ones
+// 3234. Count the Number of Substrings With Dominant Ones
 pub struct Solution;
 impl Solution {
     pub fn count_substr(s: String) -> i32 {
