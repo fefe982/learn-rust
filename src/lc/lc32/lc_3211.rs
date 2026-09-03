@@ -2,22 +2,22 @@
 // 3211. Generate Binary Strings Without Adjacent Zeros
 pub struct Solution;
 impl Solution {
-    fn gen(mut s: String, n: i32, bit: i32, v: &mut Vec<String>) {
+    fn generate(mut s: String, n: i32, bit: i32, v: &mut Vec<String>) {
         if n == 0 {
             v.push(s);
             return;
         }
         if bit == 1 {
             s.push('0');
-            Self::gen(s.clone(), n - 1, 0, v);
+            Self::generate(s.clone(), n - 1, 0, v);
             s.pop();
         }
         s.push('1');
-        Self::gen(s, n - 1, 1, v);
+        Self::generate(s, n - 1, 1, v);
     }
     pub fn valid_strings(n: i32) -> Vec<String> {
         let mut res = vec![];
-        Self::gen(String::new(), n, 1, &mut res);
+        Self::generate(String::new(), n, 1, &mut res);
         res
     }
 }
