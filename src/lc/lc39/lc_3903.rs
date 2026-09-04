@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/smallest-stable-index-i/
-// 3902. Smallest Stable Group
+// 3903. Smallest Stable Group
 pub struct Solution;
 impl Solution {
     pub fn first_stable_index(nums: Vec<i32>, k: i32) -> i32 {
