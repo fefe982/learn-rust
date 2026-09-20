@@ -7,7 +7,6 @@ impl Solution {
         let max = *nums.iter().max().unwrap();
         let mut vg = vec![nums];
         let b = (i32::BITS - max.leading_zeros()) as usize;
-        println!("{max}, {b}");
         for i in (0..b).rev() {
             let mut nvg = vec![];
             let mut cnt = 0;
