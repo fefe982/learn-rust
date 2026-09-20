@@ -14,6 +14,7 @@ pub mod lc_3516;
 pub mod lc_3517;
 pub mod lc_3518;
 pub mod lc_3519;
+pub mod lc_3524;
 pub mod lc_3525;
 pub mod lc_3530;
 pub mod lc_3531;
