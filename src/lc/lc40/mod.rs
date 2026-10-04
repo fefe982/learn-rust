@@ -14,3 +14,4 @@ pub mod lc_4055;
 pub mod lc_4059;
 pub mod lc_4064;
 pub mod lc_4068;
+pub mod lc_4073;
