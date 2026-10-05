@@ -4,7 +4,7 @@ pub struct Solution;
 impl Solution {
     pub fn destroy_targets(nums: Vec<i32>, space: i32) -> i32 {
         let mut cnt = std::collections::HashMap::new();
-        let mut ans = std::i32::MAX;
+        let mut ans = i32::MAX;
         let mut max_cnt = 0;
         for &num in &nums {
             *cnt.entry(num % space).or_insert(0) += 1;
