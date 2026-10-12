@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/prime-subset-selection-ii/
-// 101194. Prime Subset Selection II
+// 4081. Prime Subset Selection II
 pub struct Solution;
 impl Solution {
     pub fn max_prime_subset(n: i32, s: i32) -> Vec<i32> {

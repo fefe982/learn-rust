@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/minimize-inversions-in-a-prefix-tree/
-// 101016. Minimize Inversions in a Prefix Tree
+// 4077. Minimize Inversions in a Prefix Tree
 pub struct Solution;
 impl Solution {
     fn dp(cost: &Vec<Vec<i32>>, idx: &Vec<usize>) -> i32 {
