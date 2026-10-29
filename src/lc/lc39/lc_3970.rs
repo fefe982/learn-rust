@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/shortest-path-with-at-most-k-consecutive-identical-characters/
+// https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/
 // 3970. Shortest Path With At Most K Consecutive Identical Characters
 pub struct Solution;
 impl Solution {
