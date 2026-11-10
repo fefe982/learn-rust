@@ -76,4 +76,5 @@ pub mod lc_3693;
 pub mod lc_3694;
 pub mod lc_3695;
 pub mod lc_3697;
+pub mod lc_3698;
 pub mod lc_3699;
